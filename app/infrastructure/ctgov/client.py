@@ -5,6 +5,7 @@ import httpx
 
 from app.core.config import Settings
 from app.infrastructure.ctgov.exceptions import CtgovApiError, CtgovRateLimitError
+from app.infrastructure.ctgov.metadata import MetadataParams, StudyMetadata
 from app.infrastructure.ctgov.models import (
     NCT_ID_PATTERN,
     StudiesSearchParams,
@@ -56,6 +57,15 @@ class CtgovClient:
 
     def fetch_enums(self) -> list[dict[str, Any]]:
         return self._get("/studies/enums", {}).json()
+
+    def get_metadata(
+        self,
+        params: MetadataParams | None = None,
+    ) -> StudyMetadata:
+        get_params = params or MetadataParams()
+        return StudyMetadata.from_api(
+            self._get("/studies/metadata", get_params.to_query_params()).json()
+        )
 
     def iter_search_studies(
         self, params: StudiesSearchParams
