@@ -1,12 +1,15 @@
 """Tests for VisualizePipeline scaffolding."""
 
 import asyncio
+from unittest.mock import AsyncMock, patch
 
 import pytest
 
 from app.agent.pipeline import VisualizePipeline
+from app.agent.types import Intent, ResolvedFilters
 from app.core.config import Settings
 from app.core.schemas.request import VisualizeRequest
+from app.domain.horizons import Horizon
 
 
 @pytest.fixture
@@ -19,10 +22,22 @@ def pipeline(settings: Settings) -> VisualizePipeline:
     return VisualizePipeline(settings)
 
 
-def test_pipeline_run_raises_at_step1(pipeline: VisualizePipeline) -> None:
+def test_pipeline_run_raises_at_step2_when_step1_succeeds(
+    pipeline: VisualizePipeline,
+) -> None:
     request = VisualizeRequest(query="Trials for pembrolizumab since 2015")
-    with pytest.raises(NotImplementedError, match="Stage 8b"):
-        asyncio.run(pipeline.run(request))
+    stub_intent = Intent(
+        horizon=Horizon.TIME_TREND,
+        filters=ResolvedFilters(),
+    )
+
+    with patch(
+        "app.agent.pipeline.parse_intent",
+        new_callable=AsyncMock,
+        return_value=stub_intent,
+    ):
+        with pytest.raises(NotImplementedError, match="Stage 8c"):
+            asyncio.run(pipeline.run(request))
 
 
 def test_pipeline_constructs_with_defaults(settings: Settings) -> None:

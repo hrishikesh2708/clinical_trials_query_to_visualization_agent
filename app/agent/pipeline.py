@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from openai import AsyncOpenAI
 
+from app.agent.intent_parser import parse_intent
 from app.agent.types import (
     APIQueryPlan,
     FetchResult,
@@ -40,7 +41,11 @@ class VisualizePipeline:
         )
 
     async def _step1_parse_intent(self, request: VisualizeRequest) -> Intent:
-        raise NotImplementedError("Stage 8b")
+        return await parse_intent(
+            request,
+            client=self._openai,
+            model=self._settings.openai_model,
+        )
 
     async def _step2_plan_query(self, intent: Intent) -> APIQueryPlan:
         raise NotImplementedError("Stage 8c")
