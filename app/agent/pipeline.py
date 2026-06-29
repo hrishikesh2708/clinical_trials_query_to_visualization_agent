@@ -5,6 +5,7 @@ from __future__ import annotations
 from openai import AsyncOpenAI
 
 from app.agent.intent_parser import parse_intent
+from app.agent.query_planner import plan_query
 from app.agent.types import (
     APIQueryPlan,
     FetchResult,
@@ -16,6 +17,7 @@ from app.core.schemas.response import VisualizeResponse
 from app.core.schemas.visualization import Visualization
 from app.domain.visualization import VisualizationType
 from app.infrastructure.ctgov.client import CtgovClient, ctgov_client_from_settings
+from app.infrastructure.ctgov.enums import CtgovEnumsLoader
 
 
 class VisualizePipeline:
@@ -29,6 +31,7 @@ class VisualizePipeline:
         self._settings = settings
         self._ctgov = ctgov or ctgov_client_from_settings(settings)
         self._openai = openai_client or AsyncOpenAI(api_key=settings.openai_api_key)
+        self._enums_loader = CtgovEnumsLoader(self._ctgov)
 
     async def run(self, request: VisualizeRequest) -> VisualizeResponse:
         intent = await self._step1_parse_intent(request)
@@ -48,7 +51,12 @@ class VisualizePipeline:
         )
 
     async def _step2_plan_query(self, intent: Intent) -> APIQueryPlan:
-        raise NotImplementedError("Stage 8c")
+        return await plan_query(
+            intent,
+            client=self._openai,
+            model=self._settings.openai_model,
+            enums_loader=self._enums_loader,
+        )
 
     async def _step3_fetch_studies(self, plan: APIQueryPlan) -> FetchResult:
         raise NotImplementedError("Stage 8d")
