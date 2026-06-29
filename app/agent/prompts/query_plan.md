@@ -18,12 +18,15 @@ Only add `filter.advanced` date or phase clauses when the intent message authori
 
 | Intent `filters` field | Allowed `filter_advanced` |
 |------------------------|---------------------------|
-| non-null `start_year` and/or `end_year` | `AREA[StartDate]…` (Python may inject; you may omit) |
+| non-null `start_year` and/or `end_year` | **omit** — Python injects canonical `AREA[StartDate]RANGE[…]` from intent |
 | non-null `trial_phase` | `AREA[Phase]…` (Python may inject; you may omit) |
 
 **Never invent** a start year, end year, or trial phase. Open-ended "over time" / "per year" questions need no `AREA[StartDate]…` clause.
 
-Example (only when user says "since 2015" or `start_year` is set): `AREA[StartDate]2015`
+Do **not** emit `filter_advanced` StartDate clauses when intent has `start_year` / `end_year` — Python formats them. If you must include one, use only:
+- `AREA[StartDate]RANGE[YYYY-MM-DD,YYYY-MM-DD]`
+- `AREA[StartDate]RANGE[YYYY-MM-DD,MAX]`
+- `AREA[StartDate]RANGE[MIN,YYYY-MM-DD]`
 
 ## Horizon cheat sheet
 
@@ -42,7 +45,7 @@ Example (only when user says "since 2015" or `start_year` is set): `AREA[StartDa
 - `query_spons` / `query_lead` — sponsors
 - `query_locn` — named geographic terms (country, city, facility)
 - `filter_geo` — **only** for proximity/radius: `distance(lat,lon,dist)`
-- `filter_advanced` — Essie expressions (`AREA[Phase]PHASE3`, `AREA[StartDate]2015`) when authorized by intent filters only
+- `filter_advanced` — Essie expressions (`AREA[Phase]PHASE3`; omit StartDate — Python injects `AREA[StartDate]RANGE[…]`) when authorized by intent filters only
 - `filter_overall_status` — status codes when pre-filtering by recruitment state
 
 ## Comparison

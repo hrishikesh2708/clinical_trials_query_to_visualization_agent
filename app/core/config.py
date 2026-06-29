@@ -7,6 +7,7 @@ class Settings(BaseSettings):
 
     openai_api_key: str = Field(..., min_length=1)
     openai_model: str = "gpt-4o-mini"
+    openai_temperature: float = 0.0
     ctgov_base_url: str = "https://clinicaltrials.gov/api/v2"
     http_timeout: float = 30.0
     pagination_cap: int = 1000

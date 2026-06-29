@@ -20,6 +20,7 @@ async def parse_structured(
     system_prompt: str,
     user_content: str,
     response_format: type[T],
+    temperature: float = 0.0,
 ) -> T:
     last_error: Exception | None = None
 
@@ -32,6 +33,7 @@ async def parse_structured(
                     {"role": "user", "content": user_content},
                 ],
                 response_format=response_format,
+                temperature=temperature,
             )
             parsed = completion.choices[0].message.parsed
             if parsed is None:

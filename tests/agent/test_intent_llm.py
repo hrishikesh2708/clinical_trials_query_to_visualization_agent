@@ -64,6 +64,27 @@ def _completion_with_parsed(parsed: BaseModel) -> MagicMock:
     return completion
 
 
+def test_parse_structured_forwards_temperature() -> None:
+    client = AsyncMock()
+    client.beta.chat.completions.parse = AsyncMock(
+        return_value=_completion_with_parsed(_Shape(value="ok")),
+    )
+
+    asyncio.run(
+        parse_structured(
+            client,
+            model="gpt-4o-mini",
+            system_prompt="sys",
+            user_content="user",
+            response_format=_Shape,
+            temperature=0.0,
+        )
+    )
+
+    call_kwargs = client.beta.chat.completions.parse.await_args.kwargs
+    assert call_kwargs["temperature"] == 0.0
+
+
 def test_parse_structured_retries_once_on_openai_error() -> None:
     client = AsyncMock()
     client.beta.chat.completions.parse = AsyncMock(

@@ -88,6 +88,7 @@ async def select_viz(
     *,
     client: AsyncOpenAI,
     model: str,
+    temperature: float = 0.0,
 ) -> VisualizationType:
     system_prompt = load_prompt("viz_select")
     user_content = build_viz_select_user_message(intent, preview)
@@ -98,6 +99,7 @@ async def select_viz(
         system_prompt=system_prompt,
         user_content=user_content,
         response_format=VizSelection,
+        temperature=temperature,
     )
     if selection.viz_type in preview.allowed_viz_types:
         return selection.viz_type
@@ -114,5 +116,6 @@ async def select_viz(
         system_prompt=system_prompt,
         user_content=retry_content,
         response_format=VizSelection,
+        temperature=temperature,
     )
     return _resolve_with_fallbacks(intent, selection, preview)

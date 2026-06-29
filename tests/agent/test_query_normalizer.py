@@ -70,7 +70,10 @@ def test_normalize_time_trend_injects_start_year() -> None:
         ]
     )
     plan = normalize_query_plan(intent, draft, enums=enums_from_fixture())
-    assert plan.searches[0].params.filter_advanced == "AREA[StartDate]2015"
+    assert (
+        plan.searches[0].params.filter_advanced
+        == "AREA[StartDate]RANGE[2015-01-01,MAX]"
+    )
     assert "Injected start/end year filter from intent." in plan.normalization_notes
 
 
@@ -220,10 +223,69 @@ def test_normalize_keeps_start_date_strips_unauthorized_phase() -> None:
         ]
     )
     plan = normalize_query_plan(intent, draft, enums=enums_from_fixture())
-    assert plan.searches[0].params.filter_advanced == "AREA[StartDate]2015"
+    assert (
+        plan.searches[0].params.filter_advanced
+        == "AREA[StartDate]RANGE[2015-01-01,MAX]"
+    )
     assert (
         "Removed unauthorized Phase filter; no trial_phase in intent."
         in plan.normalization_notes
+    )
+
+
+def test_normalize_time_trend_replaces_malformed_llm_start_date_range() -> None:
+    intent = Intent(
+        horizon=Horizon.TIME_TREND,
+        filters=ResolvedFilters(
+            drug_name="Pembrolizumab",
+            start_year=2015,
+            end_year=2018,
+        ),
+    )
+    draft = QueryPlanDraft(
+        searches=[
+            PlannedSearchDraft(
+                params=SearchParamsDraft(
+                    query_intr="Pembrolizumab",
+                    filter_advanced="AREA[StartDate]RANGE[2015-2018]",
+                ),
+            )
+        ]
+    )
+    plan = normalize_query_plan(intent, draft, enums=enums_from_fixture())
+    assert (
+        plan.searches[0].params.filter_advanced
+        == "AREA[StartDate]RANGE[2015-01-01,2018-12-31]"
+    )
+    assert (
+        "Replaced LLM StartDate filter with canonical API format from intent."
+        in plan.normalization_notes
+    )
+
+
+def test_normalize_time_trend_replaces_natural_language_llm_start_date_range() -> None:
+    intent = Intent(
+        horizon=Horizon.TIME_TREND,
+        filters=ResolvedFilters(
+            drug_name="Pembrolizumab",
+            start_year=2015,
+            end_year=2018,
+        ),
+    )
+    draft = QueryPlanDraft(
+        searches=[
+            PlannedSearchDraft(
+                params=SearchParamsDraft(
+                    query_intr="Pembrolizumab",
+                    filter_advanced="AREA[StartDate]RANGE[2015 to 2018]",
+                ),
+            )
+        ]
+    )
+    plan = normalize_query_plan(intent, draft, enums=enums_from_fixture())
+    assert (
+        plan.searches[0].params.filter_advanced
+        == "AREA[StartDate]RANGE[2015-01-01,2018-12-31]"
     )
 
 

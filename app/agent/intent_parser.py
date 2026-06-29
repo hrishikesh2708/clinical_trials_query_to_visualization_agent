@@ -7,6 +7,7 @@ import json
 from openai import AsyncOpenAI
 
 from app.agent.exceptions import AgentError
+from app.agent.intent_filter_sanitizer import sanitize_intent_filters
 from app.agent.llm import parse_structured
 from app.agent.prompts import load_prompt
 from app.agent.types import Intent
@@ -87,6 +88,7 @@ async def parse_intent(
     *,
     client: AsyncOpenAI,
     model: str,
+    temperature: float = 0.0,
 ) -> Intent:
     system_prompt = load_prompt("intent")
     user_content = build_intent_user_message(request)
@@ -96,6 +98,8 @@ async def parse_intent(
         system_prompt=system_prompt,
         user_content=user_content,
         response_format=Intent,
+        temperature=temperature,
     )
     merged = merge_request_filters(request, llm_intent)
+    merged = sanitize_intent_filters(merged)
     return apply_intent_gates(merged)

@@ -36,10 +36,8 @@ Use these values for `suggested_viz_type` when helpful (Step 4 makes the final c
 
 **Do not infer** unless the query or structured filters explicitly mention them:
 
-- `start_year` / `end_year` — only for explicit windows ("since 2015", "between 2018 and 2022", "before 2020", or non-null in structured filters). Open-ended "over time" / "per year" questions → leave both `null`.
+- `start_year` / `end_year` — **must** be set when the query or structured filters name an explicit window ("since 2015", "from 2018", "before 2020", "between 2018 and 2022", "between 2015 to 2018"). Open-ended "over time" / "per year" questions → leave both `null`. Never default to 2015 or any year without explicit mention.
 - `trial_phase` — only when the user names a phase ("phase 3", "Phase III trials", or non-null `trial_phase` in structured filters).
-
-Do not default to 2015 or any other year for generic time-trend questions.
 
 ## Bucket and granularity
 

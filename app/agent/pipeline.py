@@ -52,6 +52,7 @@ class VisualizePipeline:
             request,
             client=self._openai,
             model=self._settings.openai_model,
+            temperature=self._settings.openai_temperature,
         )
 
     async def _step2_plan_query(self, intent: Intent) -> APIQueryPlan:
@@ -59,6 +60,7 @@ class VisualizePipeline:
             intent,
             client=self._openai,
             model=self._settings.openai_model,
+            temperature=self._settings.openai_temperature,
             enums_loader=self._enums_loader,
         )
 
@@ -73,6 +75,7 @@ class VisualizePipeline:
             fetched.preview,
             client=self._openai,
             model=self._settings.openai_model,
+            temperature=self._settings.openai_temperature,
         )
 
     async def _step5_transform(
@@ -108,4 +111,5 @@ class VisualizePipeline:
             fetched,
             client=self._openai,
             model=self._settings.openai_model,
+            temperature=self._settings.openai_temperature,
         )

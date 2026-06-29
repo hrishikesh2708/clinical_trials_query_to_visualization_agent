@@ -66,6 +66,7 @@ async def build_response_narrative(
     *,
     client: AsyncOpenAI,
     model: str,
+    temperature: float = 0.0,
 ) -> ResponseNarrative:
     system_prompt = load_prompt("response")
     user_content = build_response_user_message(intent, viz, viz_type, fetched)
@@ -75,6 +76,7 @@ async def build_response_narrative(
         system_prompt=system_prompt,
         user_content=user_content,
         response_format=ResponseNarrative,
+        temperature=temperature,
     )
 
 
@@ -111,6 +113,7 @@ async def build_visualize_response(
     *,
     client: AsyncOpenAI,
     model: str,
+    temperature: float = 0.0,
 ) -> VisualizeResponse:
     narrative = await build_response_narrative(
         intent,
@@ -119,5 +122,6 @@ async def build_visualize_response(
         fetched,
         client=client,
         model=model,
+        temperature=temperature,
     )
     return assemble_visualize_response(intent, viz, narrative, fetched)

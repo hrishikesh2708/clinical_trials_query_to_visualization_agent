@@ -8,6 +8,10 @@ from typing import Any
 
 from pydantic import ValidationError
 
+from app.agent.advanced_filter_validator import (
+    find_invalid_start_date_clauses,
+    is_start_date_clause,
+)
 from app.agent.exceptions import AgentError
 from app.agent.types import (
     APIQueryPlan,
@@ -25,10 +29,6 @@ from app.infrastructure.ctgov.models import StudiesSearchParams
 _GEO_DISTANCE_PATTERN = re.compile(r"^distance\s*\(", re.IGNORECASE)
 _PHASE_TOKEN_PATTERN = re.compile(r"AREA\[Phase\]([A-Z0-9_]+)")
 _AND_SPLIT_PATTERN = re.compile(r"\s+AND\s+", re.IGNORECASE)
-_START_DATE_CLAUSE_PATTERN = re.compile(
-    r"^AREA\[StartDate\](?:RANGE\[[^\]]+\]|\d+)$",
-    re.IGNORECASE,
-)
 _PHASE_CLAUSE_PATTERN = re.compile(
     r"^AREA\[Phase\][A-Z0-9_]+(?:\s+OR\s+AREA\[Phase\][A-Z0-9_]+)*$",
     re.IGNORECASE,
@@ -50,7 +50,7 @@ def _date_advanced_clause(start_year: int | None, end_year: int | None) -> str |
     if start_year is not None and end_year is not None:
         return f"AREA[StartDate]RANGE[{start_year}-01-01,{end_year}-12-31]"
     if start_year is not None:
-        return f"AREA[StartDate]{start_year}"
+        return f"AREA[StartDate]RANGE[{start_year}-01-01,MAX]"
     if end_year is not None:
         return f"AREA[StartDate]RANGE[MIN,{end_year}-12-31]"
     return None
@@ -104,22 +104,18 @@ def _filter_and_clauses(
     return " AND ".join(kept), True
 
 
+def _strip_start_date_clauses(
+    expression: str | None,
+) -> tuple[str | None, bool]:
+    return _filter_and_clauses(expression, drop_if=is_start_date_clause)
+
+
 def _strip_unauthorized_advanced_filters(
     intent: Intent,
     existing: str | None,
 ) -> tuple[str | None, list[str]]:
     notes: list[str] = []
     expression = existing
-
-    if not _authorized_date_filter(intent):
-        expression, changed = _filter_and_clauses(
-            expression,
-            drop_if=lambda clause: bool(_START_DATE_CLAUSE_PATTERN.match(clause)),
-        )
-        if changed:
-            notes.append(
-                "Removed unauthorized StartDate filter; no date range in intent."
-            )
 
     if not _authorized_phase_filter(intent):
         expression, changed = _filter_and_clauses(
@@ -134,6 +130,19 @@ def _strip_unauthorized_advanced_filters(
     return expression, notes
 
 
+def _validate_start_date_clauses(expression: str | None) -> None:
+    invalid = find_invalid_start_date_clauses(expression)
+    if invalid:
+        raise AgentError(
+            "invalid_query_plan",
+            (
+                f"Invalid StartDate advanced filter {invalid[0]!r}; "
+                "use AREA[StartDate]RANGE[YYYY-MM-DD,YYYY-MM-DD], "
+                "RANGE[YYYY-MM-DD,MAX], or RANGE[MIN,YYYY-MM-DD]."
+            ),
+        )
+
+
 def build_advanced_filters(
     intent: Intent,
     enums: CtgovEnums,
@@ -144,6 +153,20 @@ def build_advanced_filters(
 
     existing, strip_notes = _strip_unauthorized_advanced_filters(intent, existing)
     notes.extend(strip_notes)
+
+    replaced_llm_start_date = False
+    if _authorized_date_filter(intent):
+        existing, replaced_llm_start_date = _strip_start_date_clauses(existing)
+        if replaced_llm_start_date:
+            notes.append(
+                "Replaced LLM StartDate filter with canonical API format from intent."
+            )
+    else:
+        existing, removed_unauthorized = _strip_start_date_clauses(existing)
+        if removed_unauthorized:
+            notes.append(
+                "Removed unauthorized StartDate filter; no date range in intent."
+            )
 
     if intent.filters.trial_phase and (
         existing is None or intent.filters.trial_phase not in (existing or "")
@@ -159,9 +182,10 @@ def build_advanced_filters(
         intent.filters.start_year,
         intent.filters.end_year,
     )
-    if date_clause and (existing is None or date_clause not in existing):
+    if date_clause:
         injected_clauses.append(date_clause)
-        notes.append("Injected start/end year filter from intent.")
+        if not replaced_llm_start_date:
+            notes.append("Injected start/end year filter from intent.")
 
     merged = _merge_advanced_clauses(existing, *injected_clauses)
     try:
@@ -171,6 +195,8 @@ def build_advanced_filters(
             _validate_phase_tokens(existing, enums)
     except ValueError as exc:
         raise AgentError("invalid_query_plan", str(exc)) from exc
+
+    _validate_start_date_clauses(merged)
 
     return merged, notes
 

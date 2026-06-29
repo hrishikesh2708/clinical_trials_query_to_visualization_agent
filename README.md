@@ -201,3 +201,47 @@ zip -r clinicaltrials-agent.zip . \
   -x '.venv/*' -x '.env' -x 'response_dumps/*' \
   -x '__pycache__/*' -x '.pytest_cache/*' -x '.ruff_cache/*'
 ```
+
+{
+  "query": "How has the number of trials for this drug changed over time?",
+  "drug_name": "Pembrolizumab",
+  "condition": null,
+  "trial_phase": null,
+  "sponsor": null,
+  "country": null,
+  "start_year": null,
+  "end_year": null
+}
+
+{
+  "query": "How has the number of trials for Pembrolizumab changed per year since 2015",
+  "drug_name": null,
+  "condition": null,
+  "trial_phase": null,
+  "sponsor": null,
+  "country": null,
+  "start_year": null,
+  "end_year": null
+}
+
+{
+  "query": "How has the number of trials for Pembrolizumab changed per year between 2015 to 2018",
+  "drug_name": null,
+  "condition": null,
+  "trial_phase": null,
+  "sponsor": null,
+  "country": null,
+  "start_year": null,
+  "end_year": null
+}
+
+{
+  "query": "How many trials started each year for diabetes",
+  "drug_name": null,
+  "condition": null,
+  "trial_phase": null,
+  "sponsor": null,
+  "country": null,
+  "start_year": null,
+  "end_year": null
+}

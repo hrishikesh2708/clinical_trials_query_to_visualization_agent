@@ -32,6 +32,7 @@ async def plan_query(
     client: AsyncOpenAI,
     model: str,
     enums_loader: CtgovEnumsLoader,
+    temperature: float = 0.0,
     page_size: int = 100,
 ) -> APIQueryPlan:
     system_prompt = load_prompt("query_plan")
@@ -47,6 +48,7 @@ async def plan_query(
                 system_prompt=system_prompt,
                 user_content=user_content,
                 response_format=QueryPlanDraft,
+                temperature=temperature,
             )
             return normalize_query_plan(
                 intent,
