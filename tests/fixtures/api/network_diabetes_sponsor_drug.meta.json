@@ -1,0 +1,15 @@
+{
+  "horizon": "network",
+  "fixture": "network_diabetes_sponsor_drug.json",
+  "captured_at": "2026-06-29T14:09:14Z",
+  "endpoint": "/studies",
+  "source_query": "Sponsor–drug–condition network for diabetes trials",
+  "request_params": {
+    "format": "json",
+    "markupFormat": "markdown",
+    "pageSize": "15",
+    "countTotal": "true",
+    "query.cond": "diabetes",
+    "fields": "NCTId,InterventionName,LeadSponsorName,Condition,DerivedSection"
+  }
+}

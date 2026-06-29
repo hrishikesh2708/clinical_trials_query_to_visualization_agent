@@ -1,0 +1,19 @@
+{
+  "studies": [
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT05071014"
+        },
+        "statusModule": {
+          "startDateStruct": {
+            "date": "2021-09-24",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    }
+  ],
+  "nextPageToken": "ZVNj7o2Elu8o3lp0RcOnp-numpOQJJxuZ_mk0A",
+  "totalCount": 2892
+}

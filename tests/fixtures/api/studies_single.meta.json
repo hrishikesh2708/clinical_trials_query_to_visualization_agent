@@ -1,0 +1,15 @@
+{
+  "horizon": "any",
+  "fixture": "studies_single.json",
+  "captured_at": "2026-06-29T14:09:15Z",
+  "endpoint": "/studies",
+  "source_query": "Single-study pagination smoke",
+  "request_params": {
+    "format": "json",
+    "markupFormat": "markdown",
+    "pageSize": "1",
+    "countTotal": "true",
+    "query.intr": "Pembrolizumab",
+    "fields": "NCTId,StartDateStruct"
+  }
+}

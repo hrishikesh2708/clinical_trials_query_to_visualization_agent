@@ -1,0 +1,196 @@
+{
+  "studies": [
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT02348008"
+        },
+        "statusModule": {
+          "startDateStruct": {
+            "date": "2015-03",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT02343952"
+        },
+        "statusModule": {
+          "startDateStruct": {
+            "date": "2015-03-09",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT02362594"
+        },
+        "statusModule": {
+          "startDateStruct": {
+            "date": "2015-07-16",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT02359019"
+        },
+        "statusModule": {
+          "startDateStruct": {
+            "date": "2015-02"
+          }
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT02521844"
+        },
+        "statusModule": {
+          "startDateStruct": {
+            "date": "2015-10",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT02406781"
+        },
+        "statusModule": {
+          "startDateStruct": {
+            "date": "2015-06",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT02362997"
+        },
+        "statusModule": {
+          "startDateStruct": {
+            "date": "2015-04"
+          }
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT02332668"
+        },
+        "statusModule": {
+          "startDateStruct": {
+            "date": "2015-03-19",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT02620423"
+        },
+        "statusModule": {
+          "startDateStruct": {
+            "date": "2015-12"
+          }
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT02437136"
+        },
+        "statusModule": {
+          "startDateStruct": {
+            "date": "2015-08-26",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT02489695"
+        },
+        "statusModule": {
+          "startDateStruct": {
+            "date": "2015-10",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT02407171"
+        },
+        "statusModule": {
+          "startDateStruct": {
+            "date": "2015-04-01",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT02359851"
+        },
+        "statusModule": {
+          "startDateStruct": {
+            "date": "2015-05"
+          }
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT02395627"
+        },
+        "statusModule": {
+          "startDateStruct": {
+            "date": "2015-05-04",
+            "type": "ACTUAL"
+          }
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT02260440"
+        },
+        "statusModule": {
+          "startDateStruct": {
+            "date": "2015-01"
+          }
+        }
+      }
+    }
+  ],
+  "nextPageToken": "ZVNj7o2Elu8o3lp0RcOnp-numpOQJJxsZPah2PcW",
+  "totalCount": 120
+}

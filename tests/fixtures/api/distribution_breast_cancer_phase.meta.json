@@ -1,0 +1,15 @@
+{
+  "horizon": "distribution",
+  "fixture": "distribution_breast_cancer_phase.json",
+  "captured_at": "2026-06-29T14:09:13Z",
+  "endpoint": "/studies",
+  "source_query": "Breast cancer trials by phase",
+  "request_params": {
+    "format": "json",
+    "markupFormat": "markdown",
+    "pageSize": "15",
+    "countTotal": "true",
+    "query.cond": "breast cancer",
+    "fields": "NCTId,Phase"
+  }
+}

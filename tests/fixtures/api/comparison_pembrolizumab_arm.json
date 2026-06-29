@@ -1,0 +1,341 @@
+{
+  "studies": [
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT05071014"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE1"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Pembrolizumab"
+            },
+            {
+              "name": "Image-guided cryoablation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT02575807"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE1",
+            "PHASE2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "CRS-207"
+            },
+            {
+              "name": "Epacadostat"
+            },
+            {
+              "name": "Pembrolizumab"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT02880371"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE1",
+            "PHASE2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "ARRY-382"
+            },
+            {
+              "name": "Pembrolizumab"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT07020052"
+        },
+        "designModule": {},
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "temozolomide/anlotinib/pembrolizumab"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT03517449"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE3"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Pembrolizumab"
+            },
+            {
+              "name": "Lenvatinib"
+            },
+            {
+              "name": "Paclitaxel"
+            },
+            {
+              "name": "Doxorubicin"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT06045767"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Pembrolizumab 50 MG Injection [Keytruda]"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT05145907"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "TJ107 +Pembrolizumab"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT06411171"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE3"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Pembrolizumab plus chemotherapy (FLOT)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT06600321"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE1"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "ALN-BCAT"
+            },
+            {
+              "name": "Pembrolizumab"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT03003468"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE1",
+            "PHASE2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Imprime PGG"
+            },
+            {
+              "name": "MK-3475"
+            },
+            {
+              "name": "Imprime PGG"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT03371979"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE1",
+            "PHASE2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Pegzilarginase"
+            },
+            {
+              "name": "Pembrolizumab"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT02348008"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE1",
+            "PHASE2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "MK-3475"
+            },
+            {
+              "name": "Bevacizumab"
+            },
+            {
+              "name": "MK-3475"
+            },
+            {
+              "name": "Bevacizumab"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT04830592"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE1"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "NG-641"
+            },
+            {
+              "name": "Pembrolizumab"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT07040436"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE1",
+            "PHASE2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "OPM-101"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT05229614"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Carbon Ion Therapy"
+            },
+            {
+              "name": "Immunotherapy (Pembrolizumab)"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "nextPageToken": "ZVNj7o2Elu8o3lp0RcOnp-numpOQJJxuYfOs1Pg",
+  "totalCount": 2892
+}

@@ -1,0 +1,372 @@
+{
+  "studies": [
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT01940809"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE1"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Dabrafenib"
+            },
+            {
+              "name": "Ipilimumab"
+            },
+            {
+              "name": "Laboratory Biomarker Analysis"
+            },
+            {
+              "name": "Nivolumab"
+            },
+            {
+              "name": "Trametinib"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT03059147"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE1"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "SF1126"
+            },
+            {
+              "name": "Nivolumab"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT05317000"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Combination 5-azacytidine and nivolumab"
+            },
+            {
+              "name": "Nivolumab"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT06540261"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE1"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "ONO-7913"
+            },
+            {
+              "name": "ONO-4538"
+            },
+            {
+              "name": "Fluorouracil"
+            },
+            {
+              "name": "Oxaliplatin"
+            },
+            {
+              "name": "Levofolinate"
+            },
+            {
+              "name": "Bevacizumab"
+            },
+            {
+              "name": "Cetuximab"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT05039736"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Cabozantinib"
+            },
+            {
+              "name": "Nivolumab"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT03480334"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Nivolumab plus radiotherapy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT04610671"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE1"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "CG0070"
+            },
+            {
+              "name": "Nivolumab"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT04072198"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Nivolumab"
+            },
+            {
+              "name": "Bevacizumab"
+            },
+            {
+              "name": "Irinotecan"
+            },
+            {
+              "name": "Oxaliplatin"
+            },
+            {
+              "name": "Leucovorin"
+            },
+            {
+              "name": "fluoruracil"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT03241186"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Ipilimumab"
+            },
+            {
+              "name": "Nivolumab"
+            },
+            {
+              "name": "Nivolumab"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT04136470"
+        },
+        "designModule": {},
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Collection of stool, blood (PBMC) and biopsy (FFPE)"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT03219775"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Nivolumab/Ipilimumab"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT03670056"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Combination immunotherapy with Ipilimumab and Nivolumab"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT04247165"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE1",
+            "PHASE2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Gemcitabine"
+            },
+            {
+              "name": "Nab-paclitaxel"
+            },
+            {
+              "name": "Nivolumab"
+            },
+            {
+              "name": "Ipilimumab"
+            },
+            {
+              "name": "SBRT"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT02812667"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE1"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Nivolumab + Plinabulin"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT03704077"
+        },
+        "designModule": {
+          "phases": [
+            "PHASE2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Relatlimab + Nivolumab"
+            },
+            {
+              "name": "Nivolumab"
+            },
+            {
+              "name": "Paclitaxel"
+            },
+            {
+              "name": "Ramucirumab"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "nextPageToken": "ZVNj7o2Elu8o3lp0RcOnp-numpOQJJxrbfih3_g",
+  "totalCount": 2005
+}

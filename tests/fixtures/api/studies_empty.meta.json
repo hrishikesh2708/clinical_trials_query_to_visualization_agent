@@ -1,0 +1,14 @@
+{
+  "horizon": "any",
+  "fixture": "studies_empty.json",
+  "captured_at": "2026-06-29T14:09:15Z",
+  "endpoint": "/studies",
+  "source_query": "Near-empty search (Stage 3 obscure query)",
+  "request_params": {
+    "format": "json",
+    "markupFormat": "markdown",
+    "pageSize": "15",
+    "query.term": "xyzzy_nonexistent_trial_term_12345",
+    "fields": "NCTId"
+  }
+}

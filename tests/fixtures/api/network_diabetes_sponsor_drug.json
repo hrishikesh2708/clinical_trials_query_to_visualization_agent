@@ -1,0 +1,1500 @@
+{
+  "studies": [
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT01454700"
+        },
+        "sponsorCollaboratorsModule": {
+          "leadSponsor": {
+            "name": "Steen Andersen"
+          }
+        },
+        "conditionsModule": {
+          "conditions": [
+            "Type 1 Diabetes Mellitus"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Insulin pump therapy (CSII) plus continuous glucose monitoring (CGM)"
+            },
+            {
+              "name": "Multiple daily insulin injections (MDI)"
+            }
+          ]
+        }
+      },
+      "derivedSection": {
+        "miscInfoModule": {
+          "versionHolder": "2026-06-29"
+        },
+        "conditionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D003922",
+              "term": "Diabetes Mellitus, Type 1"
+            },
+            {
+              "id": "D000419",
+              "term": "Albuminuria"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D003920",
+              "term": "Diabetes Mellitus"
+            },
+            {
+              "id": "D044882",
+              "term": "Glucose Metabolism Disorders"
+            },
+            {
+              "id": "D008659",
+              "term": "Metabolic Diseases"
+            },
+            {
+              "id": "D009750",
+              "term": "Nutritional and Metabolic Diseases"
+            },
+            {
+              "id": "D004700",
+              "term": "Endocrine System Diseases"
+            },
+            {
+              "id": "D001327",
+              "term": "Autoimmune Diseases"
+            },
+            {
+              "id": "D007154",
+              "term": "Immune System Diseases"
+            },
+            {
+              "id": "D011507",
+              "term": "Proteinuria"
+            },
+            {
+              "id": "D014555",
+              "term": "Urination Disorders"
+            },
+            {
+              "id": "D014570",
+              "term": "Urologic Diseases"
+            },
+            {
+              "id": "D052776",
+              "term": "Female Urogenital Diseases"
+            },
+            {
+              "id": "D005261",
+              "term": "Female Urogenital Diseases and Pregnancy Complications"
+            },
+            {
+              "id": "D000091642",
+              "term": "Urogenital Diseases"
+            },
+            {
+              "id": "D052801",
+              "term": "Male Urogenital Diseases"
+            },
+            {
+              "id": "D020924",
+              "term": "Urological Manifestations"
+            },
+            {
+              "id": "D012816",
+              "term": "Signs and Symptoms"
+            },
+            {
+              "id": "D013568",
+              "term": "Pathological Conditions, Signs and Symptoms"
+            }
+          ]
+        },
+        "interventionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D007328",
+              "term": "Insulin"
+            },
+            {
+              "id": "D000092005",
+              "term": "Insulin Secretagogues"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D011384",
+              "term": "Proinsulin"
+            },
+            {
+              "id": "D061385",
+              "term": "Insulins"
+            },
+            {
+              "id": "D010187",
+              "term": "Pancreatic Hormones"
+            },
+            {
+              "id": "D036361",
+              "term": "Peptide Hormones"
+            },
+            {
+              "id": "D006728",
+              "term": "Hormones"
+            },
+            {
+              "id": "D006730",
+              "term": "Hormones, Hormone Substitutes, and Hormone Antagonists"
+            },
+            {
+              "id": "D010455",
+              "term": "Peptides"
+            },
+            {
+              "id": "D000602",
+              "term": "Amino Acids, Peptides, and Proteins"
+            },
+            {
+              "id": "D007004",
+              "term": "Hypoglycemic Agents"
+            },
+            {
+              "id": "D045505",
+              "term": "Physiological Effects of Drugs"
+            },
+            {
+              "id": "D020228",
+              "term": "Pharmacologic Actions"
+            },
+            {
+              "id": "D020164",
+              "term": "Chemical Actions and Uses"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT00441844"
+        },
+        "sponsorCollaboratorsModule": {
+          "leadSponsor": {
+            "name": "University of California, Davis"
+          }
+        },
+        "conditionsModule": {
+          "conditions": [
+            "Type 1 Diabetes"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Simvastatin"
+            }
+          ]
+        }
+      },
+      "derivedSection": {
+        "miscInfoModule": {
+          "versionHolder": "2026-06-29"
+        },
+        "conditionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D003922",
+              "term": "Diabetes Mellitus, Type 1"
+            },
+            {
+              "id": "D003920",
+              "term": "Diabetes Mellitus"
+            },
+            {
+              "id": "D007249",
+              "term": "Inflammation"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D044882",
+              "term": "Glucose Metabolism Disorders"
+            },
+            {
+              "id": "D008659",
+              "term": "Metabolic Diseases"
+            },
+            {
+              "id": "D009750",
+              "term": "Nutritional and Metabolic Diseases"
+            },
+            {
+              "id": "D004700",
+              "term": "Endocrine System Diseases"
+            },
+            {
+              "id": "D001327",
+              "term": "Autoimmune Diseases"
+            },
+            {
+              "id": "D007154",
+              "term": "Immune System Diseases"
+            },
+            {
+              "id": "D010335",
+              "term": "Pathologic Processes"
+            },
+            {
+              "id": "D013568",
+              "term": "Pathological Conditions, Signs and Symptoms"
+            }
+          ]
+        },
+        "interventionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D019821",
+              "term": "Simvastatin"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D008148",
+              "term": "Lovastatin"
+            },
+            {
+              "id": "D009281",
+              "term": "Naphthalenes"
+            },
+            {
+              "id": "D011084",
+              "term": "Polycyclic Aromatic Hydrocarbons"
+            },
+            {
+              "id": "D006841",
+              "term": "Hydrocarbons, Aromatic"
+            },
+            {
+              "id": "D006844",
+              "term": "Hydrocarbons, Cyclic"
+            },
+            {
+              "id": "D006838",
+              "term": "Hydrocarbons"
+            },
+            {
+              "id": "D009930",
+              "term": "Organic Chemicals"
+            },
+            {
+              "id": "D011083",
+              "term": "Polycyclic Compounds"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT01345734"
+        },
+        "sponsorCollaboratorsModule": {
+          "leadSponsor": {
+            "name": "Novo Nordisk A/S"
+          }
+        },
+        "conditionsModule": {
+          "conditions": [
+            "Diabetes",
+            "Diabetes Mellitus, Type 2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "liraglutide"
+            }
+          ]
+        }
+      },
+      "derivedSection": {
+        "miscInfoModule": {
+          "versionHolder": "2026-06-29"
+        },
+        "conditionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D003920",
+              "term": "Diabetes Mellitus"
+            },
+            {
+              "id": "D003924",
+              "term": "Diabetes Mellitus, Type 2"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D044882",
+              "term": "Glucose Metabolism Disorders"
+            },
+            {
+              "id": "D008659",
+              "term": "Metabolic Diseases"
+            },
+            {
+              "id": "D009750",
+              "term": "Nutritional and Metabolic Diseases"
+            },
+            {
+              "id": "D004700",
+              "term": "Endocrine System Diseases"
+            }
+          ]
+        },
+        "interventionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D000069450",
+              "term": "Liraglutide"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D052216",
+              "term": "Glucagon-Like Peptide 1"
+            },
+            {
+              "id": "D004763",
+              "term": "Glucagon-Like Peptides"
+            },
+            {
+              "id": "D052336",
+              "term": "Proglucagon"
+            },
+            {
+              "id": "D005768",
+              "term": "Gastrointestinal Hormones"
+            },
+            {
+              "id": "D006728",
+              "term": "Hormones"
+            },
+            {
+              "id": "D006730",
+              "term": "Hormones, Hormone Substitutes, and Hormone Antagonists"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT05800509"
+        },
+        "sponsorCollaboratorsModule": {
+          "leadSponsor": {
+            "name": "National Taiwan University Hospital"
+          }
+        },
+        "conditionsModule": {
+          "conditions": [
+            "Gestational Diabetes Mellitus",
+            "Postpartum Depression",
+            "Perinatal Depression"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Clips Intervention"
+            },
+            {
+              "name": "Structured Questionnaire Only"
+            }
+          ]
+        }
+      },
+      "derivedSection": {
+        "miscInfoModule": {
+          "versionHolder": "2026-06-29"
+        },
+        "conditionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D016640",
+              "term": "Diabetes, Gestational"
+            },
+            {
+              "id": "D019052",
+              "term": "Depression, Postpartum"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D011248",
+              "term": "Pregnancy Complications"
+            },
+            {
+              "id": "D005261",
+              "term": "Female Urogenital Diseases and Pregnancy Complications"
+            },
+            {
+              "id": "D000091642",
+              "term": "Urogenital Diseases"
+            },
+            {
+              "id": "D003920",
+              "term": "Diabetes Mellitus"
+            },
+            {
+              "id": "D044882",
+              "term": "Glucose Metabolism Disorders"
+            },
+            {
+              "id": "D008659",
+              "term": "Metabolic Diseases"
+            },
+            {
+              "id": "D009750",
+              "term": "Nutritional and Metabolic Diseases"
+            },
+            {
+              "id": "D004700",
+              "term": "Endocrine System Diseases"
+            },
+            {
+              "id": "D011644",
+              "term": "Puerperal Disorders"
+            },
+            {
+              "id": "D003866",
+              "term": "Depressive Disorder"
+            },
+            {
+              "id": "D019964",
+              "term": "Mood Disorders"
+            },
+            {
+              "id": "D001523",
+              "term": "Mental Disorders"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT07252609"
+        },
+        "sponsorCollaboratorsModule": {
+          "leadSponsor": {
+            "name": "Federico II University"
+          }
+        },
+        "conditionsModule": {
+          "conditions": [
+            "Obesity",
+            "Type 2 Diabetes"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Sodium Butyrate (NaBut)"
+            },
+            {
+              "name": "Placebo"
+            }
+          ]
+        }
+      },
+      "derivedSection": {
+        "miscInfoModule": {
+          "versionHolder": "2026-06-29"
+        },
+        "conditionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D009765",
+              "term": "Obesity"
+            },
+            {
+              "id": "D003924",
+              "term": "Diabetes Mellitus, Type 2"
+            },
+            {
+              "id": "D001835",
+              "term": "Body Weight"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D050177",
+              "term": "Overweight"
+            },
+            {
+              "id": "D044343",
+              "term": "Overnutrition"
+            },
+            {
+              "id": "D009748",
+              "term": "Nutrition Disorders"
+            },
+            {
+              "id": "D009750",
+              "term": "Nutritional and Metabolic Diseases"
+            },
+            {
+              "id": "D012816",
+              "term": "Signs and Symptoms"
+            },
+            {
+              "id": "D013568",
+              "term": "Pathological Conditions, Signs and Symptoms"
+            },
+            {
+              "id": "D003920",
+              "term": "Diabetes Mellitus"
+            },
+            {
+              "id": "D044882",
+              "term": "Glucose Metabolism Disorders"
+            },
+            {
+              "id": "D008659",
+              "term": "Metabolic Diseases"
+            },
+            {
+              "id": "D004700",
+              "term": "Endocrine System Diseases"
+            }
+          ]
+        },
+        "interventionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D020148",
+              "term": "Butyric Acid"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D002087",
+              "term": "Butyrates"
+            },
+            {
+              "id": "D000144",
+              "term": "Acids, Acyclic"
+            },
+            {
+              "id": "D002264",
+              "term": "Carboxylic Acids"
+            },
+            {
+              "id": "D009930",
+              "term": "Organic Chemicals"
+            },
+            {
+              "id": "D005232",
+              "term": "Fatty Acids, Volatile"
+            },
+            {
+              "id": "D005227",
+              "term": "Fatty Acids"
+            },
+            {
+              "id": "D008055",
+              "term": "Lipids"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT01843114"
+        },
+        "sponsorCollaboratorsModule": {
+          "leadSponsor": {
+            "name": "Medical University of Vienna"
+          }
+        },
+        "conditionsModule": {
+          "conditions": [
+            "Type I Diabetes"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "FDOCT"
+            },
+            {
+              "name": "Dynamic Vessel Analyzer"
+            }
+          ]
+        }
+      },
+      "derivedSection": {
+        "miscInfoModule": {
+          "versionHolder": "2026-06-29"
+        },
+        "conditionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D003922",
+              "term": "Diabetes Mellitus, Type 1"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D003920",
+              "term": "Diabetes Mellitus"
+            },
+            {
+              "id": "D044882",
+              "term": "Glucose Metabolism Disorders"
+            },
+            {
+              "id": "D008659",
+              "term": "Metabolic Diseases"
+            },
+            {
+              "id": "D009750",
+              "term": "Nutritional and Metabolic Diseases"
+            },
+            {
+              "id": "D004700",
+              "term": "Endocrine System Diseases"
+            },
+            {
+              "id": "D001327",
+              "term": "Autoimmune Diseases"
+            },
+            {
+              "id": "D007154",
+              "term": "Immune System Diseases"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT05244200"
+        },
+        "sponsorCollaboratorsModule": {
+          "leadSponsor": {
+            "name": "University of Sulaimani"
+          }
+        },
+        "conditionsModule": {
+          "conditions": [
+            "Type 2 Diabetes Mellitus"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Pharmaceutical care and insulin staging."
+            }
+          ]
+        }
+      },
+      "derivedSection": {
+        "miscInfoModule": {
+          "versionHolder": "2026-06-29"
+        },
+        "conditionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D003924",
+              "term": "Diabetes Mellitus, Type 2"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D003920",
+              "term": "Diabetes Mellitus"
+            },
+            {
+              "id": "D044882",
+              "term": "Glucose Metabolism Disorders"
+            },
+            {
+              "id": "D008659",
+              "term": "Metabolic Diseases"
+            },
+            {
+              "id": "D009750",
+              "term": "Nutritional and Metabolic Diseases"
+            },
+            {
+              "id": "D004700",
+              "term": "Endocrine System Diseases"
+            }
+          ]
+        },
+        "interventionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D010593",
+              "term": "Pharmaceutical Services"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D006296",
+              "term": "Health Services"
+            },
+            {
+              "id": "D005159",
+              "term": "Health Care Facilities Workforce and Services"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT01557907"
+        },
+        "sponsorCollaboratorsModule": {
+          "leadSponsor": {
+            "name": "Becton, Dickinson and Company"
+          }
+        },
+        "conditionsModule": {
+          "conditions": [
+            "Diabetes"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Subcutaneous delivery via Medtronic Quick-Set"
+            },
+            {
+              "name": "Intradermal delivery via the BD Research Catheter Set"
+            }
+          ]
+        }
+      },
+      "derivedSection": {
+        "miscInfoModule": {
+          "versionHolder": "2026-06-29"
+        },
+        "conditionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D003920",
+              "term": "Diabetes Mellitus"
+            },
+            {
+              "id": "D003922",
+              "term": "Diabetes Mellitus, Type 1"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D044882",
+              "term": "Glucose Metabolism Disorders"
+            },
+            {
+              "id": "D008659",
+              "term": "Metabolic Diseases"
+            },
+            {
+              "id": "D009750",
+              "term": "Nutritional and Metabolic Diseases"
+            },
+            {
+              "id": "D004700",
+              "term": "Endocrine System Diseases"
+            },
+            {
+              "id": "D001327",
+              "term": "Autoimmune Diseases"
+            },
+            {
+              "id": "D007154",
+              "term": "Immune System Diseases"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT03189407"
+        },
+        "sponsorCollaboratorsModule": {
+          "leadSponsor": {
+            "name": "Titilayo O Fakeye"
+          }
+        },
+        "conditionsModule": {
+          "conditions": [
+            "Type 2 Diabetes Mellitus"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Moringa oleifera tea"
+            }
+          ]
+        }
+      },
+      "derivedSection": {
+        "miscInfoModule": {
+          "versionHolder": "2026-06-29"
+        },
+        "conditionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D003924",
+              "term": "Diabetes Mellitus, Type 2"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D003920",
+              "term": "Diabetes Mellitus"
+            },
+            {
+              "id": "D044882",
+              "term": "Glucose Metabolism Disorders"
+            },
+            {
+              "id": "D008659",
+              "term": "Metabolic Diseases"
+            },
+            {
+              "id": "D009750",
+              "term": "Nutritional and Metabolic Diseases"
+            },
+            {
+              "id": "D004700",
+              "term": "Endocrine System Diseases"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT05019807"
+        },
+        "sponsorCollaboratorsModule": {
+          "leadSponsor": {
+            "name": "Lions Club International Foundation"
+          }
+        },
+        "conditionsModule": {
+          "conditions": [
+            "Diabetic Macular Edema"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "WhatsApp group"
+            },
+            {
+              "name": "Control group"
+            }
+          ]
+        }
+      },
+      "derivedSection": {
+        "miscInfoModule": {
+          "versionHolder": "2026-06-29"
+        },
+        "interventionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D035061",
+              "term": "Control Groups"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D015340",
+              "term": "Epidemiologic Research Design"
+            },
+            {
+              "id": "D004812",
+              "term": "Epidemiologic Methods"
+            },
+            {
+              "id": "D008919",
+              "term": "Investigative Techniques"
+            },
+            {
+              "id": "D012107",
+              "term": "Research Design"
+            },
+            {
+              "id": "D008722",
+              "term": "Methods"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT03389607"
+        },
+        "sponsorCollaboratorsModule": {
+          "leadSponsor": {
+            "name": "Diskapi Yildirim Beyazit Education and Research Hospital"
+          }
+        },
+        "conditionsModule": {
+          "conditions": [
+            "Gonarthrosis",
+            "Diabetes"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "spinal anesthesia"
+            }
+          ]
+        }
+      },
+      "derivedSection": {
+        "miscInfoModule": {
+          "versionHolder": "2026-06-29"
+        },
+        "conditionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D020370",
+              "term": "Osteoarthritis, Knee"
+            },
+            {
+              "id": "D003920",
+              "term": "Diabetes Mellitus"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D010003",
+              "term": "Osteoarthritis"
+            },
+            {
+              "id": "D001168",
+              "term": "Arthritis"
+            },
+            {
+              "id": "D007592",
+              "term": "Joint Diseases"
+            },
+            {
+              "id": "D009140",
+              "term": "Musculoskeletal Diseases"
+            },
+            {
+              "id": "D012216",
+              "term": "Rheumatic Diseases"
+            },
+            {
+              "id": "D044882",
+              "term": "Glucose Metabolism Disorders"
+            },
+            {
+              "id": "D008659",
+              "term": "Metabolic Diseases"
+            },
+            {
+              "id": "D009750",
+              "term": "Nutritional and Metabolic Diseases"
+            },
+            {
+              "id": "D004700",
+              "term": "Endocrine System Diseases"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT00801892"
+        },
+        "sponsorCollaboratorsModule": {
+          "leadSponsor": {
+            "name": "Eileen R. Chasens"
+          }
+        },
+        "conditionsModule": {
+          "conditions": [
+            "Sleep Apnea, Obstructive",
+            "Diabetes Mellitus, Type 2"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Continuous Positive Airway Pressure (CPAP)"
+            },
+            {
+              "name": "Sham- Continuous Positive Airway Pressure (Sham-CPAP)"
+            }
+          ]
+        }
+      },
+      "derivedSection": {
+        "miscInfoModule": {
+          "versionHolder": "2026-06-29"
+        },
+        "conditionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D020181",
+              "term": "Sleep Apnea, Obstructive"
+            },
+            {
+              "id": "D003924",
+              "term": "Diabetes Mellitus, Type 2"
+            },
+            {
+              "id": "D006970",
+              "term": "Disorders of Excessive Somnolence"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D012891",
+              "term": "Sleep Apnea Syndromes"
+            },
+            {
+              "id": "D001049",
+              "term": "Apnea"
+            },
+            {
+              "id": "D012120",
+              "term": "Respiration Disorders"
+            },
+            {
+              "id": "D012140",
+              "term": "Respiratory Tract Diseases"
+            },
+            {
+              "id": "D020919",
+              "term": "Sleep Disorders, Intrinsic"
+            },
+            {
+              "id": "D020920",
+              "term": "Dyssomnias"
+            },
+            {
+              "id": "D012893",
+              "term": "Sleep Wake Disorders"
+            },
+            {
+              "id": "D009422",
+              "term": "Nervous System Diseases"
+            },
+            {
+              "id": "D003920",
+              "term": "Diabetes Mellitus"
+            },
+            {
+              "id": "D044882",
+              "term": "Glucose Metabolism Disorders"
+            },
+            {
+              "id": "D008659",
+              "term": "Metabolic Diseases"
+            },
+            {
+              "id": "D009750",
+              "term": "Nutritional and Metabolic Diseases"
+            },
+            {
+              "id": "D004700",
+              "term": "Endocrine System Diseases"
+            },
+            {
+              "id": "D001523",
+              "term": "Mental Disorders"
+            }
+          ]
+        },
+        "interventionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D045422",
+              "term": "Continuous Positive Airway Pressure"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D011175",
+              "term": "Positive-Pressure Respiration"
+            },
+            {
+              "id": "D012121",
+              "term": "Respiration, Artificial"
+            },
+            {
+              "id": "D058109",
+              "term": "Airway Management"
+            },
+            {
+              "id": "D013812",
+              "term": "Therapeutics"
+            },
+            {
+              "id": "D012138",
+              "term": "Respiratory Therapy"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT06598436"
+        },
+        "sponsorCollaboratorsModule": {
+          "leadSponsor": {
+            "name": "University of California, San Francisco"
+          }
+        },
+        "conditionsModule": {
+          "conditions": [
+            "Diabetes"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Digital Health Coaching (Patient-Level Intervention)"
+            },
+            {
+              "name": "Practice Facilitation (Clinic-Level Intervention)"
+            }
+          ]
+        }
+      },
+      "derivedSection": {
+        "miscInfoModule": {
+          "versionHolder": "2026-06-29"
+        },
+        "conditionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D003920",
+              "term": "Diabetes Mellitus"
+            },
+            {
+              "id": "D051436",
+              "term": "Renal Insufficiency, Chronic"
+            },
+            {
+              "id": "D002318",
+              "term": "Cardiovascular Diseases"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D044882",
+              "term": "Glucose Metabolism Disorders"
+            },
+            {
+              "id": "D008659",
+              "term": "Metabolic Diseases"
+            },
+            {
+              "id": "D009750",
+              "term": "Nutritional and Metabolic Diseases"
+            },
+            {
+              "id": "D004700",
+              "term": "Endocrine System Diseases"
+            },
+            {
+              "id": "D051437",
+              "term": "Renal Insufficiency"
+            },
+            {
+              "id": "D007674",
+              "term": "Kidney Diseases"
+            },
+            {
+              "id": "D014570",
+              "term": "Urologic Diseases"
+            },
+            {
+              "id": "D052776",
+              "term": "Female Urogenital Diseases"
+            },
+            {
+              "id": "D005261",
+              "term": "Female Urogenital Diseases and Pregnancy Complications"
+            },
+            {
+              "id": "D000091642",
+              "term": "Urogenital Diseases"
+            },
+            {
+              "id": "D052801",
+              "term": "Male Urogenital Diseases"
+            },
+            {
+              "id": "D002908",
+              "term": "Chronic Disease"
+            },
+            {
+              "id": "D020969",
+              "term": "Disease Attributes"
+            },
+            {
+              "id": "D010335",
+              "term": "Pathologic Processes"
+            },
+            {
+              "id": "D013568",
+              "term": "Pathological Conditions, Signs and Symptoms"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT03004664"
+        },
+        "sponsorCollaboratorsModule": {
+          "leadSponsor": {
+            "name": "University of New Mexico"
+          }
+        },
+        "conditionsModule": {
+          "conditions": [
+            "Diabetes Mellitus"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Support Empowerment Model"
+            },
+            {
+              "name": "The Chronic Care Model"
+            }
+          ]
+        }
+      },
+      "derivedSection": {
+        "miscInfoModule": {
+          "versionHolder": "2026-06-29"
+        },
+        "conditionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D003920",
+              "term": "Diabetes Mellitus"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D044882",
+              "term": "Glucose Metabolism Disorders"
+            },
+            {
+              "id": "D008659",
+              "term": "Metabolic Diseases"
+            },
+            {
+              "id": "D009750",
+              "term": "Nutritional and Metabolic Diseases"
+            },
+            {
+              "id": "D004700",
+              "term": "Endocrine System Diseases"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "protocolSection": {
+        "identificationModule": {
+          "nctId": "NCT05373199"
+        },
+        "sponsorCollaboratorsModule": {
+          "leadSponsor": {
+            "name": "Adocia"
+          }
+        },
+        "conditionsModule": {
+          "conditions": [
+            "Type 1 Diabetes"
+          ]
+        },
+        "armsInterventionsModule": {
+          "interventions": [
+            {
+              "name": "Euglycemic clamp with BC Combo THDB0207"
+            },
+            {
+              "name": "Euglycemic clamp with Lantus®"
+            },
+            {
+              "name": "Euglycemic clamp with Humalog®"
+            }
+          ]
+        }
+      },
+      "derivedSection": {
+        "miscInfoModule": {
+          "versionHolder": "2026-06-29"
+        },
+        "conditionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D003922",
+              "term": "Diabetes Mellitus, Type 1"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D003920",
+              "term": "Diabetes Mellitus"
+            },
+            {
+              "id": "D044882",
+              "term": "Glucose Metabolism Disorders"
+            },
+            {
+              "id": "D008659",
+              "term": "Metabolic Diseases"
+            },
+            {
+              "id": "D009750",
+              "term": "Nutritional and Metabolic Diseases"
+            },
+            {
+              "id": "D004700",
+              "term": "Endocrine System Diseases"
+            },
+            {
+              "id": "D001327",
+              "term": "Autoimmune Diseases"
+            },
+            {
+              "id": "D007154",
+              "term": "Immune System Diseases"
+            }
+          ]
+        },
+        "interventionBrowseModule": {
+          "meshes": [
+            {
+              "id": "D015309",
+              "term": "Glucose Clamp Technique"
+            },
+            {
+              "id": "D000069036",
+              "term": "Insulin Glargine"
+            },
+            {
+              "id": "D061268",
+              "term": "Insulin Lispro"
+            }
+          ],
+          "ancestors": [
+            {
+              "id": "D001774",
+              "term": "Blood Chemical Analysis"
+            },
+            {
+              "id": "D019963",
+              "term": "Clinical Chemistry Tests"
+            },
+            {
+              "id": "D019411",
+              "term": "Clinical Laboratory Techniques"
+            },
+            {
+              "id": "D019937",
+              "term": "Diagnostic Techniques and Procedures"
+            },
+            {
+              "id": "D003933",
+              "term": "Diagnosis"
+            },
+            {
+              "id": "D002623",
+              "term": "Chemistry Techniques, Analytical"
+            },
+            {
+              "id": "D008919",
+              "term": "Investigative Techniques"
+            },
+            {
+              "id": "D049528",
+              "term": "Insulin, Long-Acting"
+            },
+            {
+              "id": "D061385",
+              "term": "Insulins"
+            },
+            {
+              "id": "D010187",
+              "term": "Pancreatic Hormones"
+            },
+            {
+              "id": "D036361",
+              "term": "Peptide Hormones"
+            },
+            {
+              "id": "D006728",
+              "term": "Hormones"
+            },
+            {
+              "id": "D006730",
+              "term": "Hormones, Hormone Substitutes, and Hormone Antagonists"
+            },
+            {
+              "id": "D010455",
+              "term": "Peptides"
+            },
+            {
+              "id": "D000602",
+              "term": "Amino Acids, Peptides, and Proteins"
+            },
+            {
+              "id": "D061266",
+              "term": "Insulin, Short-Acting"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "nextPageToken": "ZVNj7o2Elu8o3lp0RcOnp-numpOQJJxtbfmn0A",
+  "totalCount": 24016
+}

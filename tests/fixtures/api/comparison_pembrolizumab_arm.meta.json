@@ -1,0 +1,17 @@
+{
+  "horizon": "comparison",
+  "fixture": "comparison_pembrolizumab_arm.json",
+  "captured_at": "2026-06-29T14:09:14Z",
+  "endpoint": "/studies",
+  "source_query": "Pembrolizumab vs nivolumab trials by phase — arm 1",
+  "request_params": {
+    "format": "json",
+    "markupFormat": "markdown",
+    "pageSize": "15",
+    "countTotal": "true",
+    "query.intr": "Pembrolizumab",
+    "fields": "NCTId,Phase,InterventionName"
+  },
+  "arm_label": "Pembrolizumab",
+  "comparison_group": "pembrolizumab_vs_nivolumab"
+}
