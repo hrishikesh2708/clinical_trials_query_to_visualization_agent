@@ -13,6 +13,47 @@ class SampleQuery:
 
 SAMPLE_QUERIES: tuple[SampleQuery, ...] = (
     SampleQuery(
+        label="Diabetes sponsor and drug network",
+        request={
+            "query": (
+                "Show a network of sponsors and drugs for diabetes trials"
+            ),
+        },
+    ),
+    SampleQuery(
+        label="Melanoma drug co-occurrence network",
+        request={
+            "query": (
+                "Which drugs frequently co-occur in combination melanoma trials?"
+            ),
+        },
+    ),
+    SampleQuery(
+        label="Lung cancer sponsor and drug network",
+        request={
+            "query": (
+                "Which sponsors study which drugs for lung cancer?"
+            ),
+        },
+    ),
+    SampleQuery(
+        label="Pembrolizumab sponsor-drug-condition network",
+        request={
+            "query": (
+                "Show sponsor, drug, and condition relationships "
+                "for pembrolizumab trials"
+            ),
+        },
+    ),
+    SampleQuery(
+        label="Breast cancer co-intervention network",
+        request={
+            "query": (
+                "Network of co-interventions in breast cancer clinical trials"
+            ),
+        },
+    ),
+    SampleQuery(
         label="What is the phase distribution of lung cancer clinical trials",
         request={
             "query": (

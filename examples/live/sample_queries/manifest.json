@@ -70,5 +70,16 @@
     "horizon": "comparison",
     "title": "Pfizer vs Novartis oncology by phase",
     "curl": "curl -s -X POST http://127.0.0.1:8000/api/v1/visualize \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"query\": \"Compare Pfizer vs Novartis oncology trials by phase\"\n  }'"
+  },
+  {
+    "horizon": "network",
+    "title": "Diabetes sponsor and drug network",
+    "curl": "curl -s -X POST http://127.0.0.1:8000/api/v1/visualize \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"query\": \"Show a network of sponsors and drugs for diabetes trials\"\n  }'",
+    "json": "examples/live/network_diabetes_sponsor_drug.json"
+  },
+  {
+    "horizon": "network",
+    "title": "Melanoma drug co-occurrence network",
+    "curl": "curl -s -X POST http://127.0.0.1:8000/api/v1/visualize \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"query\": \"Which drugs frequently co-occur in combination melanoma trials?\"\n  }'"
   }
 ]

@@ -71,6 +71,13 @@ def render_summary_table(summary: dict[str, str]) -> str:
     return "\n".join(lines)
 
 
+def _display_path(json_path: Path) -> str:
+    try:
+        return json_path.relative_to(Path.cwd()).as_posix()
+    except ValueError:
+        return json_path.as_posix()
+
+
 def render_json_section(
     json_path: Path,
     payload: dict,
@@ -79,7 +86,7 @@ def render_json_section(
 ) -> list[str]:
     serialized = json.dumps(payload, indent=2)
     size = len(serialized.encode("utf-8"))
-    rel_path = json_path.as_posix()
+    rel_path = _display_path(json_path)
     lines = ["**Full response**", ""]
 
     if size <= inline_threshold:

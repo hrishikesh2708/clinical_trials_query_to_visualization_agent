@@ -23,11 +23,19 @@ def _require_nct_id(study: dict[str, Any]) -> str:
     return nct_id
 
 
+def _json_string_literal(value: str) -> str:
+    """How ``value`` appears inside ``json.dumps`` output (without outer quotes)."""
+    return json.dumps(value, ensure_ascii=False)[1:-1]
+
+
 def _excerpt_from_study_json(study: dict[str, Any], excerpt: str) -> str:
     serialized = json.dumps(study, ensure_ascii=False)
-    if excerpt not in serialized:
-        raise ValueError(f"Excerpt not found in study JSON: {excerpt!r}")
-    return excerpt
+    if excerpt in serialized:
+        return excerpt
+    escaped = _json_string_literal(excerpt)
+    if escaped in serialized:
+        return escaped
+    raise ValueError(f"Excerpt not found in study JSON: {excerpt!r}")
 
 
 def make_citation(

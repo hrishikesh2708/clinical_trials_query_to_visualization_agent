@@ -59,7 +59,7 @@ uv sync --group ui
 uv run streamlit run ui/app.py
 ```
 
-Open [http://localhost:8501](http://localhost:8501). The sidebar includes five sample queries (one per horizon, with geographic and network verification queries listed first). Optional `BACKEND_URL` in `.env` defaults to `http://127.0.0.1:8000`.
+Open [http://localhost:8501](http://localhost:8501). The sidebar lists sample queries with **five network examples** at the top (README documents two network queries under [Sample queries](#sample-queries)). Optional `BACKEND_URL` in `.env` defaults to `http://127.0.0.1:8000`.
 
 ## API usage
 
@@ -700,7 +700,7 @@ Saved to [`examples/live/geographic_lung_cancer_recruiting.json`](examples/live/
 
 
 <details>
-<summary><strong>Network — Diabetes sponsor–drug network (fixture-backed; live 422 pending citation fix) — network_graph, 56 nodes, 74 edges, 15 studies</strong></summary>
+<summary><strong>Network — Diabetes sponsor–drug network — network_graph, 2619 nodes, 5422 edges, 1000 studies</strong></summary>
 
 **Request**
 
@@ -708,7 +708,7 @@ Saved to [`examples/live/geographic_lung_cancer_recruiting.json`](examples/live/
 curl -s -X POST http://127.0.0.1:8000/api/v1/visualize \
   -H "Content-Type: application/json" \
   -d '{
-    "query": "Diabetes sponsor and drug network"
+    "query": "Show a network of sponsors and drugs for diabetes trials"
   }'
 ```
 
@@ -717,15 +717,15 @@ curl -s -X POST http://127.0.0.1:8000/api/v1/visualize \
 | Field | Value |
 |-------|-------|
 | Visualization | network_graph |
-| Title | Sponsor–drug network for diabetes trials |
-| Data | 56 nodes, 74 edges |
-| Studies fetched | 15 |
+| Title | Diabetes sponsor–drug–condition network |
+| Data | 2619 nodes, 5422 edges |
+| Studies fetched | 1000 |
 | Time granularity | — |
 | Filters applied | condition=diabetes |
 
 **Full response**
 
-Saved to [`examples/network_diabetes_sponsor_drug.json`](examples/network_diabetes_sponsor_drug.json) (39,759 bytes).
+Saved to [`examples/live/network_diabetes_sponsor_drug.json`](examples/live/network_diabetes_sponsor_drug.json) (2,494,403 bytes).
 
 <details>
 <summary>Preview (first 40 lines)</summary>
@@ -778,6 +778,7 @@ Saved to [`examples/network_diabetes_sponsor_drug.json`](examples/network_diabet
 
 </details>
 
+
 ## Submission package checklist
 
 **Include in zip:**
@@ -800,10 +801,13 @@ zip -r clinicaltrials-agent.zip . \
 ```
 
 
+
 ## Sample queries
 
-Natural-language queries grouped by horizon. Each block is collapsible on GitHub.
-Entries with a captured response include a summary table and JSON preview/link.
+Natural-language queries grouped by horizon.
+Each block is collapsible on GitHub.
+Entries with a captured response include a summary table
+and JSON preview/link.
 
 ### Time trend
 
@@ -1241,7 +1245,7 @@ curl -s -X POST http://127.0.0.1:8000/api/v1/visualize \
 
 **Full response**
 
-Saved to [`/Users/hrishikesh/Documents/Projects/ClinicalTrials/examples/live/comparison_pembrolizumab_vs_nivolumab.json`](/Users/hrishikesh/Documents/Projects/ClinicalTrials/examples/live/comparison_pembrolizumab_vs_nivolumab.json) (9,449 bytes).
+Saved to [`examples/live/comparison_pembrolizumab_vs_nivolumab.json`](examples/live/comparison_pembrolizumab_vs_nivolumab.json) (9,449 bytes).
 
 <details>
 <summary>Preview (first 40 lines)</summary>
@@ -1361,6 +1365,106 @@ curl -s -X POST http://127.0.0.1:8000/api/v1/visualize \
   -H "Content-Type: application/json" \
   -d '{
     "query": "Compare Pfizer vs Novartis oncology trials by phase"
+  }'
+```
+
+**Response**
+
+_Capture with the curl above, save JSON, then re-render with `scripts/render_readme_example.py --json <path>`._
+
+</details>
+
+### Network
+
+<details>
+<summary><strong>Diabetes sponsor and drug network — network_graph, 2619 nodes, 5422 edges, 1000 studies</strong></summary>
+
+**Request**
+
+```bash
+curl -s -X POST http://127.0.0.1:8000/api/v1/visualize \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "Show a network of sponsors and drugs for diabetes trials"
+  }'
+```
+
+**Response summary**
+
+| Field | Value |
+|-------|-------|
+| Visualization | network_graph |
+| Title | Diabetes sponsor–drug–condition network |
+| Data | 2619 nodes, 5422 edges |
+| Studies fetched | 1000 |
+| Time granularity | — |
+| Filters applied | condition=diabetes |
+
+**Full response**
+
+Saved to [`examples/live/network_diabetes_sponsor_drug.json`](examples/live/network_diabetes_sponsor_drug.json) (2,494,403 bytes).
+
+<details>
+<summary>Preview (first 40 lines)</summary>
+
+```json
+{
+  "visualization": {
+    "type": "network_graph",
+    "encoding": {
+      "nodes": "nodes",
+      "edges": "edges"
+    },
+    "data": {
+      "nodes": [
+        {
+          "id": "steen-andersen",
+          "label": "Steen Andersen",
+          "citations": [
+            {
+              "nct_id": "NCT01454700",
+              "excerpt": "Steen Andersen"
+            }
+          ]
+        },
+        {
+          "id": "insulin-pump-therapy-csii-plus-continuous-glucose-monitoring-cgm",
+          "label": "Insulin pump therapy (CSII) plus continuous glucose monitoring (CGM)",
+          "citations": [
+            {
+              "nct_id": "NCT01454700",
+              "excerpt": "Insulin pump therapy (CSII) plus continuous glucose monitoring (CGM)"
+            }
+          ]
+        },
+        {
+          "id": "multiple-daily-insulin-injections-mdi",
+          "label": "Multiple daily insulin injections (MDI)",
+          "citations": [
+            {
+              "nct_id": "NCT01454700",
+              "excerpt": "Multiple daily insulin injections (MDI)"
+            }
+          ]
+        },
+        {
+...
+```
+
+</details>
+
+</details>
+
+<details>
+<summary><strong>Melanoma drug co-occurrence network</strong></summary>
+
+**Request**
+
+```bash
+curl -s -X POST http://127.0.0.1:8000/api/v1/visualize \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "Which drugs frequently co-occur in combination melanoma trials?"
   }'
 ```
 

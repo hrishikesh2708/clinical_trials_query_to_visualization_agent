@@ -66,6 +66,68 @@ def _add_edge(
     edges[key].studies.append(study)
 
 
+def _intervention_for_label(study: dict[str, Any], label: str) -> str | None:
+    for name in study_models.intervention_names(study):
+        if slug_id(name) == slug_id(label):
+            return name
+    return None
+
+
+def _condition_for_label(study: dict[str, Any], label: str) -> str | None:
+    for name in study_models.conditions(study):
+        if slug_id(name) == slug_id(label):
+            return name
+    return None
+
+
+def _sponsor_matches_label(study: dict[str, Any], label: str) -> bool:
+    sponsor = study_models.lead_sponsor_name(study)
+    return sponsor is not None and slug_id(sponsor) == slug_id(label)
+
+
+def _node_excerpt(study: dict[str, Any], label: str) -> str:
+    if _sponsor_matches_label(study, label):
+        return excerpt_sponsor(study)
+    if intervention := _intervention_for_label(study, label):
+        return excerpt_intervention(study, intervention)
+    if condition := _condition_for_label(study, label):
+        return excerpt_condition(study, condition)
+    raise ValueError(f"No network node field match for label {label!r}")
+
+
+def _edge_excerpt(
+    study: dict[str, Any],
+    edge: _MutableEdge,
+    nodes: dict[str, _MutableNode],
+) -> str:
+    src_label = nodes[edge.source].label
+    tgt_label = nodes[edge.target].label
+
+    match edge.label:
+        case "sponsored_by":
+            return excerpt_sponsor(study)
+        case "studied_in":
+            if condition := _condition_for_label(study, tgt_label):
+                return excerpt_condition(study, condition)
+            if condition := _condition_for_label(study, src_label):
+                return excerpt_condition(study, condition)
+            raise ValueError(
+                "No condition endpoint for studied_in edge "
+                f"{src_label!r} -> {tgt_label!r}"
+            )
+        case "co_intervention":
+            if intervention := _intervention_for_label(study, src_label):
+                return excerpt_intervention(study, intervention)
+            if intervention := _intervention_for_label(study, tgt_label):
+                return excerpt_intervention(study, intervention)
+            raise ValueError(
+                "No drug endpoint for co_intervention edge "
+                f"{src_label!r} -> {tgt_label!r}"
+            )
+        case _:
+            raise ValueError(f"Unknown network edge label: {edge.label!r}")
+
+
 def map_network(context: TransformContext) -> NetworkGraphVisualization:
     nodes: dict[str, _MutableNode] = {}
     edges: dict[tuple[str, str, str], _MutableEdge] = {}
@@ -101,12 +163,8 @@ def map_network(context: TransformContext) -> NetworkGraphVisualization:
             label=node.label,
             citations=build_citations_for_studies(
                 node.studies,
-                excerpt_builder=lambda study, label=node.label: (
-                    excerpt_sponsor(study)
-                    if study_models.lead_sponsor_name(study) == label
-                    else excerpt_intervention(study, label)
-                    if label in study_models.intervention_names(study)
-                    else excerpt_condition(study, label)
+                excerpt_builder=lambda study, label=node.label: _node_excerpt(
+                    study, label
                 ),
             ),
         )
@@ -120,12 +178,8 @@ def map_network(context: TransformContext) -> NetworkGraphVisualization:
             label=edge.label,
             citations=build_citations_for_studies(
                 edge.studies,
-                excerpt_builder=lambda study, edge=edge, nodes=nodes: (
-                    excerpt_sponsor(study)
-                    if edge.label == "sponsored_by"
-                    else excerpt_condition(study, nodes[edge.target].label)
-                    if edge.label == "studied_in"
-                    else excerpt_intervention(study, nodes[edge.source].label)
+                excerpt_builder=lambda study, edge=edge, nodes=nodes: _edge_excerpt(
+                    study, edge, nodes
                 ),
             ),
         )

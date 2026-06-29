@@ -17,6 +17,7 @@ HORIZON_LABELS = {
     "time_trend": "Time trend",
     "distribution": "Distribution",
     "comparison": "Comparison",
+    "network": "Network",
 }
 
 
@@ -30,11 +31,11 @@ def render_entry(entry: dict) -> str:
         entry["curl"],
     ]
     if json_path := entry.get("json"):
-        cmd.extend(["--json", str(PROJECT_ROOT / json_path)])
+        cmd.extend(["--json", json_path])
     else:
         cmd.append("--curl-only")
 
-    return subprocess.check_output(cmd, text=True).strip()
+    return subprocess.check_output(cmd, text=True, cwd=PROJECT_ROOT).strip()
 
 
 def main() -> None:
@@ -53,7 +54,7 @@ def main() -> None:
         "",
     ]
 
-    for horizon in ("time_trend", "distribution", "comparison"):
+    for horizon in ("time_trend", "distribution", "comparison", "network"):
         lines.append(f"### {HORIZON_LABELS[horizon]}")
         lines.append("")
         for entry in grouped[horizon]:
