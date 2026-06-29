@@ -11,3 +11,4 @@ class Settings(BaseSettings):
     ctgov_base_url: str = "https://clinicaltrials.gov/api/v2"
     http_timeout: float = 30.0
     pagination_cap: int = 1000
+    network_study_cap: int = 15

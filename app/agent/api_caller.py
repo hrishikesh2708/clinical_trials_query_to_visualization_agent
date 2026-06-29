@@ -11,7 +11,7 @@ from app.agent.types import (
     FetchResult,
     SearchPreview,
 )
-from app.domain.horizons import allowed_visualization_types
+from app.domain.horizons import Horizon, allowed_visualization_types
 from app.infrastructure.ctgov.client import CtgovClient
 
 
@@ -40,12 +40,21 @@ def build_fetch_preview(
     return FetchPreview(searches=searches, allowed_viz_types=allowed)
 
 
-def fetch_studies(plan: APIQueryPlan, client: CtgovClient) -> FetchResult:
+def fetch_studies(
+    plan: APIQueryPlan,
+    client: CtgovClient,
+    *,
+    network_study_cap: int = 15,
+) -> FetchResult:
     studies_per_search: list[list[dict[str, Any]]] = []
     total_counts: list[int | None] = []
+    max_studies = network_study_cap if plan.horizon is Horizon.NETWORK else None
 
     for search in plan.searches:
-        studies, total_count = client.fetch_search_studies(search.params)
+        studies, total_count = client.fetch_search_studies(
+            search.params,
+            max_studies=max_studies,
+        )
         if not studies:
             label = search.label or "cohort"
             raise AgentError(

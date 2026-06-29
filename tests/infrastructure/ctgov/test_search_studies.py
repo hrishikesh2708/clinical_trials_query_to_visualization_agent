@@ -234,3 +234,33 @@ def test_fetch_search_studies_paginates_until_cap() -> None:
 
     assert len(studies) == 3
     assert total_count == 10
+
+
+def test_fetch_search_studies_respects_max_studies_override() -> None:
+    page_studies = [
+        {
+            **STUDY_STUB,
+            "protocolSection": {"identificationModule": {"nctId": f"NCT{i}"}},
+        }
+        for i in range(10)
+    ]
+    with mock_ctgov_urlopen(
+        [
+            {
+                "json": {
+                    "studies": page_studies,
+                    "nextPageToken": "page-2",
+                    "totalCount": 100,
+                },
+            },
+            {"json": {"studies": page_studies, "totalCount": 100}},
+        ],
+    ) as get_urls:
+        studies, total_count = _client(pagination_cap=1000).fetch_search_studies(
+            StudiesSearchParams(query_cond="diabetes", page_size=10),
+            max_studies=15,
+        )
+
+    assert len(studies) == 15
+    assert total_count == 100
+    assert len(get_urls()) == 2

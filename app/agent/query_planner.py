@@ -34,6 +34,7 @@ async def plan_query(
     enums_loader: CtgovEnumsLoader,
     temperature: float = 0.0,
     page_size: int = 100,
+    network_study_cap: int = 15,
 ) -> APIQueryPlan:
     system_prompt = load_prompt("query_plan")
     user_content = build_query_plan_user_message(intent)
@@ -55,6 +56,7 @@ async def plan_query(
                 draft,
                 enums=enums,
                 page_size=page_size,
+                network_study_cap=network_study_cap,
             )
         except AgentError as exc:
             if exc.code != "invalid_query_plan" or attempt == 1:

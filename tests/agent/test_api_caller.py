@@ -70,6 +70,35 @@ def _comparison_plan() -> APIQueryPlan:
     )
 
 
+def _network_plan() -> APIQueryPlan:
+    return APIQueryPlan(
+        horizon=Horizon.NETWORK,
+        searches=[
+            PlannedSearch(
+                params=StudiesSearchParams(
+                    query_cond="diabetes",
+                    count_total=True,
+                    page_size=15,
+                    fields=[
+                        "NCTId",
+                        "InterventionName",
+                        "LeadSponsorName",
+                        "Condition",
+                        "DerivedSection",
+                    ],
+                ),
+                fields=[
+                    "NCTId",
+                    "InterventionName",
+                    "LeadSponsorName",
+                    "Condition",
+                    "DerivedSection",
+                ],
+            )
+        ],
+    )
+
+
 def test_build_fetch_preview_time_trend_allowed_types() -> None:
     plan = _time_trend_plan()
     studies = _load_fixture("time_trend_pembrolizumab")["studies"]
@@ -116,3 +145,51 @@ def test_fetch_studies_empty_results_raises_empty_api_results() -> None:
         fetch_studies(_time_trend_plan(), _client())
 
     assert exc_info.value.code == "empty_api_results"
+
+
+def test_fetch_studies_network_caps_at_fifteen_studies() -> None:
+    page_studies = [
+        {
+            "protocolSection": {"identificationModule": {"nctId": f"NCT{i:08d}"}},
+        }
+        for i in range(10)
+    ]
+    with mock_ctgov_urlopen(
+        [
+            {
+                "json": {
+                    "studies": page_studies,
+                    "nextPageToken": "page-2",
+                    "totalCount": 100,
+                },
+            },
+            {"json": {"studies": page_studies, "totalCount": 100}},
+        ],
+    ) as get_urls:
+        result = fetch_studies(_network_plan(), _client(), network_study_cap=15)
+
+    assert len(result.studies_per_search[0]) == 15
+    assert result.preview.searches[0].total_count == 100
+    assert len(get_urls()) == 2
+
+
+def test_fetch_studies_non_network_uses_client_pagination_cap() -> None:
+    page_studies = [
+        {
+            "protocolSection": {"identificationModule": {"nctId": f"NCT{i:08d}"}},
+        }
+        for i in range(10)
+    ]
+    payload = {
+        "studies": page_studies,
+        "nextPageToken": "page-2",
+        "totalCount": 100,
+    }
+    with mock_ctgov_urlopen([{"json": payload}, {"json": payload}]):
+        result = fetch_studies(
+            _time_trend_plan(),
+            CtgovClient(BASE_URL, timeout=5.0, pagination_cap=15),
+            network_study_cap=15,
+        )
+
+    assert len(result.studies_per_search[0]) == 15

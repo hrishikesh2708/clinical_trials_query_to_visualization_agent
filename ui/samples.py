@@ -50,7 +50,71 @@ SAMPLE_QUERIES: tuple[SampleQuery, ...] = (
         },
     ),
     SampleQuery(
-        label="Breast cancer vs lung cancer by phase",
+        label="How many pembrolizumab trials are recruiting vs completed?",
+        request={
+            "query": (
+                "How many pembrolizumab trials are recruiting vs completed?"
+            ),
+        },
+    ),
+    SampleQuery(
+        label="Show breast cancer trials by overall status",
+        request={
+            "query": (
+                "Show breast cancer trials by overall status"
+            ),
+        },
+    ),
+    SampleQuery(
+        label="What intervention types are most common in Alzheimer's trials?",
+        request={
+            "query": (
+                "What intervention types are most common in Alzheimer's trials?"
+            ),
+        },
+    ),
+    SampleQuery(
+        label="Distribution of intervention types for melanoma trials",
+        request={
+            "query": (
+                "Distribution of intervention types for melanoma trials"
+            ),
+        },
+    ),
+    SampleQuery(
+        label="Histogram of trial sizes for phase 3 oncology studies",
+        request={
+            "query": (
+                "Histogram of trial sizes for phase 3 oncology studies"
+            ),
+        },
+    ),
+    SampleQuery(
+        label="How are nivolumab trials spread across phases?",
+        request={
+            "query": (
+                "How are nivolumab trials spread across phases?"
+            ),
+        },
+    ),
+    # SampleQuery(
+    #     label="Pfizer-sponsored oncology trials by phase",
+    #     request={
+    #         "query": (
+    #             "Pfizer-sponsored oncology trials by phase"
+    #         ),
+    #     },
+    # ),
+    SampleQuery(
+        label="Compare total trial counts for adalimumab vs etanercept",
+        request={
+            "query": (
+                "Compare total trial counts for adalimumab vs etanercept"
+            ),
+        },
+    ),
+    SampleQuery(
+        label="Compare breast cancer vs lung cancer trial counts by phase",
         request={
             "query": (
                 "Compare breast cancer vs lung cancer trial counts by phase"

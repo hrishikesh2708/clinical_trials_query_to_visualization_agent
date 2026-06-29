@@ -2,13 +2,30 @@
 
 from __future__ import annotations
 
-from typing import Any
+import json
+from typing import Any, Literal
 
 import pandas as pd
 import plotly.express as px
 import streamlit as st
 import streamlit.components.v1 as components
 from pyvis.network import Network
+
+NetworkNodeRole = Literal["sponsor", "drug", "condition", "unknown"]
+
+_NETWORK_ROLE_COLORS: dict[NetworkNodeRole, str] = {
+    "sponsor": "#2563eb",
+    "drug": "#16a34a",
+    "condition": "#dc2626",
+    "unknown": "#94a3b8",
+}
+
+_NETWORK_LEGEND_ITEMS: tuple[tuple[str, NetworkNodeRole], ...] = (
+    ("Sponsor", "sponsor"),
+    ("Drug", "drug"),
+    ("Condition", "condition"),
+    ("Other", "unknown"),
+)
 
 
 def render_visualization(viz: dict[str, Any]) -> None:
@@ -162,6 +179,106 @@ def _render_histogram(viz: dict[str, Any]) -> None:
     st.plotly_chart(fig, width="stretch")
 
 
+def _network_node_degrees(
+    nodes: list[dict[str, Any]],
+    edges: list[dict[str, Any]],
+) -> dict[str, int]:
+    degrees = {node["id"]: 0 for node in nodes}
+    for edge in edges:
+        source = edge.get("source")
+        target = edge.get("target")
+        if source in degrees:
+            degrees[source] += 1
+        if target in degrees:
+            degrees[target] += 1
+    return degrees
+
+
+def _infer_network_node_roles(
+    nodes: list[dict[str, Any]],
+    edges: list[dict[str, Any]],
+) -> dict[str, NetworkNodeRole]:
+    roles: dict[str, NetworkNodeRole] = {node["id"]: "unknown" for node in nodes}
+
+    def set_role(node_id: str, role: NetworkNodeRole) -> None:
+        if node_id not in roles:
+            return
+        current = roles[node_id]
+        if current == "unknown" or role != "unknown":
+            roles[node_id] = role
+
+    for edge in edges:
+        source = edge.get("source")
+        target = edge.get("target")
+        if not source or not target:
+            continue
+        match edge.get("label"):
+            case "sponsored_by":
+                set_role(source, "sponsor")
+                set_role(target, "drug")
+            case "studied_in":
+                set_role(source, "drug")
+                set_role(target, "condition")
+            case "co_intervention":
+                set_role(source, "drug")
+                set_role(target, "drug")
+            case _:
+                continue
+
+    return roles
+
+
+def _network_node_size(degree: int) -> int:
+    return min(40, 12 + degree * 3)
+
+
+def _network_graph_options() -> str:
+    return json.dumps(
+        {
+            "physics": {
+                "enabled": True,
+                "barnesHut": {
+                    "gravitationalConstant": -8000,
+                    "springLength": 180,
+                    "springConstant": 0.04,
+                    "avoidOverlap": 1,
+                },
+                "stabilization": {
+                    "enabled": True,
+                    "iterations": 250,
+                    "fit": True,
+                },
+            },
+            "edges": {
+                "smooth": {"type": "continuous"},
+                "color": {"color": "#94a3b8", "opacity": 0.6},
+                "width": 1,
+                "font": {"size": 0},
+            },
+            "nodes": {
+                "font": {"size": 0},
+                "borderWidth": 2,
+                "borderWidthSelected": 3,
+            },
+            "interaction": {
+                "hover": True,
+                "tooltipDelay": 100,
+            },
+        }
+    )
+
+
+def _render_network_legend() -> None:
+    legend_cols = st.columns(len(_NETWORK_LEGEND_ITEMS))
+    for column, (label, role) in zip(legend_cols, _NETWORK_LEGEND_ITEMS, strict=True):
+        color = _NETWORK_ROLE_COLORS[role]
+        column.markdown(
+            f'<span style="color:{color}; font-size:1.2em;">●</span> {label}',
+            unsafe_allow_html=True,
+        )
+    st.caption("Hover nodes and edges for names and relationship types.")
+
+
 def _render_network_graph(viz: dict[str, Any]) -> None:
     data = viz.get("data") or {}
     nodes = data.get("nodes") or []
@@ -171,16 +288,45 @@ def _render_network_graph(viz: dict[str, Any]) -> None:
         st.info("No network nodes to display.")
         return
 
-    net = Network(height="600px", width="100%", bgcolor="#ffffff", font_color="#333333")
-    net.toggle_physics(True)
+    roles = _infer_network_node_roles(nodes, edges)
+    degrees = _network_node_degrees(nodes, edges)
+
+    _render_network_legend()
+
+    net = Network(height="750px", width="100%", bgcolor="#ffffff", font_color="#333333")
+    net.set_options(_network_graph_options())
 
     for node in nodes:
-        label = node.get("label") or node["id"]
-        net.add_node(node["id"], label=label, title=label)
+        node_id = node["id"]
+        label = node.get("label") or node_id
+        role = roles.get(node_id, "unknown")
+        fill = _NETWORK_ROLE_COLORS[role]
+        net.add_node(
+            node_id,
+            label=label,
+            title=label,
+            color={
+                "background": fill,
+                "border": "#ffffff",
+                "highlight": {"background": fill, "border": "#ffffff"},
+            },
+            size=_network_node_size(degrees.get(node_id, 0)),
+            borderWidth=2,
+            borderWidthSelected=3,
+            shape="dot",
+        )
 
     for edge in edges:
-        title = edge.get("label") or ""
-        net.add_edge(edge["source"], edge["target"], title=title, label=title)
+        relationship = edge.get("label") or ""
+        net.add_edge(
+            edge["source"],
+            edge["target"],
+            title=relationship,
+            label="",
+            color={"color": "#94a3b8", "opacity": 0.6},
+            width=1,
+            smooth={"type": "continuous"},
+        )
 
     html = net.generate_html(notebook=False)
-    components.html(html, height=650, scrolling=True)
+    components.html(html, height=800, scrolling=True)

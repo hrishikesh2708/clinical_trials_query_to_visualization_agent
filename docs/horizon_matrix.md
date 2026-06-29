@@ -212,6 +212,8 @@ Mapper tags each result set with `series` = arm label (query term or interventio
 
 **Allowed visualization:** `network_graph` only.
 
+Network queries fetch at most 15 studies (`network_study_cap` setting) to keep graphs readable.
+
 **Example queries:**
 - "Pembrolizumab sponsor–drug–condition network"
 - "Which sponsors study which drugs for melanoma?"

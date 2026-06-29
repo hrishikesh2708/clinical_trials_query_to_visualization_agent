@@ -480,6 +480,7 @@ No new dependencies in Stage 7. Existing runtime deps (`fastapi`, `httpx`, `pyda
 
 - `OPENAI_API_KEY` — required in [`app/core/config.py`](../app/core/config.py)
 - `pagination_cap` — caps studies fetched per search in Step 3
+- `network_study_cap` — caps studies fetched for the `network` horizon (default 15)
 - `ctgov_base_url`, `http_timeout` — `CtgovClient` settings
 
 ---

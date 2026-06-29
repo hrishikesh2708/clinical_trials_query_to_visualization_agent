@@ -346,6 +346,7 @@ def normalize_query_plan(
     *,
     enums: CtgovEnums,
     page_size: int = 100,
+    network_study_cap: int = 15,
 ) -> APIQueryPlan:
     if not draft.searches:
         raise AgentError(
@@ -367,6 +368,9 @@ def normalize_query_plan(
     fields = resolve_fields(intent)
     notes: list[str] = []
     searches: list[PlannedSearch] = []
+    effective_page_size = (
+        network_study_cap if intent.horizon is Horizon.NETWORK else page_size
+    )
 
     match intent.horizon:
         case Horizon.COMPARISON:
@@ -378,7 +382,7 @@ def normalize_query_plan(
                         search_draft,
                         enums=enums,
                         fields=fields,
-                        page_size=page_size,
+                        page_size=effective_page_size,
                         label=label,
                         notes=notes,
                     )
@@ -396,7 +400,7 @@ def normalize_query_plan(
                         search_draft,
                         enums=enums,
                         fields=fields,
-                        page_size=page_size,
+                        page_size=effective_page_size,
                         label=search_draft.label,
                         notes=notes,
                     )

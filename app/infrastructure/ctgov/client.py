@@ -97,19 +97,23 @@ class CtgovClient:
             )
 
     def fetch_search_studies(
-        self, params: StudiesSearchParams
+        self,
+        params: StudiesSearchParams,
+        *,
+        max_studies: int | None = None,
     ) -> tuple[list[dict[str, Any]], int | None]:
         collected: list[dict[str, Any]] = []
         total_count: int | None = None
         page_params = params.model_copy()
+        cap = self._pagination_cap if max_studies is None else max_studies
 
-        while len(collected) < self._pagination_cap:
+        while len(collected) < cap:
             result = self.search_studies(page_params)
             if total_count is None:
                 total_count = result.total_count
             for study in result.studies:
                 collected.append(study)
-                if len(collected) >= self._pagination_cap:
+                if len(collected) >= cap:
                     return collected, total_count
 
             if not result.next_page_token:

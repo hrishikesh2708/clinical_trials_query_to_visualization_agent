@@ -304,3 +304,32 @@ def test_normalize_injects_phase_when_trial_phase_in_intent() -> None:
         "Injected phase filter AREA[Phase]PHASE3 from intent."
         in plan.normalization_notes
     )
+
+
+def test_normalize_network_uses_network_study_cap_as_page_size() -> None:
+    intent = Intent(
+        horizon=Horizon.NETWORK,
+        filters=ResolvedFilters(condition="diabetes"),
+    )
+    draft = QueryPlanDraft(
+        searches=[
+            PlannedSearchDraft(
+                params=SearchParamsDraft(query_cond="diabetes"),
+            )
+        ]
+    )
+    plan = normalize_query_plan(intent, draft, enums=enums_from_fixture())
+    assert plan.searches[0].params.page_size == 15
+
+
+def test_normalize_non_network_keeps_default_page_size() -> None:
+    intent = _intent()
+    draft = QueryPlanDraft(
+        searches=[
+            PlannedSearchDraft(
+                params=SearchParamsDraft(query_cond="breast cancer"),
+            )
+        ]
+    )
+    plan = normalize_query_plan(intent, draft, enums=enums_from_fixture())
+    assert plan.searches[0].params.page_size == 100

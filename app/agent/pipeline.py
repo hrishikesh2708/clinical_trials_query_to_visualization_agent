@@ -62,10 +62,15 @@ class VisualizePipeline:
             model=self._settings.openai_model,
             temperature=self._settings.openai_temperature,
             enums_loader=self._enums_loader,
+            network_study_cap=self._settings.network_study_cap,
         )
 
     async def _step3_fetch_studies(self, plan: APIQueryPlan) -> FetchResult:
-        return fetch_studies(plan, self._ctgov)
+        return fetch_studies(
+            plan,
+            self._ctgov,
+            network_study_cap=self._settings.network_study_cap,
+        )
 
     async def _step4_select_viz(
         self, intent: Intent, fetched: FetchResult
