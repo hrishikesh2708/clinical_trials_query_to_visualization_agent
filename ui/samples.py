@@ -14,17 +14,26 @@ class SampleQuery:
 SAMPLE_QUERIES: tuple[SampleQuery, ...] = (
     SampleQuery(
         label="What is the phase distribution of lung cancer clinical trials",
-        request={"query": "What is the phase distribution of lung cancer clinical trials"},
+        request={
+            "query": (
+                "What is the phase distribution of lung cancer clinical trials"
+            ),
+        },
     ),
     SampleQuery(
         label="What is the recruitment status breakdown for diabetes trials",
-        request={"query": "What is the recruitment status breakdown for diabetes trials"},
+        request={
+            "query": (
+                "What is the recruitment status breakdown for diabetes trials"
+            ),
+        },
     ),
     SampleQuery(
         label="Pembrolizumab trials per year since 2015",
         request={
             "query": (
-                "How has the number of trials for Pembrolizumab changed per year since 2015"
+                "How has the number of trials for Pembrolizumab "
+                "changed per year since 2015"
             ),
         },
     ),

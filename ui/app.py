@@ -257,7 +257,7 @@ def main() -> None:
         run_clicked = st.button(
             "Visualize",
             type="primary",
-            use_container_width=True,
+            width="stretch",
             key="sidebar_visualize",
         )
 
@@ -273,7 +273,7 @@ def main() -> None:
         send_clicked = st.button(
             "Visualize",
             type="primary",
-            use_container_width=True,
+            width="stretch",
             key="main_visualize",
         )
 

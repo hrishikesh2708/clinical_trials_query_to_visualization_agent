@@ -85,7 +85,7 @@ def _render_bar_chart(viz: dict[str, Any]) -> None:
         )
 
     fig.update_layout(margin={"l": 20, "r": 20, "t": 30, "b": 20})
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
 
 def _render_grouped_bar_chart(viz: dict[str, Any]) -> None:
@@ -108,7 +108,7 @@ def _render_grouped_bar_chart(viz: dict[str, Any]) -> None:
         },
     )
     fig.update_layout(margin={"l": 20, "r": 20, "t": 30, "b": 20})
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
 
 def _render_time_series(viz: dict[str, Any]) -> None:
@@ -142,7 +142,7 @@ def _render_time_series(viz: dict[str, Any]) -> None:
         )
 
     fig.update_layout(margin={"l": 20, "r": 20, "t": 30, "b": 20})
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
 
 def _render_histogram(viz: dict[str, Any]) -> None:
@@ -159,7 +159,7 @@ def _render_histogram(viz: dict[str, Any]) -> None:
         labels={encoding["x"]: encoding["x"], encoding["y"]: encoding["y"]},
     )
     fig.update_layout(margin={"l": 20, "r": 20, "t": 30, "b": 20})
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
 
 def _render_network_graph(viz: dict[str, Any]) -> None:
