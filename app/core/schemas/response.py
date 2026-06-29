@@ -17,6 +17,7 @@ class AppliedFilters(BaseModel):
 
 
 class ResponseMeta(BaseModel):
+    title: str
     source: DataSource = DataSource.CLINICALTRIALS_GOV
     filters: AppliedFilters
     assumptions: list[str] = Field(default_factory=list)

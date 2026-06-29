@@ -6,6 +6,8 @@ from app.agent.intent_parser import parse_intent
 from app.agent.pipeline import VisualizePipeline
 from app.agent.query_normalizer import normalize_query_plan
 from app.agent.query_planner import plan_query
+from app.agent.response_builder import build_visualize_response
+from app.agent.transform_wiring import run_transform
 from app.agent.types import (
     APIQueryPlan,
     FetchPreview,
@@ -35,5 +37,7 @@ __all__ = [
     "normalize_query_plan",
     "parse_intent",
     "plan_query",
+    "run_transform",
+    "build_visualize_response",
     "select_viz",
 ]

@@ -9,6 +9,7 @@ def test_visualize_response_round_trip() -> None:
     original = VisualizeResponse(
         visualization=visualization,
         meta=ResponseMeta(
+            title="Pembrolizumab trials started per year since 2015",
             filters=AppliedFilters(
                 drug_name="Pembrolizumab",
                 start_year=2015,

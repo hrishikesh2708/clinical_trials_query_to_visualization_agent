@@ -7,6 +7,8 @@ from openai import AsyncOpenAI
 from app.agent.api_caller import fetch_studies
 from app.agent.intent_parser import parse_intent
 from app.agent.query_planner import plan_query
+from app.agent.response_builder import build_visualize_response
+from app.agent.transform_wiring import run_transform
 from app.agent.types import (
     APIQueryPlan,
     FetchResult,
@@ -80,7 +82,13 @@ class VisualizePipeline:
         fetched: FetchResult,
         viz_type: VisualizationType,
     ) -> Visualization:
-        raise NotImplementedError("Stage 8e")
+        return run_transform(
+            intent,
+            plan,
+            fetched,
+            viz_type,
+            self._enums_loader.load(),
+        )
 
     async def _step6_build_response(
         self,
@@ -91,4 +99,13 @@ class VisualizePipeline:
         viz_type: VisualizationType,
         viz: Visualization,
     ) -> VisualizeResponse:
-        raise NotImplementedError("Stage 8e")
+        _ = request
+        _ = plan
+        return await build_visualize_response(
+            intent,
+            viz,
+            viz_type,
+            fetched,
+            client=self._openai,
+            model=self._settings.openai_model,
+        )
