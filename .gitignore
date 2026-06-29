@@ -3,4 +3,5 @@
 __pycache__/
 .pytest_cache/
 .ruff_cache/
-response_dumps/
+response_dumps/*
+!response_dumps/README.md
