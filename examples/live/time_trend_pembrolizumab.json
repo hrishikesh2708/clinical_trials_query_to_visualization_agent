@@ -1,0 +1,355 @@
+{
+    "visualization": {
+        "type": "time_series",
+        "encoding": {
+            "x": "year",
+            "y": "count",
+            "series": null
+        },
+        "data": [
+            {
+                "citations": [
+                    {
+                        "nct_id": "NCT02260440",
+                        "excerpt": "2015-01"
+                    },
+                    {
+                        "nct_id": "NCT02268825",
+                        "excerpt": "2015-01-23"
+                    },
+                    {
+                        "nct_id": "NCT02298959",
+                        "excerpt": "2015-04-08"
+                    },
+                    {
+                        "nct_id": "NCT02301039",
+                        "excerpt": "2015-03"
+                    },
+                    {
+                        "nct_id": "NCT02305186",
+                        "excerpt": "2015-03"
+                    }
+                ],
+                "year": 2015,
+                "count": 54
+            },
+            {
+                "citations": [
+                    {
+                        "nct_id": "NCT02432963",
+                        "excerpt": "2016-06-14"
+                    },
+                    {
+                        "nct_id": "NCT02509507",
+                        "excerpt": "2016-02-05"
+                    },
+                    {
+                        "nct_id": "NCT02512172",
+                        "excerpt": "2016-02-19"
+                    },
+                    {
+                        "nct_id": "NCT02520154",
+                        "excerpt": "2016-07-05"
+                    },
+                    {
+                        "nct_id": "NCT02546531",
+                        "excerpt": "2016-02-03"
+                    }
+                ],
+                "year": 2016,
+                "count": 73
+            },
+            {
+                "citations": [
+                    {
+                        "nct_id": "NCT02587962",
+                        "excerpt": "2017-08-04"
+                    },
+                    {
+                        "nct_id": "NCT02662062",
+                        "excerpt": "2017-07-11"
+                    },
+                    {
+                        "nct_id": "NCT02733159",
+                        "excerpt": "2017-01-04"
+                    },
+                    {
+                        "nct_id": "NCT02767934",
+                        "excerpt": "2017-01-13"
+                    },
+                    {
+                        "nct_id": "NCT02818920",
+                        "excerpt": "2017-01"
+                    }
+                ],
+                "year": 2017,
+                "count": 81
+            },
+            {
+                "citations": [
+                    {
+                        "nct_id": "NCT02697630",
+                        "excerpt": "2018-02-21"
+                    },
+                    {
+                        "nct_id": "NCT02834052",
+                        "excerpt": "2018-01-10"
+                    },
+                    {
+                        "nct_id": "NCT03006302",
+                        "excerpt": "2018-01-31"
+                    },
+                    {
+                        "nct_id": "NCT03016091",
+                        "excerpt": "2018-01-01"
+                    },
+                    {
+                        "nct_id": "NCT03030378",
+                        "excerpt": "2018-05-30"
+                    }
+                ],
+                "year": 2018,
+                "count": 99
+            },
+            {
+                "citations": [
+                    {
+                        "nct_id": "NCT02757391",
+                        "excerpt": "2019-08-09"
+                    },
+                    {
+                        "nct_id": "NCT03114280",
+                        "excerpt": "2019-03-12"
+                    },
+                    {
+                        "nct_id": "NCT03166254",
+                        "excerpt": "2019-04-30"
+                    },
+                    {
+                        "nct_id": "NCT03331341",
+                        "excerpt": "2019-01-09"
+                    },
+                    {
+                        "nct_id": "NCT03385226",
+                        "excerpt": "2019-01-15"
+                    }
+                ],
+                "year": 2019,
+                "count": 84
+            },
+            {
+                "citations": [
+                    {
+                        "nct_id": "NCT03878524",
+                        "excerpt": "2020-04-01"
+                    },
+                    {
+                        "nct_id": "NCT03932409",
+                        "excerpt": "2020-02-19"
+                    },
+                    {
+                        "nct_id": "NCT03983668",
+                        "excerpt": "2020-01-31"
+                    },
+                    {
+                        "nct_id": "NCT03988036",
+                        "excerpt": "2020-08-18"
+                    },
+                    {
+                        "nct_id": "NCT04003610",
+                        "excerpt": "2020-05-14"
+                    }
+                ],
+                "year": 2020,
+                "count": 95
+            },
+            {
+                "citations": [
+                    {
+                        "nct_id": "NCT03448666",
+                        "excerpt": "2021-03-01"
+                    },
+                    {
+                        "nct_id": "NCT04118036",
+                        "excerpt": "2021-12-01"
+                    },
+                    {
+                        "nct_id": "NCT04166734",
+                        "excerpt": "2021-02-12"
+                    },
+                    {
+                        "nct_id": "NCT04171622",
+                        "excerpt": "2021-11-04"
+                    },
+                    {
+                        "nct_id": "NCT04214249",
+                        "excerpt": "2021-02-17"
+                    }
+                ],
+                "year": 2021,
+                "count": 87
+            },
+            {
+                "citations": [
+                    {
+                        "nct_id": "NCT03492918",
+                        "excerpt": "2022-04"
+                    },
+                    {
+                        "nct_id": "NCT04074096",
+                        "excerpt": "2022-09-05"
+                    },
+                    {
+                        "nct_id": "NCT04118868",
+                        "excerpt": "2022-08-31"
+                    },
+                    {
+                        "nct_id": "NCT04520711",
+                        "excerpt": "2022-02-08"
+                    },
+                    {
+                        "nct_id": "NCT04575961",
+                        "excerpt": "2022-02-22"
+                    }
+                ],
+                "year": 2022,
+                "count": 101
+            },
+            {
+                "citations": [
+                    {
+                        "nct_id": "NCT04777851",
+                        "excerpt": "2023-10-11"
+                    },
+                    {
+                        "nct_id": "NCT04866810",
+                        "excerpt": "2023-07-25"
+                    },
+                    {
+                        "nct_id": "NCT04919629",
+                        "excerpt": "2023-04-27"
+                    },
+                    {
+                        "nct_id": "NCT04987996",
+                        "excerpt": "2023-07-01"
+                    },
+                    {
+                        "nct_id": "NCT05020860",
+                        "excerpt": "2023-04-18"
+                    }
+                ],
+                "year": 2023,
+                "count": 102
+            },
+            {
+                "citations": [
+                    {
+                        "nct_id": "NCT05485766",
+                        "excerpt": "2024-07-16"
+                    },
+                    {
+                        "nct_id": "NCT05545969",
+                        "excerpt": "2024-03"
+                    },
+                    {
+                        "nct_id": "NCT05635344",
+                        "excerpt": "2024-02-14"
+                    },
+                    {
+                        "nct_id": "NCT05656235",
+                        "excerpt": "2024-11-25"
+                    },
+                    {
+                        "nct_id": "NCT05741164",
+                        "excerpt": "2024-09-01"
+                    }
+                ],
+                "year": 2024,
+                "count": 92
+            },
+            {
+                "citations": [
+                    {
+                        "nct_id": "NCT04129515",
+                        "excerpt": "2025-10-30"
+                    },
+                    {
+                        "nct_id": "NCT05425576",
+                        "excerpt": "2025-06"
+                    },
+                    {
+                        "nct_id": "NCT05668949",
+                        "excerpt": "2025-09-23"
+                    },
+                    {
+                        "nct_id": "NCT05669352",
+                        "excerpt": "2025-04"
+                    },
+                    {
+                        "nct_id": "NCT05687721",
+                        "excerpt": "2025-06-02"
+                    }
+                ],
+                "year": 2025,
+                "count": 77
+            },
+            {
+                "citations": [
+                    {
+                        "nct_id": "NCT05077215",
+                        "excerpt": "2026-12"
+                    },
+                    {
+                        "nct_id": "NCT05106127",
+                        "excerpt": "2026-08"
+                    },
+                    {
+                        "nct_id": "NCT05806385",
+                        "excerpt": "2026-03"
+                    },
+                    {
+                        "nct_id": "NCT06041503",
+                        "excerpt": "2026-01-20"
+                    },
+                    {
+                        "nct_id": "NCT06882174",
+                        "excerpt": "2026-05"
+                    }
+                ],
+                "year": 2026,
+                "count": 54
+            },
+            {
+                "citations": [
+                    {
+                        "nct_id": "NCT04266730",
+                        "excerpt": "2027-05-20"
+                    }
+                ],
+                "year": 2027,
+                "count": 1
+            }
+        ]
+    },
+    "meta": {
+        "title": "Trials started per year since 2010",
+        "source": "clinicaltrials.gov",
+        "filters": {
+            "drug_name": "Pembrolizumab",
+            "condition": null,
+            "trial_phase": null,
+            "sponsor": null,
+            "country": null,
+            "start_year": 2015,
+            "end_year": null
+        },
+        "assumptions": [
+            "Time granularity is set to year as the request is for trials per year.",
+            "The data may not include all trials due to missing enrollment information."
+        ],
+        "time_granularity": "year",
+        "units": null,
+        "total_studies_fetched": 1000,
+        "interpretation_notes": "This time series visualization displays the number of trials initiated each year from 2010 to 2022, based on a total of 1000 studies fetched. The data is aggregated annually, allowing for a clear trend analysis over the years."
+    }
+}

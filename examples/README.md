@@ -1,11 +1,21 @@
 # Example outputs
 
-Pre-generated `VisualizeResponse` JSON for each supported query horizon. Regenerate with `uv run python scripts/generate_examples.py`.
+| Kind | Location | Notes |
+|------|----------|-------|
+| Live captures | [`live/`](live/) | Real `POST /api/v1/visualize` responses (see root README) |
+| Test fixtures | [`*.json`](.) | Mocked pipeline runs; regenerate with `uv run python scripts/generate_examples.py` |
 
-| File | Horizon | Query theme |
-|------|---------|-------------|
-| `time_trend_pembrolizumab.json` | time_trend | Pembrolizumab trials per year since 2015 |
-| `distribution_breast_cancer_phase.json` | distribution | Breast cancer by phase |
-| `comparison_pembrolizumab_vs_nivolumab.json` | comparison | Pembrolizumab vs nivolumab |
-| `geographic_lung_cancer_recruiting.json` | geographic | Recruiting lung cancer by country |
-| `network_diabetes_sponsor_drug.json` | network | Diabetes sponsor–drug network |
+## Render collapsible README blocks
+
+```bash
+# Single example (paste stdout into README)
+uv run python scripts/render_readme_example.py \
+  --title "Time trend — Pembrolizumab since 2015" \
+  --curl-file live/curls/time_trend_pembrolizumab.sh \
+  --json live/time_trend_pembrolizumab.json
+
+# Regenerate the Sample queries section
+uv run python scripts/render_sample_queries_section.py
+```
+
+Edit [`live/sample_queries/manifest.json`](live/sample_queries/manifest.json) to add queries; set `"json"` when you have a captured response file.
