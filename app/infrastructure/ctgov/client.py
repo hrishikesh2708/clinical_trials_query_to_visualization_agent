@@ -54,6 +54,9 @@ class CtgovClient:
         response = self._get(f"/studies/{nct_id}", get_params.to_query_params())
         return response.json()
 
+    def fetch_enums(self) -> list[dict[str, Any]]:
+        return self._get("/studies/enums", {}).json()
+
     def iter_search_studies(
         self, params: StudiesSearchParams
     ) -> Iterator[dict[str, Any]]:
