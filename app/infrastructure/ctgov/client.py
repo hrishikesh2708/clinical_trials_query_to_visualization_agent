@@ -12,6 +12,7 @@ from app.infrastructure.ctgov.models import (
     StudiesSearchResult,
     StudyGetParams,
 )
+from app.infrastructure.ctgov.search_areas import StudySearchAreas
 
 
 class CtgovClient:
@@ -65,6 +66,11 @@ class CtgovClient:
         get_params = params or MetadataParams()
         return StudyMetadata.from_api(
             self._get("/studies/metadata", get_params.to_query_params()).json()
+        )
+
+    def get_search_areas(self) -> StudySearchAreas:
+        return StudySearchAreas.from_api(
+            self._get("/studies/search-areas", {}).json()
         )
 
     def iter_search_studies(

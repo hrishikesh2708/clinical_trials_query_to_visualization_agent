@@ -11,6 +11,12 @@ from app.infrastructure.ctgov.models import (
     StudiesSearchResult,
     StudyGetParams,
 )
+from app.infrastructure.ctgov.search_areas import (
+    SearchArea,
+    SearchAreaDocument,
+    SearchAreaPart,
+    StudySearchAreas,
+)
 
 __all__ = [
     "CtgovApiError",
@@ -20,9 +26,13 @@ __all__ = [
     "CtgovRateLimitError",
     "MetadataFieldNode",
     "MetadataParams",
+    "SearchArea",
+    "SearchAreaDocument",
+    "SearchAreaPart",
     "StudiesSearchParams",
     "StudiesSearchResult",
     "StudyGetParams",
     "StudyMetadata",
+    "StudySearchAreas",
     "ctgov_client_from_settings",
 ]
