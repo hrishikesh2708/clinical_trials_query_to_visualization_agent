@@ -1,8 +1,6 @@
 from collections.abc import Iterator
 from typing import Any
 
-import httpx
-
 from app.core.config import Settings
 from app.infrastructure.ctgov.exceptions import CtgovApiError, CtgovRateLimitError
 from app.infrastructure.ctgov.metadata import MetadataParams, StudyMetadata
@@ -13,6 +11,7 @@ from app.infrastructure.ctgov.models import (
     StudyGetParams,
 )
 from app.infrastructure.ctgov.search_areas import StudySearchAreas
+from app.infrastructure.ctgov.transport import CtgovHttpResponse, urllib_get
 
 
 class CtgovClient:
@@ -26,10 +25,13 @@ class CtgovClient:
         self._timeout = timeout
         self._pagination_cap = pagination_cap
 
-    def _get(self, path: str, params: dict[str, str]) -> httpx.Response:
-        url = f"{self._base_url}{path}"
-        with httpx.Client(timeout=self._timeout, follow_redirects=True) as client:
-            response = client.get(url, params=params)
+    def _get(self, path: str, params: dict[str, str]) -> CtgovHttpResponse:
+        response = urllib_get(
+            self._base_url,
+            path,
+            params,
+            timeout=self._timeout,
+        )
         if response.status_code == 429:
             raise CtgovRateLimitError(response.status_code, response.text)
         if response.status_code >= 400:

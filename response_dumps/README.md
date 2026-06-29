@@ -27,7 +27,7 @@ uv run python scripts/capture_raw_dumps.py
 - Copy `.env.example` to `.env` and set `OPENAI_API_KEY` (required by `Settings`, even though capture does not use it).
 - Network access to `https://clinicaltrials.gov/api/v2`.
 
-**Note:** The capture script patches `CtgovClient` to use `urllib` for HTTP because `httpx` receives HTTP 403 from clinicaltrials.gov in this environment. All endpoint calls still go through the existing client methods and models.
+The client uses stdlib `urllib` (see [app/infrastructure/ctgov/transport.py](../app/infrastructure/ctgov/transport.py)); httpx is blocked by the API WAF with HTTP 403.
 
 ## What gets captured
 

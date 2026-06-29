@@ -3,6 +3,7 @@ import pytest
 from app.infrastructure.ctgov.client import CtgovClient
 from app.infrastructure.ctgov.exceptions import CtgovApiError, CtgovRateLimitError
 from app.infrastructure.ctgov.search_areas import StudySearchAreas
+from tests.infrastructure.ctgov.conftest import mock_ctgov_urlopen, url_path
 
 BASE_URL = "https://clinicaltrials.gov/api/v2"
 
@@ -97,38 +98,36 @@ def test_query_param_key_raises_for_unknown() -> None:
         _search_areas().query_param_key("unknown")
 
 
-def test_get_search_areas_returns_parsed(httpx_mock) -> None:
-    httpx_mock.add_response(json=SEARCH_AREAS_FIXTURE)
-
-    areas = _client().get_search_areas()
+def test_get_search_areas_returns_parsed() -> None:
+    with mock_ctgov_urlopen([{"json": SEARCH_AREAS_FIXTURE}]):
+        areas = _client().get_search_areas()
 
     assert areas.documents[0].name == "Study"
     assert areas.area_for_param("term") is not None
 
 
-def test_get_search_areas_request_path(httpx_mock) -> None:
-    httpx_mock.add_response(json=SEARCH_AREAS_FIXTURE)
+def test_get_search_areas_request_path() -> None:
+    with mock_ctgov_urlopen([{"json": SEARCH_AREAS_FIXTURE}]) as get_urls:
+        _client().get_search_areas()
 
-    _client().get_search_areas()
-
-    request = httpx_mock.get_request()
-    assert request is not None
-    assert request.url.path == "/api/v2/studies/search-areas"
+    assert url_path(get_urls()[0]) == "/api/v2/studies/search-areas"
 
 
-def test_get_search_areas_raises_on_404(httpx_mock) -> None:
-    httpx_mock.add_response(status_code=404, text="Not found")
-
-    with pytest.raises(CtgovApiError) as exc_info:
+def test_get_search_areas_raises_on_404() -> None:
+    with (
+        mock_ctgov_urlopen([{"status_code": 404, "text": "Not found"}]),
+        pytest.raises(CtgovApiError) as exc_info,
+    ):
         _client().get_search_areas()
 
     assert exc_info.value.status_code == 404
 
 
-def test_get_search_areas_raises_on_429(httpx_mock) -> None:
-    httpx_mock.add_response(status_code=429, text="Too Many Requests")
-
-    with pytest.raises(CtgovRateLimitError) as exc_info:
+def test_get_search_areas_raises_on_429() -> None:
+    with (
+        mock_ctgov_urlopen([{"status_code": 429, "text": "Too Many Requests"}]),
+        pytest.raises(CtgovRateLimitError) as exc_info,
+    ):
         _client().get_search_areas()
 
     assert exc_info.value.status_code == 429

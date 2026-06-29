@@ -23,7 +23,6 @@ from app.domain.horizons import Horizon, horizon_spec
 from app.infrastructure.ctgov.client import CtgovClient, ctgov_client_from_settings
 from app.infrastructure.ctgov.exceptions import CtgovApiError, CtgovRateLimitError
 from app.infrastructure.ctgov.models import StudiesSearchParams, StudiesSearchResult
-from scripts.capture_raw_dumps import patch_client_urllib_transport
 
 DEFAULT_OUTPUT_DIR = Path("tests/fixtures/api")
 COMPARISON_GROUP = "pembrolizumab_vs_nivolumab"
@@ -259,7 +258,6 @@ def main(argv: list[str] | None = None) -> int:
         try:
             settings = Settings()
             client = ctgov_client_from_settings(settings)
-            patch_client_urllib_transport(client)
         except Exception as exc:
             print(f"Failed to load settings: {exc}", file=sys.stderr)
             return 1

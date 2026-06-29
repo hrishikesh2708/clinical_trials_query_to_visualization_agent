@@ -3,6 +3,11 @@ import pytest
 from app.infrastructure.ctgov.client import CtgovClient
 from app.infrastructure.ctgov.exceptions import CtgovApiError, CtgovRateLimitError
 from app.infrastructure.ctgov.models import StudyGetParams
+from tests.infrastructure.ctgov.conftest import (
+    mock_ctgov_urlopen,
+    query_param,
+    url_path,
+)
 
 BASE_URL = "https://clinicaltrials.gov/api/v2"
 STUDY_STUB = {
@@ -42,27 +47,23 @@ def test_study_get_params_omits_empty_fields() -> None:
     assert query["markupFormat"] == "markdown"
 
 
-def test_get_study_returns_json(httpx_mock) -> None:
-    httpx_mock.add_response(json=STUDY_STUB)
-
-    study = _client().get_study("NCT04852770")
+def test_get_study_returns_json() -> None:
+    with mock_ctgov_urlopen([{"json": STUDY_STUB}]):
+        study = _client().get_study("NCT04852770")
 
     assert study["protocolSection"]["identificationModule"]["nctId"] == "NCT04852770"
     assert study["hasResults"] is False
 
 
-def test_get_study_puts_nct_id_in_path(httpx_mock) -> None:
-    httpx_mock.add_response(json=STUDY_STUB)
+def test_get_study_puts_nct_id_in_path() -> None:
+    with mock_ctgov_urlopen([{"json": STUDY_STUB}]) as get_urls:
+        _client().get_study(
+            "NCT04852770",
+            StudyGetParams(fields=["NCTId", "BriefTitle"]),
+        )
 
-    _client().get_study(
-        "NCT04852770",
-        StudyGetParams(fields=["NCTId", "BriefTitle"]),
-    )
-
-    request = httpx_mock.get_request()
-    assert request is not None
-    assert request.url.path == "/api/v2/studies/NCT04852770"
-    assert request.url.params["fields"] == "NCTId,BriefTitle"
+    assert url_path(get_urls()[0]) == "/api/v2/studies/NCT04852770"
+    assert query_param(get_urls()[0], "fields") == "NCTId,BriefTitle"
 
 
 def test_get_study_raises_on_invalid_nct_id() -> None:
@@ -70,37 +71,29 @@ def test_get_study_raises_on_invalid_nct_id() -> None:
         _client().get_study("INVALID")
 
 
-def test_get_study_raises_on_404(httpx_mock) -> None:
-    httpx_mock.add_response(status_code=404, text="Study not found")
-
-    with pytest.raises(CtgovApiError) as exc_info:
+def test_get_study_raises_on_404() -> None:
+    with (
+        mock_ctgov_urlopen([{"status_code": 404, "text": "Study not found"}]),
+        pytest.raises(CtgovApiError) as exc_info,
+    ):
         _client().get_study("NCT04852770")
 
     assert exc_info.value.status_code == 404
 
 
-def test_get_study_raises_on_429(httpx_mock) -> None:
-    httpx_mock.add_response(status_code=429, text="Too Many Requests")
-
-    with pytest.raises(CtgovRateLimitError) as exc_info:
+def test_get_study_raises_on_429() -> None:
+    with (
+        mock_ctgov_urlopen([{"status_code": 429, "text": "Too Many Requests"}]),
+        pytest.raises(CtgovRateLimitError) as exc_info,
+    ):
         _client().get_study("NCT04852770")
 
     assert exc_info.value.status_code == 429
 
 
-def test_get_study_follows_redirect(httpx_mock) -> None:
-    httpx_mock.add_response(
-        status_code=301,
-        headers={
-            "Location": (
-                f"{BASE_URL}/studies/NCT04852770"
-                "?format=json&markupFormat=markdown"
-            ),
-        },
-    )
-    httpx_mock.add_response(json=STUDY_STUB)
-
-    study = _client().get_study("NCT00000001")
+def test_get_study_follows_redirect() -> None:
+    """urllib follows redirects internally; client sees the final JSON response."""
+    with mock_ctgov_urlopen([{"json": STUDY_STUB}]):
+        study = _client().get_study("NCT00000001")
 
     assert study["protocolSection"]["identificationModule"]["nctId"] == "NCT04852770"
-    assert len(httpx_mock.get_requests()) == 2

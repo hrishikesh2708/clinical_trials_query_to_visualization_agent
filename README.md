@@ -33,6 +33,8 @@ cp .env.example .env
 
 Settings are loaded from `.env` via [app/core/config.py](app/core/config.py). Do not commit `.env`.
 
+**ClinicalTrials.gov HTTP client:** The API WAF blocks Python clients with httpx's TLS fingerprint (403 Forbidden). [`CtgovClient`](app/infrastructure/ctgov/client.py) uses stdlib `urllib` via [`app/infrastructure/ctgov/transport.py`](app/infrastructure/ctgov/transport.py) instead.
+
 ## Run the server
 
 ```bash

@@ -3,6 +3,7 @@ import pytest
 from app.infrastructure.ctgov.client import CtgovClient
 from app.infrastructure.ctgov.enums import CtgovEnums, CtgovEnumsLoader
 from app.infrastructure.ctgov.exceptions import CtgovApiError, CtgovRateLimitError
+from tests.infrastructure.ctgov.conftest import mock_ctgov_urlopen, url_path
 
 BASE_URL = "https://clinicaltrials.gov/api/v2"
 
@@ -80,61 +81,59 @@ def test_validate_overall_status_rejects_invalid_value() -> None:
         _enums().validate_overall_status("INVALID")
 
 
-def test_fetch_enums_returns_parsed_response(httpx_mock) -> None:
-    httpx_mock.add_response(json=ENUMS_FIXTURE)
-
-    data = _client().fetch_enums()
+def test_fetch_enums_returns_parsed_response() -> None:
+    with mock_ctgov_urlopen([{"json": ENUMS_FIXTURE}]) as get_urls:
+        data = _client().fetch_enums()
 
     assert len(data) == 2
     assert data[0]["type"] == "Phase"
-    request = httpx_mock.get_request()
-    assert request is not None
-    assert request.url.path == "/api/v2/studies/enums"
+    assert url_path(get_urls()[0]) == "/api/v2/studies/enums"
 
 
-def test_enums_loader_caches_after_first_load(httpx_mock) -> None:
-    httpx_mock.add_response(json=ENUMS_FIXTURE)
-
-    loader = CtgovEnumsLoader(_client())
-    first = loader.load()
-    second = loader.load()
+def test_enums_loader_caches_after_first_load() -> None:
+    with mock_ctgov_urlopen([{"json": ENUMS_FIXTURE}]) as get_urls:
+        loader = CtgovEnumsLoader(_client())
+        first = loader.load()
+        second = loader.load()
 
     assert first is second
-    assert len(httpx_mock.get_requests()) == 1
+    assert len(get_urls()) == 1
 
 
-def test_enums_loader_force_refresh_fetches_again(httpx_mock) -> None:
-    httpx_mock.add_response(json=ENUMS_FIXTURE)
-    httpx_mock.add_response(json=ENUMS_FIXTURE)
-
-    loader = CtgovEnumsLoader(_client())
-    first = loader.load()
-    second = loader.load(force_refresh=True)
+def test_enums_loader_force_refresh_fetches_again() -> None:
+    with mock_ctgov_urlopen(
+        [{"json": ENUMS_FIXTURE}, {"json": ENUMS_FIXTURE}],
+    ) as get_urls:
+        loader = CtgovEnumsLoader(_client())
+        first = loader.load()
+        second = loader.load(force_refresh=True)
 
     assert first is not second
-    assert len(httpx_mock.get_requests()) == 2
+    assert len(get_urls()) == 2
 
 
-def test_enums_loader_validate_phase_delegates_to_cache(httpx_mock) -> None:
-    httpx_mock.add_response(json=ENUMS_FIXTURE)
+def test_enums_loader_validate_phase_delegates_to_cache() -> None:
+    with mock_ctgov_urlopen([{"json": ENUMS_FIXTURE}]) as get_urls:
+        loader = CtgovEnumsLoader(_client())
 
-    loader = CtgovEnumsLoader(_client())
+        assert loader.validate_phase("Phase 2") == "PHASE2"
 
-    assert loader.validate_phase("Phase 2") == "PHASE2"
-    assert len(httpx_mock.get_requests()) == 1
+    assert len(get_urls()) == 1
 
 
-def test_fetch_enums_raises_on_429(httpx_mock) -> None:
-    httpx_mock.add_response(status_code=429, text="Too Many Requests")
-
-    with pytest.raises(CtgovRateLimitError):
+def test_fetch_enums_raises_on_429() -> None:
+    with (
+        mock_ctgov_urlopen([{"status_code": 429, "text": "Too Many Requests"}]),
+        pytest.raises(CtgovRateLimitError),
+    ):
         _client().fetch_enums()
 
 
-def test_fetch_enums_raises_on_500(httpx_mock) -> None:
-    httpx_mock.add_response(status_code=500, text="Server error")
-
-    with pytest.raises(CtgovApiError) as exc_info:
+def test_fetch_enums_raises_on_500() -> None:
+    with (
+        mock_ctgov_urlopen([{"status_code": 500, "text": "Server error"}]),
+        pytest.raises(CtgovApiError) as exc_info,
+    ):
         _client().fetch_enums()
 
     assert exc_info.value.status_code == 500

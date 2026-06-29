@@ -40,7 +40,7 @@ The script:
 1. Builds `StudiesSearchParams` per horizon from `FIXTURE_SPECS` in [`scripts/capture_horizon_fixtures.py`](../../scripts/capture_horizon_fixtures.py).
 2. Calls `GET /studies` with `page_size=15` (or `1` for `studies_single`) and horizon-specific `fields` to minimize payload.
 3. Writes stable filenames under `tests/fixtures/api/` plus `.meta.json` sidecars.
-4. Uses urllib transport (patched from Stage 3) when httpx is blocked by the API.
+4. Uses stdlib urllib via [`CtgovClient`](../../app/infrastructure/ctgov/client.py) (httpx is blocked by the API WAF).
 
 ## Refreshing fixtures
 

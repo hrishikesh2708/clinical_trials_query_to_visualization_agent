@@ -3,6 +3,7 @@ import pytest
 from app.infrastructure.ctgov.client import CtgovClient
 from app.infrastructure.ctgov.exceptions import CtgovApiError, CtgovRateLimitError
 from app.infrastructure.ctgov.models import StudiesSearchParams
+from tests.infrastructure.ctgov.conftest import mock_ctgov_urlopen, query_param
 
 BASE_URL = "https://clinicaltrials.gov/api/v2"
 STUDY_STUB = {
@@ -107,16 +108,19 @@ def test_with_phases_builds_advanced_filter() -> None:
     assert multi.filter_advanced == "AREA[Phase]PHASE2 OR AREA[Phase]PHASE3"
 
 
-def test_search_studies_returns_studies_and_token(httpx_mock) -> None:
-    httpx_mock.add_response(
-        json={
-            "studies": [STUDY_STUB],
-            "nextPageToken": "next-token",
-            "totalCount": 42,
-        },
-    )
-
-    result = _client().search_studies(StudiesSearchParams(query_cond="diabetes"))
+def test_search_studies_returns_studies_and_token() -> None:
+    with mock_ctgov_urlopen(
+        [
+            {
+                "json": {
+                    "studies": [STUDY_STUB],
+                    "nextPageToken": "next-token",
+                    "totalCount": 42,
+                },
+            },
+        ],
+    ) as get_urls:
+        result = _client().search_studies(StudiesSearchParams(query_cond="diabetes"))
 
     assert len(result.studies) == 1
     assert result.studies[0]["protocolSection"]["identificationModule"]["nctId"] == (
@@ -125,51 +129,49 @@ def test_search_studies_returns_studies_and_token(httpx_mock) -> None:
     assert result.next_page_token == "next-token"
     assert result.total_count == 42
 
-    request = httpx_mock.get_request()
-    assert request is not None
-    assert request.url.params["query.cond"] == "diabetes"
+    assert query_param(get_urls()[0], "query.cond") == "diabetes"
 
 
-def test_search_studies_passes_page_token(httpx_mock) -> None:
-    httpx_mock.add_response(
-        json={"studies": [STUDY_STUB], "nextPageToken": "page-2"},
-    )
+def test_search_studies_passes_page_token() -> None:
+    with mock_ctgov_urlopen(
+        [{"json": {"studies": [STUDY_STUB], "nextPageToken": "page-2"}}],
+    ) as get_urls:
+        _client().search_studies(
+            StudiesSearchParams(query_cond="diabetes", page_token="page-1")
+        )
 
-    _client().search_studies(
-        StudiesSearchParams(query_cond="diabetes", page_token="page-1")
-    )
-
-    request = httpx_mock.get_request()
-    assert request is not None
-    assert request.url.params["pageToken"] == "page-1"
+    assert query_param(get_urls()[0], "pageToken") == "page-1"
 
 
-def test_search_studies_raises_on_400(httpx_mock) -> None:
-    httpx_mock.add_response(
-        status_code=400,
-        text="`filter.phase` is unknown parameter",
-    )
-
-    with pytest.raises(CtgovApiError) as exc_info:
+def test_search_studies_raises_on_400() -> None:
+    with (
+        mock_ctgov_urlopen(
+            [
+                {
+                    "status_code": 400,
+                    "text": "`filter.phase` is unknown parameter",
+                },
+            ],
+        ),
+        pytest.raises(CtgovApiError) as exc_info,
+    ):
         _client().search_studies(StudiesSearchParams(query_cond="diabetes"))
 
     assert exc_info.value.status_code == 400
     assert "filter.phase" in exc_info.value.body
 
 
-def test_search_studies_raises_on_429(httpx_mock) -> None:
-    httpx_mock.add_response(
-        status_code=429,
-        text="Too Many Requests",
-    )
-
-    with pytest.raises(CtgovRateLimitError) as exc_info:
+def test_search_studies_raises_on_429() -> None:
+    with (
+        mock_ctgov_urlopen([{"status_code": 429, "text": "Too Many Requests"}]),
+        pytest.raises(CtgovRateLimitError) as exc_info,
+    ):
         _client().search_studies(StudiesSearchParams(query_cond="diabetes"))
 
     assert exc_info.value.status_code == 429
 
 
-def test_iter_search_studies_respects_pagination_cap(httpx_mock) -> None:
+def test_iter_search_studies_respects_pagination_cap() -> None:
     page_studies = [
         {
             **STUDY_STUB,
@@ -178,40 +180,35 @@ def test_iter_search_studies_respects_pagination_cap(httpx_mock) -> None:
         for i in range(3)
     ]
 
-    httpx_mock.add_response(
-        json={"studies": page_studies, "nextPageToken": "page-2"},
-    )
-    httpx_mock.add_response(
-        json={"studies": page_studies, "nextPageToken": "page-3"},
-    )
-
-    studies = list(
-        _client(pagination_cap=5).iter_search_studies(
-            StudiesSearchParams(query_cond="diabetes", page_size=3)
+    with mock_ctgov_urlopen(
+        [
+            {"json": {"studies": page_studies, "nextPageToken": "page-2"}},
+            {"json": {"studies": page_studies, "nextPageToken": "page-3"}},
+        ],
+    ) as get_urls:
+        studies = list(
+            _client(pagination_cap=5).iter_search_studies(
+                StudiesSearchParams(query_cond="diabetes", page_size=3)
+            )
         )
-    )
 
     assert len(studies) == 5
-    assert httpx_mock.get_requests()[1].url.params["pageToken"] == "page-2"
+    assert query_param(get_urls()[1], "pageToken") == "page-2"
 
 
-def test_fetch_search_studies_returns_studies_and_total_count(httpx_mock) -> None:
-    httpx_mock.add_response(
-        json={
-            "studies": [STUDY_STUB],
-            "totalCount": 99,
-        },
-    )
-
-    studies, total_count = _client().fetch_search_studies(
-        StudiesSearchParams(query_cond="diabetes", count_total=True)
-    )
+def test_fetch_search_studies_returns_studies_and_total_count() -> None:
+    with mock_ctgov_urlopen(
+        [{"json": {"studies": [STUDY_STUB], "totalCount": 99}}],
+    ):
+        studies, total_count = _client().fetch_search_studies(
+            StudiesSearchParams(query_cond="diabetes", count_total=True)
+        )
 
     assert len(studies) == 1
     assert total_count == 99
 
 
-def test_fetch_search_studies_paginates_until_cap(httpx_mock) -> None:
+def test_fetch_search_studies_paginates_until_cap() -> None:
     page_studies = [
         {
             **STUDY_STUB,
@@ -219,16 +216,21 @@ def test_fetch_search_studies_paginates_until_cap(httpx_mock) -> None:
         }
         for i in range(2)
     ]
-    httpx_mock.add_response(
-        json={"studies": page_studies, "nextPageToken": "page-2", "totalCount": 10},
-    )
-    httpx_mock.add_response(
-        json={"studies": page_studies, "nextPageToken": None, "totalCount": 10},
-    )
-
-    studies, total_count = _client(pagination_cap=3).fetch_search_studies(
-        StudiesSearchParams(query_cond="diabetes", page_size=2)
-    )
+    with mock_ctgov_urlopen(
+        [
+            {
+                "json": {
+                    "studies": page_studies,
+                    "nextPageToken": "page-2",
+                    "totalCount": 10,
+                },
+            },
+            {"json": {"studies": page_studies, "totalCount": 10}},
+        ],
+    ):
+        studies, total_count = _client(pagination_cap=3).fetch_search_studies(
+            StudiesSearchParams(query_cond="diabetes", page_size=2)
+        )
 
     assert len(studies) == 3
     assert total_count == 10

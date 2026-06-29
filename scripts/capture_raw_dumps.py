@@ -9,19 +9,14 @@ from __future__ import annotations
 import argparse
 import json
 import sys
-import urllib.error
-import urllib.parse
-import urllib.request
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
-from types import SimpleNamespace
+from typing import Any
 
 _PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(_PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(_PROJECT_ROOT))
-
-from typing import Any
 
 from app.core.config import Settings
 from app.infrastructure.ctgov.client import CtgovClient, ctgov_client_from_settings
@@ -31,35 +26,6 @@ from app.infrastructure.ctgov.models import StudiesSearchParams, StudiesSearchRe
 
 SCENARIO_CHOICES = ("studies", "study", "enums", "metadata", "search_areas", "all")
 DEFAULT_OUTPUT_DIR = Path("response_dumps")
-
-
-def patch_client_urllib_transport(client: CtgovClient) -> None:
-    """Use urllib for live capture when httpx is blocked (403 on clinicaltrials.gov)."""
-
-    def urllib_get(path: str, params: dict[str, str]) -> SimpleNamespace:
-        query = urllib.parse.urlencode(params)
-        url = f"{client._base_url}{path}"
-        if query:
-            url = f"{url}?{query}"
-        request = urllib.request.Request(
-            url,
-            headers={"Accept": "application/json"},
-        )
-        try:
-            with urllib.request.urlopen(request, timeout=client._timeout) as response:
-                body = response.read().decode()
-                status_code = response.status
-        except urllib.error.HTTPError as exc:
-            body = exc.read().decode()
-            status_code = exc.code
-        return SimpleNamespace(
-            status_code=status_code,
-            text=body,
-            json=lambda body=body: json.loads(body),
-        )
-
-    client._get = urllib_get  # type: ignore[method-assign]
-
 
 @dataclass(frozen=True)
 class CaptureMeta:
@@ -352,8 +318,6 @@ def main(argv: list[str] | None = None) -> int:
     try:
         settings = Settings()
         client = ctgov_client_from_settings(settings)
-        if not args.dry_run:
-            patch_client_urllib_transport(client)
     except Exception as exc:
         print(f"Failed to load settings: {exc}", file=sys.stderr)
         return 1

@@ -3,6 +3,11 @@ import pytest
 from app.infrastructure.ctgov.client import CtgovClient
 from app.infrastructure.ctgov.exceptions import CtgovApiError, CtgovRateLimitError
 from app.infrastructure.ctgov.metadata import MetadataParams, StudyMetadata
+from tests.infrastructure.ctgov.conftest import (
+    mock_ctgov_urlopen,
+    query_param,
+    url_path,
+)
 
 BASE_URL = "https://clinicaltrials.gov/api/v2"
 
@@ -88,48 +93,43 @@ def test_study_metadata_field_pieces() -> None:
     assert metadata.field_pieces() == ["NCTId", "BriefTitle", "HasResults"]
 
 
-def test_get_metadata_returns_parsed_tree(httpx_mock) -> None:
-    httpx_mock.add_response(json=METADATA_FIXTURE)
-
-    metadata = _client().get_metadata()
+def test_get_metadata_returns_parsed_tree() -> None:
+    with mock_ctgov_urlopen([{"json": METADATA_FIXTURE}]):
+        metadata = _client().get_metadata()
 
     assert metadata.roots[0].piece == "ProtocolSection"
     assert metadata.field_pieces() == ["NCTId", "BriefTitle", "HasResults"]
 
 
-def test_get_metadata_request_path(httpx_mock) -> None:
-    httpx_mock.add_response(json=METADATA_FIXTURE)
+def test_get_metadata_request_path() -> None:
+    with mock_ctgov_urlopen([{"json": METADATA_FIXTURE}]) as get_urls:
+        _client().get_metadata()
 
-    _client().get_metadata()
-
-    request = httpx_mock.get_request()
-    assert request is not None
-    assert request.url.path == "/api/v2/studies/metadata"
+    assert url_path(get_urls()[0]) == "/api/v2/studies/metadata"
 
 
-def test_get_metadata_passes_query_params(httpx_mock) -> None:
-    httpx_mock.add_response(json=METADATA_FIXTURE)
+def test_get_metadata_passes_query_params() -> None:
+    with mock_ctgov_urlopen([{"json": METADATA_FIXTURE}]) as get_urls:
+        _client().get_metadata(MetadataParams(include_indexed_only=True))
 
-    _client().get_metadata(MetadataParams(include_indexed_only=True))
-
-    request = httpx_mock.get_request()
-    assert request is not None
-    assert request.url.params["includeIndexedOnly"] == "true"
+    assert query_param(get_urls()[0], "includeIndexedOnly") == "true"
 
 
-def test_get_metadata_raises_on_404(httpx_mock) -> None:
-    httpx_mock.add_response(status_code=404, text="Not found")
-
-    with pytest.raises(CtgovApiError) as exc_info:
+def test_get_metadata_raises_on_404() -> None:
+    with (
+        mock_ctgov_urlopen([{"status_code": 404, "text": "Not found"}]),
+        pytest.raises(CtgovApiError) as exc_info,
+    ):
         _client().get_metadata()
 
     assert exc_info.value.status_code == 404
 
 
-def test_get_metadata_raises_on_429(httpx_mock) -> None:
-    httpx_mock.add_response(status_code=429, text="Too Many Requests")
-
-    with pytest.raises(CtgovRateLimitError) as exc_info:
+def test_get_metadata_raises_on_429() -> None:
+    with (
+        mock_ctgov_urlopen([{"status_code": 429, "text": "Too Many Requests"}]),
+        pytest.raises(CtgovRateLimitError) as exc_info,
+    ):
         _client().get_metadata()
 
     assert exc_info.value.status_code == 429
