@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "fastapi",
+    "httpx",
     "pydantic-settings",
     "uvicorn[standard]",
 ]
@@ -13,8 +14,13 @@ dependencies = [
 [dependency-groups]
 dev = [
     "pytest",
+    "pytest-httpx",
     "ruff",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
 
 [tool.uv]
 package = false
