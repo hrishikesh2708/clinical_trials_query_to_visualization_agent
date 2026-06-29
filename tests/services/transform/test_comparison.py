@@ -3,7 +3,11 @@ from app.domain.visualization import VisualizationType
 from app.services.fetch import load_fixture_studies
 from app.services.transform import transform_studies
 from app.services.transform.base import ComparisonArm, TransformContext
-from tests.services.conftest import load_expected_viz
+from tests.services.conftest import (
+    assert_all_excerpts_in_source,
+    assert_all_rows_have_citations,
+    load_expected_viz,
+)
 
 
 def test_comparison_grouped_bar_matches_golden(ctgov_enums) -> None:
@@ -36,3 +40,9 @@ def test_comparison_grouped_bar_matches_golden(ctgov_enums) -> None:
         for row in viz.data
     ]
     assert actual_rows == expected["data"]
+    assert_all_rows_have_citations(viz)
+    studies = [
+        *load_fixture_studies("comparison_pembrolizumab_arm"),
+        *load_fixture_studies("comparison_nivolumab_arm"),
+    ]
+    assert_all_excerpts_in_source(studies, viz)

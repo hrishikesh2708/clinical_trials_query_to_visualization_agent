@@ -15,9 +15,13 @@ from app.domain import models as study_models
 from app.domain.visualization import VisualizationType, assert_never
 from app.infrastructure.ctgov.enums import CtgovEnums
 from app.services.citation_engine import (
+    BucketExcerptBuilder,
+    ExcerptBuilder,
     attach_citations,
+    attach_citations_per_bucket,
     excerpt_enrollment,
     excerpt_overall_status,
+    excerpt_phase,
     excerpt_phase_for_study,
 )
 from app.services.transform.base import TransformContext
@@ -92,13 +96,48 @@ def _enrollment_buckets(
     return buckets
 
 
+def _phase_code_for_label(
+    study: dict[str, Any],
+    phase_label: str,
+    enums: CtgovEnums | None,
+) -> str | None:
+    for code in study_models.phases(study):
+        if _phase_label(enums, code) == phase_label:
+            return code
+    return None
+
+
+def _phase_excerpt_for_label(
+    study: dict[str, Any],
+    phase_label: str,
+    enums: CtgovEnums | None,
+) -> str:
+    if phase_label == UNKNOWN_PHASE_LABEL:
+        return excerpt_phase_for_study(study)
+    phase_code = _phase_code_for_label(study, phase_label, enums)
+    if phase_code is None:
+        return excerpt_phase_for_study(study)
+    return excerpt_phase(study, phase_code)
+
+
 def _bar_chart_from_buckets(
     buckets: dict[str, list[dict[str, Any]]],
     *,
     x_field: str,
-    excerpt_builder,
+    excerpt_builder: ExcerptBuilder | None = None,
+    bucket_excerpt_builder: BucketExcerptBuilder | None = None,
 ) -> BarChartVisualization:
-    citations_by_bucket = attach_citations(buckets, excerpt_builder=excerpt_builder)
+    if bucket_excerpt_builder is not None:
+        citations_by_bucket = attach_citations_per_bucket(
+            buckets,
+            excerpt_builder=bucket_excerpt_builder,
+        )
+    elif excerpt_builder is not None:
+        citations_by_bucket = attach_citations(
+            buckets, excerpt_builder=excerpt_builder
+        )
+    else:
+        raise ValueError("excerpt_builder or bucket_excerpt_builder is required")
     rows = [
         BarChartDataRow(
             **{
@@ -132,7 +171,9 @@ def map_distribution(
             return _bar_chart_from_buckets(
                 buckets,
                 x_field="phase",
-                excerpt_builder=excerpt_phase_for_study,
+                bucket_excerpt_builder=lambda study, label: _phase_excerpt_for_label(
+                    study, label, context.enums
+                ),
             )
         case VisualizationType.HISTOGRAM:
             buckets = _enrollment_buckets(context.studies)

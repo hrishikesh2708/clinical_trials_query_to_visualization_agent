@@ -124,6 +124,25 @@ def attach_citations(
     }
 
 
+BucketExcerptBuilder = Callable[[dict[str, Any], K], str]
+
+
+def attach_citations_per_bucket(
+    bucket_map: dict[K, list[dict[str, Any]]],
+    *,
+    excerpt_builder: BucketExcerptBuilder,
+) -> dict[K, list[Citation]]:
+    return {
+        key: build_citations_for_studies(
+            studies,
+            excerpt_builder=lambda study, bucket_key=key: excerpt_builder(
+                study, bucket_key
+            ),
+        )
+        for key, studies in bucket_map.items()
+    }
+
+
 def slug_id(value: str) -> str:
     normalized = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
     return normalized or "unknown"

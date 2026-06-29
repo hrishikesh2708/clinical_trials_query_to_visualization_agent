@@ -120,18 +120,12 @@ def map_network(context: TransformContext) -> NetworkGraphVisualization:
             label=edge.label,
             citations=build_citations_for_studies(
                 edge.studies,
-                excerpt_builder=lambda study, label=edge.label: (
+                excerpt_builder=lambda study, edge=edge, nodes=nodes: (
                     excerpt_sponsor(study)
-                    if label == "sponsored_by"
-                    else excerpt_intervention(
-                        study,
-                        study_models.intervention_names(study)[0],
-                    )
-                    if study_models.intervention_names(study)
-                    else excerpt_condition(
-                        study,
-                        study_models.conditions(study)[0],
-                    )
+                    if edge.label == "sponsored_by"
+                    else excerpt_condition(study, nodes[edge.target].label)
+                    if edge.label == "studied_in"
+                    else excerpt_intervention(study, nodes[edge.source].label)
                 ),
             ),
         )

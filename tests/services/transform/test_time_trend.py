@@ -3,7 +3,11 @@ from app.domain.visualization import VisualizationType
 from app.services.fetch import load_fixture_studies
 from app.services.transform import transform_studies
 from app.services.transform.base import TransformContext
-from tests.services.conftest import assert_excerpts_in_source, load_expected_viz
+from tests.services.conftest import (
+    assert_all_excerpts_in_source,
+    assert_all_rows_have_citations,
+    load_expected_viz,
+)
 
 
 def test_time_trend_matches_golden_summary() -> None:
@@ -22,10 +26,8 @@ def test_time_trend_matches_golden_summary() -> None:
     assert viz.data[0].year == expected["data"][0]["year"]
     assert viz.data[0].count == expected["data"][0]["count"]
     assert viz.data[0].citations
-    assert_excerpts_in_source(
-        studies,
-        [citation.model_dump() for citation in viz.data[0].citations],
-    )
+    assert_all_rows_have_citations(viz)
+    assert_all_excerpts_in_source(studies, viz)
 
 
 def test_time_trend_buckets_all_fixture_studies_in_2015() -> None:
@@ -40,3 +42,5 @@ def test_time_trend_buckets_all_fixture_studies_in_2015() -> None:
     assert len(viz.data) == 1
     assert viz.data[0].year == 2015
     assert viz.data[0].count == len(studies)
+    assert_all_rows_have_citations(viz)
+    assert_all_excerpts_in_source(studies, viz)

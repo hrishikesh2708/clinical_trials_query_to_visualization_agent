@@ -14,6 +14,22 @@ from tests.api.horizon_mocks import (
 )
 
 
+def _assert_response_has_citations(body: dict) -> None:
+    viz = body["visualization"]
+    viz_type = viz["type"]
+    if viz_type == "network_graph":
+        assert all(node.get("citations") for node in viz["data"]["nodes"])
+        assert all(edge.get("citations") for edge in viz["data"]["edges"])
+        return
+    rows_with_counts = [
+        row
+        for row in viz["data"]
+        if isinstance(row.get("count"), int) and row["count"] > 0
+    ]
+    assert rows_with_counts, "Expected at least one non-zero data row"
+    assert all(row.get("citations") for row in rows_with_counts)
+
+
 @pytest.mark.parametrize(
     "scenario",
     ALL_SCENARIOS,
@@ -35,6 +51,7 @@ def test_visualize_horizon_returns_200(
     assert body["meta"]["total_studies_fetched"] == sum(
         len(studies) for studies in scenario.fetched.studies_per_search
     )
+    _assert_response_has_citations(body)
 
 
 def test_visualize_agent_error_returns_422(client: TestClient) -> None:

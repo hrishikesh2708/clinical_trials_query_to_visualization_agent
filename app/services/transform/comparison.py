@@ -16,6 +16,8 @@ from app.domain.visualization import VisualizationType, assert_never
 from app.infrastructure.ctgov.enums import CtgovEnums
 from app.services.citation_engine import (
     attach_citations,
+    attach_citations_per_bucket,
+    excerpt_phase,
     excerpt_phase_for_study,
 )
 from app.services.transform.base import TransformContext
@@ -30,6 +32,30 @@ def _phase_label(enums: CtgovEnums | None, phase_code: str) -> str:
         return enums.label_for("Phase", phase_code)
     except (KeyError, ValueError):
         return phase_code
+
+
+def _phase_code_for_label(
+    study: dict[str, Any],
+    phase_label: str,
+    enums: CtgovEnums | None,
+) -> str | None:
+    for code in study_models.phases(study):
+        if _phase_label(enums, code) == phase_label:
+            return code
+    return None
+
+
+def _phase_excerpt_for_label(
+    study: dict[str, Any],
+    phase_label: str,
+    enums: CtgovEnums | None,
+) -> str:
+    if phase_label == UNKNOWN_PHASE_LABEL:
+        return excerpt_phase_for_study(study)
+    phase_code = _phase_code_for_label(study, phase_label, enums)
+    if phase_code is None:
+        return excerpt_phase_for_study(study)
+    return excerpt_phase(study, phase_code)
 
 
 def _phase_rows_for_arm(
@@ -67,9 +93,11 @@ def map_comparison(
             flat_buckets: dict[tuple[str, str], list[dict[str, Any]]] = {
                 key: studies for key, studies in buckets.items()
             }
-            citations_by_key = attach_citations(
+            citations_by_key = attach_citations_per_bucket(
                 flat_buckets,
-                excerpt_builder=excerpt_phase_for_study,
+                excerpt_builder=lambda study, key: _phase_excerpt_for_label(
+                    study, key[0], context.enums
+                ),
             )
 
             rows = [

@@ -293,6 +293,19 @@ from app.domain.horizons import Horizon, allowed_visualization_types, is_visuali
 - Every aggregated row, node, or edge may include `citations: [{ nct_id, excerpt }]`.
 - Excerpt must quote or paraphrase a value from the canonical JSON path for that horizon.
 - LLM does not invent excerpts; mappers extract from API JSON.
+- Implementation: [`app/services/citation_engine.py`](../app/services/citation_engine.py).
+
+**Per-datum cap:** `MAX_CITATIONS_PER_DATUM = 5` in the citation engine. Each bucket row, network node, or edge includes up to five representative trials (sorted by `nct_id`). This balances API response payload size against traceability — users can verify counts against real `nct_id` values without serializing every contributing study.
+
+**Substring invariant:** `_excerpt_from_study_json()` requires each excerpt to appear verbatim in the serialized study JSON. Mappers cannot invent citation text.
+
+**Bucket-aware excerpts:** The cited field must match the visualization dimension for that datum:
+- Geographic: `locations[].country` matching the row's country bucket
+- Distribution / comparison (phase): phase code matching the row's phase label
+- Network nodes: sponsor name, intervention name, or condition string matching the node label
+- Network edges: sponsor for `sponsored_by`; target condition for `studied_in`; source intervention for `co_intervention`
+- Time trend: `startDateStruct.date`
+- Enrollment histogram: `enrollmentInfo.count`
 
 ### Enum display labels
 

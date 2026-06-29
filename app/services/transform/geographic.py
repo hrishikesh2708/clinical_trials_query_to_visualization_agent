@@ -7,7 +7,7 @@ from typing import Any
 
 from app.core.schemas.visualization import BarChartDataRow, BarChartVisualization
 from app.domain import models as study_models
-from app.services.citation_engine import attach_citations, excerpt_country
+from app.services.citation_engine import attach_citations_per_bucket, excerpt_country
 from app.services.transform.base import TransformContext
 
 
@@ -18,12 +18,9 @@ def map_geographic(context: TransformContext) -> BarChartVisualization:
         for country in study_models.unique_countries(study):
             buckets[country].append(study)
 
-    citations_by_country = attach_citations(
+    citations_by_country = attach_citations_per_bucket(
         buckets,
-        excerpt_builder=lambda study: excerpt_country(
-            study,
-            study_models.unique_countries(study)[0],
-        ),
+        excerpt_builder=lambda study, country: excerpt_country(study, country),
     )
 
     rows = [

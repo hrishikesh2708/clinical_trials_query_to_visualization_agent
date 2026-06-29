@@ -3,7 +3,11 @@ from app.domain.visualization import VisualizationType
 from app.services.fetch import load_fixture_studies
 from app.services.transform import transform_studies
 from app.services.transform.base import TransformContext
-from tests.services.conftest import assert_excerpts_in_source, load_expected_viz
+from tests.services.conftest import (
+    assert_all_excerpts_in_source,
+    assert_all_network_citations,
+    load_expected_viz,
+)
 
 
 def test_network_graph_matches_golden_summary() -> None:
@@ -23,7 +27,5 @@ def test_network_graph_matches_golden_summary() -> None:
     assert [node.id for node in viz.data.nodes[:3]] == expected["sample_node_ids"]
     assert all(node.citations for node in viz.data.nodes)
     assert all(edge.citations for edge in viz.data.edges)
-    assert_excerpts_in_source(
-        studies,
-        [citation.model_dump() for citation in viz.data.nodes[0].citations],
-    )
+    assert_all_network_citations(viz)
+    assert_all_excerpts_in_source(studies, viz)
