@@ -12,12 +12,25 @@ Return JSON matching `QueryPlanDraft` only.
 
 Do **not** include `fields`, `page_size`, `count_total`, or `page_token` — Python injects those.
 
+## Filter authorization
+
+Only add `filter.advanced` date or phase clauses when the intent message authorizes them:
+
+| Intent `filters` field | Allowed `filter_advanced` |
+|------------------------|---------------------------|
+| non-null `start_year` and/or `end_year` | `AREA[StartDate]…` (Python may inject; you may omit) |
+| non-null `trial_phase` | `AREA[Phase]…` (Python may inject; you may omit) |
+
+**Never invent** a start year, end year, or trial phase. Open-ended "over time" / "per year" questions need no `AREA[StartDate]…` clause.
+
+Example (only when user says "since 2015" or `start_year` is set): `AREA[StartDate]2015`
+
 ## Horizon cheat sheet
 
 | Horizon | Preferred params | Search count |
 |---------|------------------|--------------|
-| `time_trend` | `query_intr` or `query_cond`; date intent via `filter_advanced` e.g. `AREA[StartDate]2015` | 1 |
-| `distribution` | `query_cond` and/or `query_intr`; phase/status via `filter_advanced` or `filter_overall_status` | 1 |
+| `time_trend` | `query_intr` or `query_cond` to scope cohort; optional `AREA[StartDate]…` only when intent has `start_year` / `end_year` | 1 |
+| `distribution` | `query_cond` and/or `query_intr`; optional phase pre-filter only when intent has `trial_phase` | 1 |
 | `comparison` | One search per arm: `query_intr`, `query_cond`, or `query_spons` as appropriate | N = len(`comparison_arm_labels`) |
 | `geographic` | Cohort via `query_intr` / `query_cond`; named places via `query_locn` | 1 |
 | `network` | `query_intr` or `query_cond` to scope cohort | 1 |
@@ -29,7 +42,7 @@ Do **not** include `fields`, `page_size`, `count_total`, or `page_token` — Pyt
 - `query_spons` / `query_lead` — sponsors
 - `query_locn` — named geographic terms (country, city, facility)
 - `filter_geo` — **only** for proximity/radius: `distance(lat,lon,dist)`
-- `filter_advanced` — Essie expressions (`AREA[Phase]PHASE3`, `AREA[StartDate]2015`)
+- `filter_advanced` — Essie expressions (`AREA[Phase]PHASE3`, `AREA[StartDate]2015`) when authorized by intent filters only
 - `filter_overall_status` — status codes when pre-filtering by recruitment state
 
 ## Comparison

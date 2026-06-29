@@ -29,7 +29,17 @@ Use these values for `suggested_viz_type` when helpful (Step 4 makes the final c
 - The user message includes `structured_filters` from the API request.
 - When a structured filter field is non-null in the request, treat it as authoritative — do not contradict it in `filters`.
 - Populate `ResolvedFilters` with resolved `drug_name`, `condition`, `trial_phase`, `sponsor`, `country`, `start_year`, `end_year`.
-- Infer missing filter values from the natural-language `query` when reasonable.
+
+### What to infer from the natural-language `query`
+
+**Do infer** when reasonable: `drug_name`, `condition`, `sponsor`, `country`, horizon, `bucket_field` (distribution), `comparison_arm_labels`.
+
+**Do not infer** unless the query or structured filters explicitly mention them:
+
+- `start_year` / `end_year` — only for explicit windows ("since 2015", "between 2018 and 2022", "before 2020", or non-null in structured filters). Open-ended "over time" / "per year" questions → leave both `null`.
+- `trial_phase` — only when the user names a phase ("phase 3", "Phase III trials", or non-null `trial_phase` in structured filters).
+
+Do not default to 2015 or any other year for generic time-trend questions.
 
 ## Bucket and granularity
 

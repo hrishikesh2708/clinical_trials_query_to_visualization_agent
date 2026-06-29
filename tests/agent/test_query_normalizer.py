@@ -159,3 +159,86 @@ def test_normalize_comparison_count_mismatch_raises_invalid_query_plan() -> None
         normalize_query_plan(intent, draft, enums=enums_from_fixture())
     assert exc_info.value.code == "invalid_query_plan"
     assert "requires 2 searches" in exc_info.value.message
+
+
+def test_normalize_time_trend_strips_unauthorized_start_date() -> None:
+    intent = Intent(
+        horizon=Horizon.TIME_TREND,
+        filters=ResolvedFilters(drug_name="Pembrolizumab"),
+    )
+    draft = QueryPlanDraft(
+        searches=[
+            PlannedSearchDraft(
+                params=SearchParamsDraft(
+                    query_intr="Pembrolizumab",
+                    filter_advanced="AREA[StartDate]2015",
+                ),
+            )
+        ]
+    )
+    plan = normalize_query_plan(intent, draft, enums=enums_from_fixture())
+    assert plan.searches[0].params.filter_advanced is None
+    assert (
+        "Removed unauthorized StartDate filter; no date range in intent."
+        in plan.normalization_notes
+    )
+
+
+def test_normalize_distribution_strips_unauthorized_phase_filter() -> None:
+    intent = _intent()
+    draft = QueryPlanDraft(
+        searches=[
+            PlannedSearchDraft(
+                params=SearchParamsDraft(
+                    query_cond="breast cancer",
+                    filter_advanced="AREA[Phase]PHASE3",
+                ),
+            )
+        ]
+    )
+    plan = normalize_query_plan(intent, draft, enums=enums_from_fixture())
+    assert plan.searches[0].params.filter_advanced is None
+    assert (
+        "Removed unauthorized Phase filter; no trial_phase in intent."
+        in plan.normalization_notes
+    )
+
+
+def test_normalize_keeps_start_date_strips_unauthorized_phase() -> None:
+    intent = Intent(
+        horizon=Horizon.TIME_TREND,
+        filters=ResolvedFilters(drug_name="Pembrolizumab", start_year=2015),
+    )
+    draft = QueryPlanDraft(
+        searches=[
+            PlannedSearchDraft(
+                params=SearchParamsDraft(
+                    query_intr="Pembrolizumab",
+                    filter_advanced="AREA[Phase]PHASE2 AND AREA[StartDate]2015",
+                ),
+            )
+        ]
+    )
+    plan = normalize_query_plan(intent, draft, enums=enums_from_fixture())
+    assert plan.searches[0].params.filter_advanced == "AREA[StartDate]2015"
+    assert (
+        "Removed unauthorized Phase filter; no trial_phase in intent."
+        in plan.normalization_notes
+    )
+
+
+def test_normalize_injects_phase_when_trial_phase_in_intent() -> None:
+    intent = _intent(filters=ResolvedFilters(trial_phase="Phase 3"))
+    draft = QueryPlanDraft(
+        searches=[
+            PlannedSearchDraft(
+                params=SearchParamsDraft(query_cond="breast cancer"),
+            )
+        ]
+    )
+    plan = normalize_query_plan(intent, draft, enums=enums_from_fixture())
+    assert plan.searches[0].params.filter_advanced == "AREA[Phase]PHASE3"
+    assert (
+        "Injected phase filter AREA[Phase]PHASE3 from intent."
+        in plan.normalization_notes
+    )

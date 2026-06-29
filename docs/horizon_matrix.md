@@ -66,6 +66,8 @@ Alternative date fields (`studyFirstSubmitDate`, `studyFirstPostDateStruct.date`
 | `filter.advanced` | Date floor, e.g. `AREA[StartDate]2015` for "since 2015" |
 | `count_total` | `true` on first page for total cohort size |
 
+**Filter authorization:** `filter.advanced` date and phase clauses apply only when the corresponding intent/request filter is set (`start_year` / `end_year` or `trial_phase`). The query normalizer removes LLM-proposed date or phase filters not authorized by intent. Open-ended time-trend queries fetch the cohort up to `pagination_cap` and bucket by start date in the transform.
+
 **`fields` projection (minimize payload):** `NCTId`, `StartDateStruct`
 
 **Aggregation rules:**
@@ -106,6 +108,8 @@ Alternative date fields (`studyFirstSubmitDate`, `studyFirstPostDateStruct.date`
 | `query.intr` | Intervention cohort |
 | `filter.advanced` | Phase/status pre-filter, e.g. `AREA[Phase]PHASE3` |
 | `filter.overall_status` | Status pre-filter |
+
+**Filter authorization:** `AREA[Phase]…` in `filter.advanced` applies only when `trial_phase` is set in intent or request. Unauthorized phase filters from the query planner are stripped by the normalizer.
 
 **`fields` projection:**
 

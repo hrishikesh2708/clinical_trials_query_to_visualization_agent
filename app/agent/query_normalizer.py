@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+from collections.abc import Callable
 from typing import Any
 
 from pydantic import ValidationError
@@ -23,6 +24,15 @@ from app.infrastructure.ctgov.models import StudiesSearchParams
 
 _GEO_DISTANCE_PATTERN = re.compile(r"^distance\s*\(", re.IGNORECASE)
 _PHASE_TOKEN_PATTERN = re.compile(r"AREA\[Phase\]([A-Z0-9_]+)")
+_AND_SPLIT_PATTERN = re.compile(r"\s+AND\s+", re.IGNORECASE)
+_START_DATE_CLAUSE_PATTERN = re.compile(
+    r"^AREA\[StartDate\](?:RANGE\[[^\]]+\]|\d+)$",
+    re.IGNORECASE,
+)
+_PHASE_CLAUSE_PATTERN = re.compile(
+    r"^AREA\[Phase\][A-Z0-9_]+(?:\s+OR\s+AREA\[Phase\][A-Z0-9_]+)*$",
+    re.IGNORECASE,
+)
 
 
 def resolve_fields(intent: Intent) -> list[str]:
@@ -60,6 +70,70 @@ def _validate_phase_tokens(expression: str | None, enums: CtgovEnums) -> None:
         enums.validate_phase(match.group(1))
 
 
+def _authorized_date_filter(intent: Intent) -> bool:
+    return (
+        intent.filters.start_year is not None or intent.filters.end_year is not None
+    )
+
+
+def _authorized_phase_filter(intent: Intent) -> bool:
+    return intent.filters.trial_phase is not None
+
+
+def _split_and_clauses(expression: str) -> list[str]:
+    return [
+        clause.strip()
+        for clause in _AND_SPLIT_PATTERN.split(expression.strip())
+        if clause.strip()
+    ]
+
+
+def _filter_and_clauses(
+    expression: str | None,
+    *,
+    drop_if: Callable[[str], bool],
+) -> tuple[str | None, bool]:
+    if not expression or not expression.strip():
+        return expression, False
+    clauses = _split_and_clauses(expression)
+    kept = [clause for clause in clauses if not drop_if(clause)]
+    if len(kept) == len(clauses):
+        return expression, False
+    if not kept:
+        return None, True
+    return " AND ".join(kept), True
+
+
+def _strip_unauthorized_advanced_filters(
+    intent: Intent,
+    existing: str | None,
+) -> tuple[str | None, list[str]]:
+    notes: list[str] = []
+    expression = existing
+
+    if not _authorized_date_filter(intent):
+        expression, changed = _filter_and_clauses(
+            expression,
+            drop_if=lambda clause: bool(_START_DATE_CLAUSE_PATTERN.match(clause)),
+        )
+        if changed:
+            notes.append(
+                "Removed unauthorized StartDate filter; no date range in intent."
+            )
+
+    if not _authorized_phase_filter(intent):
+        expression, changed = _filter_and_clauses(
+            expression,
+            drop_if=lambda clause: bool(_PHASE_CLAUSE_PATTERN.match(clause)),
+        )
+        if changed:
+            notes.append(
+                "Removed unauthorized Phase filter; no trial_phase in intent."
+            )
+
+    return expression, notes
+
+
 def build_advanced_filters(
     intent: Intent,
     enums: CtgovEnums,
@@ -67,6 +141,9 @@ def build_advanced_filters(
 ) -> tuple[str | None, list[str]]:
     notes: list[str] = []
     injected_clauses: list[str] = []
+
+    existing, strip_notes = _strip_unauthorized_advanced_filters(intent, existing)
+    notes.extend(strip_notes)
 
     if intent.filters.trial_phase and (
         existing is None or intent.filters.trial_phase not in (existing or "")
