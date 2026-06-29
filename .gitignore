@@ -5,3 +5,5 @@ __pycache__/
 .ruff_cache/
 response_dumps/*
 !response_dumps/README.md
+examples/live/snippets/
+ClinicalTrials_Query_to_Visualization_Agent_Backend.docx
