@@ -1,5 +1,3 @@
-from fastapi.testclient import TestClient
-
 from app.main import app
 
 EXPECTED_SCHEMA_NAMES = {
@@ -23,11 +21,13 @@ def test_openapi_contains_schema_components() -> None:
     assert not missing, f"Missing OpenAPI schemas: {missing}"
 
 
-def test_visualize_stub_returns_501() -> None:
-    client = TestClient(app)
-    response = client.post(
-        "/api/v1/visualize",
-        json={"query": "How many trials are recruiting?"},
-    )
-    assert response.status_code == 501
-    assert response.json()["detail"] == "Not implemented until Stage 9"
+def test_visualize_endpoint_registered() -> None:
+    paths = app.openapi()["paths"]
+    assert "/api/v1/visualize" in paths
+    post = paths["/api/v1/visualize"]["post"]
+    assert post["requestBody"]["content"]["application/json"]["schema"][
+        "$ref"
+    ] == "#/components/schemas/VisualizeRequest"
+    assert post["responses"]["200"]["content"]["application/json"]["schema"][
+        "$ref"
+    ] == "#/components/schemas/VisualizeResponse"

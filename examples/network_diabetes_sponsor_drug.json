@@ -1,0 +1,1431 @@
+{
+  "visualization": {
+    "type": "network_graph",
+    "encoding": {
+      "nodes": "nodes",
+      "edges": "edges"
+    },
+    "data": {
+      "nodes": [
+        {
+          "id": "steen-andersen",
+          "label": "Steen Andersen",
+          "citations": [
+            {
+              "nct_id": "NCT01454700",
+              "excerpt": "Steen Andersen"
+            }
+          ]
+        },
+        {
+          "id": "insulin-pump-therapy-csii-plus-continuous-glucose-monitoring-cgm",
+          "label": "Insulin pump therapy (CSII) plus continuous glucose monitoring (CGM)",
+          "citations": [
+            {
+              "nct_id": "NCT01454700",
+              "excerpt": "Insulin pump therapy (CSII) plus continuous glucose monitoring (CGM)"
+            }
+          ]
+        },
+        {
+          "id": "multiple-daily-insulin-injections-mdi",
+          "label": "Multiple daily insulin injections (MDI)",
+          "citations": [
+            {
+              "nct_id": "NCT01454700",
+              "excerpt": "Multiple daily insulin injections (MDI)"
+            }
+          ]
+        },
+        {
+          "id": "type-1-diabetes-mellitus",
+          "label": "Type 1 Diabetes Mellitus",
+          "citations": [
+            {
+              "nct_id": "NCT01454700",
+              "excerpt": "Type 1 Diabetes Mellitus"
+            }
+          ]
+        },
+        {
+          "id": "university-of-california-davis",
+          "label": "University of California, Davis",
+          "citations": [
+            {
+              "nct_id": "NCT00441844",
+              "excerpt": "University of California, Davis"
+            }
+          ]
+        },
+        {
+          "id": "simvastatin",
+          "label": "Simvastatin",
+          "citations": [
+            {
+              "nct_id": "NCT00441844",
+              "excerpt": "Simvastatin"
+            }
+          ]
+        },
+        {
+          "id": "type-1-diabetes",
+          "label": "Type 1 Diabetes",
+          "citations": [
+            {
+              "nct_id": "NCT00441844",
+              "excerpt": "Type 1 Diabetes"
+            },
+            {
+              "nct_id": "NCT05373199",
+              "excerpt": "Type 1 Diabetes"
+            }
+          ]
+        },
+        {
+          "id": "novo-nordisk-a-s",
+          "label": "Novo Nordisk A/S",
+          "citations": [
+            {
+              "nct_id": "NCT01345734",
+              "excerpt": "Novo Nordisk A/S"
+            }
+          ]
+        },
+        {
+          "id": "liraglutide",
+          "label": "liraglutide",
+          "citations": [
+            {
+              "nct_id": "NCT01345734",
+              "excerpt": "liraglutide"
+            }
+          ]
+        },
+        {
+          "id": "diabetes",
+          "label": "Diabetes",
+          "citations": [
+            {
+              "nct_id": "NCT01345734",
+              "excerpt": "Diabetes"
+            },
+            {
+              "nct_id": "NCT01557907",
+              "excerpt": "Diabetes"
+            },
+            {
+              "nct_id": "NCT03389607",
+              "excerpt": "Diabetes"
+            },
+            {
+              "nct_id": "NCT06598436",
+              "excerpt": "Diabetes"
+            }
+          ]
+        },
+        {
+          "id": "diabetes-mellitus-type-2",
+          "label": "Diabetes Mellitus, Type 2",
+          "citations": [
+            {
+              "nct_id": "NCT00801892",
+              "excerpt": "Diabetes Mellitus, Type 2"
+            },
+            {
+              "nct_id": "NCT01345734",
+              "excerpt": "Diabetes Mellitus, Type 2"
+            }
+          ]
+        },
+        {
+          "id": "national-taiwan-university-hospital",
+          "label": "National Taiwan University Hospital",
+          "citations": [
+            {
+              "nct_id": "NCT05800509",
+              "excerpt": "National Taiwan University Hospital"
+            }
+          ]
+        },
+        {
+          "id": "clips-intervention",
+          "label": "Clips Intervention",
+          "citations": [
+            {
+              "nct_id": "NCT05800509",
+              "excerpt": "Clips Intervention"
+            }
+          ]
+        },
+        {
+          "id": "structured-questionnaire-only",
+          "label": "Structured Questionnaire Only",
+          "citations": [
+            {
+              "nct_id": "NCT05800509",
+              "excerpt": "Structured Questionnaire Only"
+            }
+          ]
+        },
+        {
+          "id": "gestational-diabetes-mellitus",
+          "label": "Gestational Diabetes Mellitus",
+          "citations": [
+            {
+              "nct_id": "NCT05800509",
+              "excerpt": "Gestational Diabetes Mellitus"
+            }
+          ]
+        },
+        {
+          "id": "postpartum-depression",
+          "label": "Postpartum Depression",
+          "citations": [
+            {
+              "nct_id": "NCT05800509",
+              "excerpt": "Postpartum Depression"
+            }
+          ]
+        },
+        {
+          "id": "perinatal-depression",
+          "label": "Perinatal Depression",
+          "citations": [
+            {
+              "nct_id": "NCT05800509",
+              "excerpt": "Perinatal Depression"
+            }
+          ]
+        },
+        {
+          "id": "federico-ii-university",
+          "label": "Federico II University",
+          "citations": [
+            {
+              "nct_id": "NCT07252609",
+              "excerpt": "Federico II University"
+            }
+          ]
+        },
+        {
+          "id": "sodium-butyrate-nabut",
+          "label": "Sodium Butyrate (NaBut)",
+          "citations": [
+            {
+              "nct_id": "NCT07252609",
+              "excerpt": "Sodium Butyrate (NaBut)"
+            }
+          ]
+        },
+        {
+          "id": "placebo",
+          "label": "Placebo",
+          "citations": [
+            {
+              "nct_id": "NCT07252609",
+              "excerpt": "Placebo"
+            }
+          ]
+        },
+        {
+          "id": "obesity",
+          "label": "Obesity",
+          "citations": [
+            {
+              "nct_id": "NCT07252609",
+              "excerpt": "Obesity"
+            }
+          ]
+        },
+        {
+          "id": "type-2-diabetes",
+          "label": "Type 2 Diabetes",
+          "citations": [
+            {
+              "nct_id": "NCT07252609",
+              "excerpt": "Type 2 Diabetes"
+            }
+          ]
+        },
+        {
+          "id": "medical-university-of-vienna",
+          "label": "Medical University of Vienna",
+          "citations": [
+            {
+              "nct_id": "NCT01843114",
+              "excerpt": "Medical University of Vienna"
+            }
+          ]
+        },
+        {
+          "id": "fdoct",
+          "label": "FDOCT",
+          "citations": [
+            {
+              "nct_id": "NCT01843114",
+              "excerpt": "FDOCT"
+            }
+          ]
+        },
+        {
+          "id": "dynamic-vessel-analyzer",
+          "label": "Dynamic Vessel Analyzer",
+          "citations": [
+            {
+              "nct_id": "NCT01843114",
+              "excerpt": "Dynamic Vessel Analyzer"
+            }
+          ]
+        },
+        {
+          "id": "type-i-diabetes",
+          "label": "Type I Diabetes",
+          "citations": [
+            {
+              "nct_id": "NCT01843114",
+              "excerpt": "Type I Diabetes"
+            }
+          ]
+        },
+        {
+          "id": "university-of-sulaimani",
+          "label": "University of Sulaimani",
+          "citations": [
+            {
+              "nct_id": "NCT05244200",
+              "excerpt": "University of Sulaimani"
+            }
+          ]
+        },
+        {
+          "id": "pharmaceutical-care-and-insulin-staging",
+          "label": "Pharmaceutical care and insulin staging.",
+          "citations": [
+            {
+              "nct_id": "NCT05244200",
+              "excerpt": "Pharmaceutical care and insulin staging."
+            }
+          ]
+        },
+        {
+          "id": "type-2-diabetes-mellitus",
+          "label": "Type 2 Diabetes Mellitus",
+          "citations": [
+            {
+              "nct_id": "NCT03189407",
+              "excerpt": "Type 2 Diabetes Mellitus"
+            },
+            {
+              "nct_id": "NCT05244200",
+              "excerpt": "Type 2 Diabetes Mellitus"
+            }
+          ]
+        },
+        {
+          "id": "becton-dickinson-and-company",
+          "label": "Becton, Dickinson and Company",
+          "citations": [
+            {
+              "nct_id": "NCT01557907",
+              "excerpt": "Becton, Dickinson and Company"
+            }
+          ]
+        },
+        {
+          "id": "subcutaneous-delivery-via-medtronic-quick-set",
+          "label": "Subcutaneous delivery via Medtronic Quick-Set",
+          "citations": [
+            {
+              "nct_id": "NCT01557907",
+              "excerpt": "Subcutaneous delivery via Medtronic Quick-Set"
+            }
+          ]
+        },
+        {
+          "id": "intradermal-delivery-via-the-bd-research-catheter-set",
+          "label": "Intradermal delivery via the BD Research Catheter Set",
+          "citations": [
+            {
+              "nct_id": "NCT01557907",
+              "excerpt": "Intradermal delivery via the BD Research Catheter Set"
+            }
+          ]
+        },
+        {
+          "id": "titilayo-o-fakeye",
+          "label": "Titilayo O Fakeye",
+          "citations": [
+            {
+              "nct_id": "NCT03189407",
+              "excerpt": "Titilayo O Fakeye"
+            }
+          ]
+        },
+        {
+          "id": "moringa-oleifera-tea",
+          "label": "Moringa oleifera tea",
+          "citations": [
+            {
+              "nct_id": "NCT03189407",
+              "excerpt": "Moringa oleifera tea"
+            }
+          ]
+        },
+        {
+          "id": "lions-club-international-foundation",
+          "label": "Lions Club International Foundation",
+          "citations": [
+            {
+              "nct_id": "NCT05019807",
+              "excerpt": "Lions Club International Foundation"
+            }
+          ]
+        },
+        {
+          "id": "whatsapp-group",
+          "label": "WhatsApp group",
+          "citations": [
+            {
+              "nct_id": "NCT05019807",
+              "excerpt": "WhatsApp group"
+            }
+          ]
+        },
+        {
+          "id": "control-group",
+          "label": "Control group",
+          "citations": [
+            {
+              "nct_id": "NCT05019807",
+              "excerpt": "Control group"
+            }
+          ]
+        },
+        {
+          "id": "diabetic-macular-edema",
+          "label": "Diabetic Macular Edema",
+          "citations": [
+            {
+              "nct_id": "NCT05019807",
+              "excerpt": "Diabetic Macular Edema"
+            }
+          ]
+        },
+        {
+          "id": "diskapi-yildirim-beyazit-education-and-research-hospital",
+          "label": "Diskapi Yildirim Beyazit Education and Research Hospital",
+          "citations": [
+            {
+              "nct_id": "NCT03389607",
+              "excerpt": "Diskapi Yildirim Beyazit Education and Research Hospital"
+            }
+          ]
+        },
+        {
+          "id": "spinal-anesthesia",
+          "label": "spinal anesthesia",
+          "citations": [
+            {
+              "nct_id": "NCT03389607",
+              "excerpt": "spinal anesthesia"
+            }
+          ]
+        },
+        {
+          "id": "gonarthrosis",
+          "label": "Gonarthrosis",
+          "citations": [
+            {
+              "nct_id": "NCT03389607",
+              "excerpt": "Gonarthrosis"
+            }
+          ]
+        },
+        {
+          "id": "eileen-r-chasens",
+          "label": "Eileen R. Chasens",
+          "citations": [
+            {
+              "nct_id": "NCT00801892",
+              "excerpt": "Eileen R. Chasens"
+            }
+          ]
+        },
+        {
+          "id": "continuous-positive-airway-pressure-cpap",
+          "label": "Continuous Positive Airway Pressure (CPAP)",
+          "citations": [
+            {
+              "nct_id": "NCT00801892",
+              "excerpt": "Continuous Positive Airway Pressure (CPAP)"
+            }
+          ]
+        },
+        {
+          "id": "sham-continuous-positive-airway-pressure-sham-cpap",
+          "label": "Sham- Continuous Positive Airway Pressure (Sham-CPAP)",
+          "citations": [
+            {
+              "nct_id": "NCT00801892",
+              "excerpt": "Sham- Continuous Positive Airway Pressure (Sham-CPAP)"
+            }
+          ]
+        },
+        {
+          "id": "sleep-apnea-obstructive",
+          "label": "Sleep Apnea, Obstructive",
+          "citations": [
+            {
+              "nct_id": "NCT00801892",
+              "excerpt": "Sleep Apnea, Obstructive"
+            }
+          ]
+        },
+        {
+          "id": "university-of-california-san-francisco",
+          "label": "University of California, San Francisco",
+          "citations": [
+            {
+              "nct_id": "NCT06598436",
+              "excerpt": "University of California, San Francisco"
+            }
+          ]
+        },
+        {
+          "id": "digital-health-coaching-patient-level-intervention",
+          "label": "Digital Health Coaching (Patient-Level Intervention)",
+          "citations": [
+            {
+              "nct_id": "NCT06598436",
+              "excerpt": "Digital Health Coaching (Patient-Level Intervention)"
+            }
+          ]
+        },
+        {
+          "id": "practice-facilitation-clinic-level-intervention",
+          "label": "Practice Facilitation (Clinic-Level Intervention)",
+          "citations": [
+            {
+              "nct_id": "NCT06598436",
+              "excerpt": "Practice Facilitation (Clinic-Level Intervention)"
+            }
+          ]
+        },
+        {
+          "id": "university-of-new-mexico",
+          "label": "University of New Mexico",
+          "citations": [
+            {
+              "nct_id": "NCT03004664",
+              "excerpt": "University of New Mexico"
+            }
+          ]
+        },
+        {
+          "id": "support-empowerment-model",
+          "label": "Support Empowerment Model",
+          "citations": [
+            {
+              "nct_id": "NCT03004664",
+              "excerpt": "Support Empowerment Model"
+            }
+          ]
+        },
+        {
+          "id": "the-chronic-care-model",
+          "label": "The Chronic Care Model",
+          "citations": [
+            {
+              "nct_id": "NCT03004664",
+              "excerpt": "The Chronic Care Model"
+            }
+          ]
+        },
+        {
+          "id": "diabetes-mellitus",
+          "label": "Diabetes Mellitus",
+          "citations": [
+            {
+              "nct_id": "NCT03004664",
+              "excerpt": "Diabetes Mellitus"
+            }
+          ]
+        },
+        {
+          "id": "adocia",
+          "label": "Adocia",
+          "citations": [
+            {
+              "nct_id": "NCT05373199",
+              "excerpt": "Adocia"
+            }
+          ]
+        },
+        {
+          "id": "euglycemic-clamp-with-bc-combo-thdb0207",
+          "label": "Euglycemic clamp with BC Combo THDB0207",
+          "citations": [
+            {
+              "nct_id": "NCT05373199",
+              "excerpt": "Euglycemic clamp with BC Combo THDB0207"
+            }
+          ]
+        },
+        {
+          "id": "euglycemic-clamp-with-lantus",
+          "label": "Euglycemic clamp with Lantus\u00ae",
+          "citations": [
+            {
+              "nct_id": "NCT05373199",
+              "excerpt": "Euglycemic clamp with Lantus\u00ae"
+            }
+          ]
+        },
+        {
+          "id": "euglycemic-clamp-with-humalog",
+          "label": "Euglycemic clamp with Humalog\u00ae",
+          "citations": [
+            {
+              "nct_id": "NCT05373199",
+              "excerpt": "Euglycemic clamp with Humalog\u00ae"
+            }
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "source": "insulin-pump-therapy-csii-plus-continuous-glucose-monitoring-cgm",
+          "target": "steen-andersen",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT01454700",
+              "excerpt": "Steen Andersen"
+            }
+          ]
+        },
+        {
+          "source": "multiple-daily-insulin-injections-mdi",
+          "target": "steen-andersen",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT01454700",
+              "excerpt": "Steen Andersen"
+            }
+          ]
+        },
+        {
+          "source": "insulin-pump-therapy-csii-plus-continuous-glucose-monitoring-cgm",
+          "target": "type-1-diabetes-mellitus",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT01454700",
+              "excerpt": "Insulin pump therapy (CSII) plus continuous glucose monitoring (CGM)"
+            }
+          ]
+        },
+        {
+          "source": "multiple-daily-insulin-injections-mdi",
+          "target": "type-1-diabetes-mellitus",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT01454700",
+              "excerpt": "Insulin pump therapy (CSII) plus continuous glucose monitoring (CGM)"
+            }
+          ]
+        },
+        {
+          "source": "insulin-pump-therapy-csii-plus-continuous-glucose-monitoring-cgm",
+          "target": "multiple-daily-insulin-injections-mdi",
+          "label": "co_intervention",
+          "citations": [
+            {
+              "nct_id": "NCT01454700",
+              "excerpt": "Insulin pump therapy (CSII) plus continuous glucose monitoring (CGM)"
+            }
+          ]
+        },
+        {
+          "source": "simvastatin",
+          "target": "university-of-california-davis",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT00441844",
+              "excerpt": "University of California, Davis"
+            }
+          ]
+        },
+        {
+          "source": "simvastatin",
+          "target": "type-1-diabetes",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT00441844",
+              "excerpt": "Simvastatin"
+            }
+          ]
+        },
+        {
+          "source": "liraglutide",
+          "target": "novo-nordisk-a-s",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT01345734",
+              "excerpt": "Novo Nordisk A/S"
+            }
+          ]
+        },
+        {
+          "source": "diabetes",
+          "target": "liraglutide",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT01345734",
+              "excerpt": "liraglutide"
+            }
+          ]
+        },
+        {
+          "source": "diabetes-mellitus-type-2",
+          "target": "liraglutide",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT01345734",
+              "excerpt": "liraglutide"
+            }
+          ]
+        },
+        {
+          "source": "clips-intervention",
+          "target": "national-taiwan-university-hospital",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT05800509",
+              "excerpt": "National Taiwan University Hospital"
+            }
+          ]
+        },
+        {
+          "source": "national-taiwan-university-hospital",
+          "target": "structured-questionnaire-only",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT05800509",
+              "excerpt": "National Taiwan University Hospital"
+            }
+          ]
+        },
+        {
+          "source": "clips-intervention",
+          "target": "gestational-diabetes-mellitus",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT05800509",
+              "excerpt": "Clips Intervention"
+            }
+          ]
+        },
+        {
+          "source": "clips-intervention",
+          "target": "postpartum-depression",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT05800509",
+              "excerpt": "Clips Intervention"
+            }
+          ]
+        },
+        {
+          "source": "clips-intervention",
+          "target": "perinatal-depression",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT05800509",
+              "excerpt": "Clips Intervention"
+            }
+          ]
+        },
+        {
+          "source": "gestational-diabetes-mellitus",
+          "target": "structured-questionnaire-only",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT05800509",
+              "excerpt": "Clips Intervention"
+            }
+          ]
+        },
+        {
+          "source": "postpartum-depression",
+          "target": "structured-questionnaire-only",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT05800509",
+              "excerpt": "Clips Intervention"
+            }
+          ]
+        },
+        {
+          "source": "perinatal-depression",
+          "target": "structured-questionnaire-only",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT05800509",
+              "excerpt": "Clips Intervention"
+            }
+          ]
+        },
+        {
+          "source": "clips-intervention",
+          "target": "structured-questionnaire-only",
+          "label": "co_intervention",
+          "citations": [
+            {
+              "nct_id": "NCT05800509",
+              "excerpt": "Clips Intervention"
+            }
+          ]
+        },
+        {
+          "source": "federico-ii-university",
+          "target": "sodium-butyrate-nabut",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT07252609",
+              "excerpt": "Federico II University"
+            }
+          ]
+        },
+        {
+          "source": "federico-ii-university",
+          "target": "placebo",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT07252609",
+              "excerpt": "Federico II University"
+            }
+          ]
+        },
+        {
+          "source": "obesity",
+          "target": "sodium-butyrate-nabut",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT07252609",
+              "excerpt": "Sodium Butyrate (NaBut)"
+            }
+          ]
+        },
+        {
+          "source": "sodium-butyrate-nabut",
+          "target": "type-2-diabetes",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT07252609",
+              "excerpt": "Sodium Butyrate (NaBut)"
+            }
+          ]
+        },
+        {
+          "source": "obesity",
+          "target": "placebo",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT07252609",
+              "excerpt": "Sodium Butyrate (NaBut)"
+            }
+          ]
+        },
+        {
+          "source": "placebo",
+          "target": "type-2-diabetes",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT07252609",
+              "excerpt": "Sodium Butyrate (NaBut)"
+            }
+          ]
+        },
+        {
+          "source": "placebo",
+          "target": "sodium-butyrate-nabut",
+          "label": "co_intervention",
+          "citations": [
+            {
+              "nct_id": "NCT07252609",
+              "excerpt": "Sodium Butyrate (NaBut)"
+            }
+          ]
+        },
+        {
+          "source": "fdoct",
+          "target": "medical-university-of-vienna",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT01843114",
+              "excerpt": "Medical University of Vienna"
+            }
+          ]
+        },
+        {
+          "source": "dynamic-vessel-analyzer",
+          "target": "medical-university-of-vienna",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT01843114",
+              "excerpt": "Medical University of Vienna"
+            }
+          ]
+        },
+        {
+          "source": "fdoct",
+          "target": "type-i-diabetes",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT01843114",
+              "excerpt": "FDOCT"
+            }
+          ]
+        },
+        {
+          "source": "dynamic-vessel-analyzer",
+          "target": "type-i-diabetes",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT01843114",
+              "excerpt": "FDOCT"
+            }
+          ]
+        },
+        {
+          "source": "dynamic-vessel-analyzer",
+          "target": "fdoct",
+          "label": "co_intervention",
+          "citations": [
+            {
+              "nct_id": "NCT01843114",
+              "excerpt": "FDOCT"
+            }
+          ]
+        },
+        {
+          "source": "pharmaceutical-care-and-insulin-staging",
+          "target": "university-of-sulaimani",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT05244200",
+              "excerpt": "University of Sulaimani"
+            }
+          ]
+        },
+        {
+          "source": "pharmaceutical-care-and-insulin-staging",
+          "target": "type-2-diabetes-mellitus",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT05244200",
+              "excerpt": "Pharmaceutical care and insulin staging."
+            }
+          ]
+        },
+        {
+          "source": "becton-dickinson-and-company",
+          "target": "subcutaneous-delivery-via-medtronic-quick-set",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT01557907",
+              "excerpt": "Becton, Dickinson and Company"
+            }
+          ]
+        },
+        {
+          "source": "becton-dickinson-and-company",
+          "target": "intradermal-delivery-via-the-bd-research-catheter-set",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT01557907",
+              "excerpt": "Becton, Dickinson and Company"
+            }
+          ]
+        },
+        {
+          "source": "diabetes",
+          "target": "subcutaneous-delivery-via-medtronic-quick-set",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT01557907",
+              "excerpt": "Subcutaneous delivery via Medtronic Quick-Set"
+            }
+          ]
+        },
+        {
+          "source": "diabetes",
+          "target": "intradermal-delivery-via-the-bd-research-catheter-set",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT01557907",
+              "excerpt": "Subcutaneous delivery via Medtronic Quick-Set"
+            }
+          ]
+        },
+        {
+          "source": "intradermal-delivery-via-the-bd-research-catheter-set",
+          "target": "subcutaneous-delivery-via-medtronic-quick-set",
+          "label": "co_intervention",
+          "citations": [
+            {
+              "nct_id": "NCT01557907",
+              "excerpt": "Subcutaneous delivery via Medtronic Quick-Set"
+            }
+          ]
+        },
+        {
+          "source": "moringa-oleifera-tea",
+          "target": "titilayo-o-fakeye",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT03189407",
+              "excerpt": "Titilayo O Fakeye"
+            }
+          ]
+        },
+        {
+          "source": "moringa-oleifera-tea",
+          "target": "type-2-diabetes-mellitus",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT03189407",
+              "excerpt": "Moringa oleifera tea"
+            }
+          ]
+        },
+        {
+          "source": "lions-club-international-foundation",
+          "target": "whatsapp-group",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT05019807",
+              "excerpt": "Lions Club International Foundation"
+            }
+          ]
+        },
+        {
+          "source": "control-group",
+          "target": "lions-club-international-foundation",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT05019807",
+              "excerpt": "Lions Club International Foundation"
+            }
+          ]
+        },
+        {
+          "source": "diabetic-macular-edema",
+          "target": "whatsapp-group",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT05019807",
+              "excerpt": "WhatsApp group"
+            }
+          ]
+        },
+        {
+          "source": "control-group",
+          "target": "diabetic-macular-edema",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT05019807",
+              "excerpt": "WhatsApp group"
+            }
+          ]
+        },
+        {
+          "source": "control-group",
+          "target": "whatsapp-group",
+          "label": "co_intervention",
+          "citations": [
+            {
+              "nct_id": "NCT05019807",
+              "excerpt": "WhatsApp group"
+            }
+          ]
+        },
+        {
+          "source": "diskapi-yildirim-beyazit-education-and-research-hospital",
+          "target": "spinal-anesthesia",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT03389607",
+              "excerpt": "Diskapi Yildirim Beyazit Education and Research Hospital"
+            }
+          ]
+        },
+        {
+          "source": "gonarthrosis",
+          "target": "spinal-anesthesia",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT03389607",
+              "excerpt": "spinal anesthesia"
+            }
+          ]
+        },
+        {
+          "source": "diabetes",
+          "target": "spinal-anesthesia",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT03389607",
+              "excerpt": "spinal anesthesia"
+            }
+          ]
+        },
+        {
+          "source": "continuous-positive-airway-pressure-cpap",
+          "target": "eileen-r-chasens",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT00801892",
+              "excerpt": "Eileen R. Chasens"
+            }
+          ]
+        },
+        {
+          "source": "eileen-r-chasens",
+          "target": "sham-continuous-positive-airway-pressure-sham-cpap",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT00801892",
+              "excerpt": "Eileen R. Chasens"
+            }
+          ]
+        },
+        {
+          "source": "continuous-positive-airway-pressure-cpap",
+          "target": "sleep-apnea-obstructive",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT00801892",
+              "excerpt": "Continuous Positive Airway Pressure (CPAP)"
+            }
+          ]
+        },
+        {
+          "source": "continuous-positive-airway-pressure-cpap",
+          "target": "diabetes-mellitus-type-2",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT00801892",
+              "excerpt": "Continuous Positive Airway Pressure (CPAP)"
+            }
+          ]
+        },
+        {
+          "source": "sham-continuous-positive-airway-pressure-sham-cpap",
+          "target": "sleep-apnea-obstructive",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT00801892",
+              "excerpt": "Continuous Positive Airway Pressure (CPAP)"
+            }
+          ]
+        },
+        {
+          "source": "diabetes-mellitus-type-2",
+          "target": "sham-continuous-positive-airway-pressure-sham-cpap",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT00801892",
+              "excerpt": "Continuous Positive Airway Pressure (CPAP)"
+            }
+          ]
+        },
+        {
+          "source": "continuous-positive-airway-pressure-cpap",
+          "target": "sham-continuous-positive-airway-pressure-sham-cpap",
+          "label": "co_intervention",
+          "citations": [
+            {
+              "nct_id": "NCT00801892",
+              "excerpt": "Continuous Positive Airway Pressure (CPAP)"
+            }
+          ]
+        },
+        {
+          "source": "digital-health-coaching-patient-level-intervention",
+          "target": "university-of-california-san-francisco",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT06598436",
+              "excerpt": "University of California, San Francisco"
+            }
+          ]
+        },
+        {
+          "source": "practice-facilitation-clinic-level-intervention",
+          "target": "university-of-california-san-francisco",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT06598436",
+              "excerpt": "University of California, San Francisco"
+            }
+          ]
+        },
+        {
+          "source": "diabetes",
+          "target": "digital-health-coaching-patient-level-intervention",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT06598436",
+              "excerpt": "Digital Health Coaching (Patient-Level Intervention)"
+            }
+          ]
+        },
+        {
+          "source": "diabetes",
+          "target": "practice-facilitation-clinic-level-intervention",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT06598436",
+              "excerpt": "Digital Health Coaching (Patient-Level Intervention)"
+            }
+          ]
+        },
+        {
+          "source": "digital-health-coaching-patient-level-intervention",
+          "target": "practice-facilitation-clinic-level-intervention",
+          "label": "co_intervention",
+          "citations": [
+            {
+              "nct_id": "NCT06598436",
+              "excerpt": "Digital Health Coaching (Patient-Level Intervention)"
+            }
+          ]
+        },
+        {
+          "source": "support-empowerment-model",
+          "target": "university-of-new-mexico",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT03004664",
+              "excerpt": "University of New Mexico"
+            }
+          ]
+        },
+        {
+          "source": "the-chronic-care-model",
+          "target": "university-of-new-mexico",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT03004664",
+              "excerpt": "University of New Mexico"
+            }
+          ]
+        },
+        {
+          "source": "diabetes-mellitus",
+          "target": "support-empowerment-model",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT03004664",
+              "excerpt": "Support Empowerment Model"
+            }
+          ]
+        },
+        {
+          "source": "diabetes-mellitus",
+          "target": "the-chronic-care-model",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT03004664",
+              "excerpt": "Support Empowerment Model"
+            }
+          ]
+        },
+        {
+          "source": "support-empowerment-model",
+          "target": "the-chronic-care-model",
+          "label": "co_intervention",
+          "citations": [
+            {
+              "nct_id": "NCT03004664",
+              "excerpt": "Support Empowerment Model"
+            }
+          ]
+        },
+        {
+          "source": "adocia",
+          "target": "euglycemic-clamp-with-bc-combo-thdb0207",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT05373199",
+              "excerpt": "Adocia"
+            }
+          ]
+        },
+        {
+          "source": "adocia",
+          "target": "euglycemic-clamp-with-lantus",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT05373199",
+              "excerpt": "Adocia"
+            }
+          ]
+        },
+        {
+          "source": "adocia",
+          "target": "euglycemic-clamp-with-humalog",
+          "label": "sponsored_by",
+          "citations": [
+            {
+              "nct_id": "NCT05373199",
+              "excerpt": "Adocia"
+            }
+          ]
+        },
+        {
+          "source": "euglycemic-clamp-with-bc-combo-thdb0207",
+          "target": "type-1-diabetes",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT05373199",
+              "excerpt": "Euglycemic clamp with BC Combo THDB0207"
+            }
+          ]
+        },
+        {
+          "source": "euglycemic-clamp-with-lantus",
+          "target": "type-1-diabetes",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT05373199",
+              "excerpt": "Euglycemic clamp with BC Combo THDB0207"
+            }
+          ]
+        },
+        {
+          "source": "euglycemic-clamp-with-humalog",
+          "target": "type-1-diabetes",
+          "label": "studied_in",
+          "citations": [
+            {
+              "nct_id": "NCT05373199",
+              "excerpt": "Euglycemic clamp with BC Combo THDB0207"
+            }
+          ]
+        },
+        {
+          "source": "euglycemic-clamp-with-bc-combo-thdb0207",
+          "target": "euglycemic-clamp-with-humalog",
+          "label": "co_intervention",
+          "citations": [
+            {
+              "nct_id": "NCT05373199",
+              "excerpt": "Euglycemic clamp with BC Combo THDB0207"
+            }
+          ]
+        },
+        {
+          "source": "euglycemic-clamp-with-bc-combo-thdb0207",
+          "target": "euglycemic-clamp-with-lantus",
+          "label": "co_intervention",
+          "citations": [
+            {
+              "nct_id": "NCT05373199",
+              "excerpt": "Euglycemic clamp with BC Combo THDB0207"
+            }
+          ]
+        },
+        {
+          "source": "euglycemic-clamp-with-humalog",
+          "target": "euglycemic-clamp-with-lantus",
+          "label": "co_intervention",
+          "citations": [
+            {
+              "nct_id": "NCT05373199",
+              "excerpt": "Euglycemic clamp with BC Combo THDB0207"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "meta": {
+    "title": "Sponsor\u2013drug network for diabetes trials",
+    "source": "clinicaltrials.gov",
+    "filters": {
+      "drug_name": null,
+      "condition": "diabetes",
+      "trial_phase": null,
+      "sponsor": null,
+      "country": null,
+      "start_year": null,
+      "end_year": null
+    },
+    "assumptions": [],
+    "time_granularity": null,
+    "units": null,
+    "total_studies_fetched": 15,
+    "interpretation_notes": null
+  }
+}

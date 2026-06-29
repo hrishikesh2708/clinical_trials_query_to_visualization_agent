@@ -1,0 +1,119 @@
+{
+  "visualization": {
+    "type": "bar_chart",
+    "encoding": {
+      "x": "phase",
+      "y": "count"
+    },
+    "data": [
+      {
+        "citations": [
+          {
+            "nct_id": "NCT00126464",
+            "excerpt": "NA"
+          },
+          {
+            "nct_id": "NCT01379092",
+            "excerpt": "NA"
+          },
+          {
+            "nct_id": "NCT01789684",
+            "excerpt": "NA"
+          },
+          {
+            "nct_id": "NCT04064892",
+            "excerpt": "NA"
+          },
+          {
+            "nct_id": "NCT05299021",
+            "excerpt": "NA"
+          }
+        ],
+        "phase": "Not Applicable",
+        "count": 7
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT00020332",
+            "excerpt": "PHASE1"
+          },
+          {
+            "nct_id": "NCT01138384",
+            "excerpt": "PHASE1"
+          },
+          {
+            "nct_id": "NCT01785992",
+            "excerpt": "PHASE2"
+          },
+          {
+            "nct_id": "NCT05145907",
+            "excerpt": "PHASE2"
+          },
+          {
+            "nct_id": "NCT05226871",
+            "excerpt": "PHASE2"
+          }
+        ],
+        "phase": "PHASE2",
+        "count": 5
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT00020332",
+            "excerpt": "PHASE1"
+          },
+          {
+            "nct_id": "NCT01138384",
+            "excerpt": "PHASE1"
+          },
+          {
+            "nct_id": "NCT01238952",
+            "excerpt": "PHASE1"
+          }
+        ],
+        "phase": "PHASE1",
+        "count": 3
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT05747209",
+            "excerpt": "NCT05747209"
+          }
+        ],
+        "phase": "Unknown",
+        "count": 1
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT05843292",
+            "excerpt": "PHASE4"
+          }
+        ],
+        "phase": "PHASE4",
+        "count": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Breast cancer trials by phase",
+    "source": "clinicaltrials.gov",
+    "filters": {
+      "drug_name": null,
+      "condition": "breast cancer",
+      "trial_phase": null,
+      "sponsor": null,
+      "country": null,
+      "start_year": null,
+      "end_year": null
+    },
+    "assumptions": [],
+    "time_granularity": null,
+    "units": null,
+    "total_studies_fetched": 15,
+    "interpretation_notes": null
+  }
+}

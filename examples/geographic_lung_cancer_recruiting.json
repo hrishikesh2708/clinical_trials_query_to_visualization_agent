@@ -1,0 +1,303 @@
+{
+  "visualization": {
+    "type": "bar_chart",
+    "encoding": {
+      "x": "country",
+      "y": "count"
+    },
+    "data": [
+      {
+        "citations": [
+          {
+            "nct_id": "NCT02348008",
+            "excerpt": "United States"
+          },
+          {
+            "nct_id": "NCT02575807",
+            "excerpt": "United States"
+          },
+          {
+            "nct_id": "NCT02880371",
+            "excerpt": "United States"
+          },
+          {
+            "nct_id": "NCT03003468",
+            "excerpt": "United States"
+          },
+          {
+            "nct_id": "NCT03371979",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "United States",
+        "count": 8
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          },
+          {
+            "nct_id": "NCT05229614",
+            "excerpt": "Germany"
+          },
+          {
+            "nct_id": "NCT06600321",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "Italy",
+        "count": 3
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT02575807",
+            "excerpt": "United States"
+          },
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "Canada",
+        "count": 2
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT05145907",
+            "excerpt": "China"
+          },
+          {
+            "nct_id": "NCT07020052",
+            "excerpt": "China"
+          }
+        ],
+        "country": "China",
+        "count": 2
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          },
+          {
+            "nct_id": "NCT05229614",
+            "excerpt": "Germany"
+          }
+        ],
+        "country": "Germany",
+        "count": 2
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          },
+          {
+            "nct_id": "NCT06600321",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "South Korea",
+        "count": 2
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          },
+          {
+            "nct_id": "NCT04830592",
+            "excerpt": "United Kingdom"
+          }
+        ],
+        "country": "United Kingdom",
+        "count": 2
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "Argentina",
+        "count": 1
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "Australia",
+        "count": 1
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "Brazil",
+        "count": 1
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "Colombia",
+        "count": 1
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "France",
+        "count": 1
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "Ireland",
+        "count": 1
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "Israel",
+        "count": 1
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "Japan",
+        "count": 1
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "Mexico",
+        "count": 1
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "New Zealand",
+        "count": 1
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "Poland",
+        "count": 1
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "Russia",
+        "count": 1
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "Spain",
+        "count": 1
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "Taiwan",
+        "count": 1
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "Turkey (T\u00fcrkiye)",
+        "count": 1
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03371979",
+            "excerpt": "United States"
+          }
+        ],
+        "country": "Puerto Rico",
+        "count": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Recruiting lung cancer trials by country",
+    "source": "clinicaltrials.gov",
+    "filters": {
+      "drug_name": null,
+      "condition": "lung cancer",
+      "trial_phase": "Recruiting",
+      "sponsor": null,
+      "country": null,
+      "start_year": null,
+      "end_year": null
+    },
+    "assumptions": [],
+    "time_granularity": null,
+    "units": null,
+    "total_studies_fetched": 15,
+    "interpretation_notes": null
+  }
+}

@@ -1,25 +1,18 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 
+from app.api.errors import register_exception_handlers
+from app.api.v1 import router as v1_router
 from app.core.config import Settings
-from app.core.schemas.request import VisualizeRequest
-from app.core.schemas.response import VisualizeResponse
 
 settings = Settings()
 
 app = FastAPI()
 app.state.settings = settings
 
+register_exception_handlers(app)
+app.include_router(v1_router)
+
 
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
-
-
-@app.post(
-    "/api/v1/visualize",
-    response_model=VisualizeResponse,
-    status_code=501,
-    tags=["visualize"],
-)
-def visualize_stub(_: VisualizeRequest) -> VisualizeResponse:
-    raise HTTPException(status_code=501, detail="Not implemented until Stage 9")

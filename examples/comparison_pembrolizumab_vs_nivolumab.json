@@ -1,0 +1,175 @@
+{
+  "visualization": {
+    "type": "grouped_bar_chart",
+    "encoding": {
+      "x": "phase",
+      "y": "count",
+      "series": "series"
+    },
+    "data": [
+      {
+        "citations": [
+          {
+            "nct_id": "NCT01940809",
+            "excerpt": "PHASE1"
+          },
+          {
+            "nct_id": "NCT02812667",
+            "excerpt": "PHASE1"
+          },
+          {
+            "nct_id": "NCT03059147",
+            "excerpt": "PHASE1"
+          },
+          {
+            "nct_id": "NCT04247165",
+            "excerpt": "PHASE1"
+          },
+          {
+            "nct_id": "NCT04610671",
+            "excerpt": "PHASE1"
+          }
+        ],
+        "phase": "PHASE1",
+        "series": "Nivolumab",
+        "count": 6
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT02348008",
+            "excerpt": "PHASE1"
+          },
+          {
+            "nct_id": "NCT02575807",
+            "excerpt": "PHASE1"
+          },
+          {
+            "nct_id": "NCT02880371",
+            "excerpt": "PHASE1"
+          },
+          {
+            "nct_id": "NCT03003468",
+            "excerpt": "PHASE1"
+          },
+          {
+            "nct_id": "NCT03371979",
+            "excerpt": "PHASE1"
+          }
+        ],
+        "phase": "PHASE1",
+        "series": "Pembrolizumab",
+        "count": 9
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03219775",
+            "excerpt": "PHASE2"
+          },
+          {
+            "nct_id": "NCT03241186",
+            "excerpt": "PHASE2"
+          },
+          {
+            "nct_id": "NCT03480334",
+            "excerpt": "PHASE2"
+          },
+          {
+            "nct_id": "NCT03670056",
+            "excerpt": "PHASE2"
+          },
+          {
+            "nct_id": "NCT03704077",
+            "excerpt": "PHASE2"
+          }
+        ],
+        "phase": "PHASE2",
+        "series": "Nivolumab",
+        "count": 9
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT02348008",
+            "excerpt": "PHASE1"
+          },
+          {
+            "nct_id": "NCT02575807",
+            "excerpt": "PHASE1"
+          },
+          {
+            "nct_id": "NCT02880371",
+            "excerpt": "PHASE1"
+          },
+          {
+            "nct_id": "NCT03003468",
+            "excerpt": "PHASE1"
+          },
+          {
+            "nct_id": "NCT03371979",
+            "excerpt": "PHASE1"
+          }
+        ],
+        "phase": "PHASE2",
+        "series": "Pembrolizumab",
+        "count": 9
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT03517449",
+            "excerpt": "PHASE3"
+          },
+          {
+            "nct_id": "NCT06411171",
+            "excerpt": "PHASE3"
+          }
+        ],
+        "phase": "Phase 3",
+        "series": "Pembrolizumab",
+        "count": 2
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT04136470",
+            "excerpt": "NCT04136470"
+          }
+        ],
+        "phase": "Unknown",
+        "series": "Nivolumab",
+        "count": 1
+      },
+      {
+        "citations": [
+          {
+            "nct_id": "NCT07020052",
+            "excerpt": "NCT07020052"
+          }
+        ],
+        "phase": "Unknown",
+        "series": "Pembrolizumab",
+        "count": 1
+      }
+    ]
+  },
+  "meta": {
+    "title": "Pembrolizumab vs nivolumab trials by phase",
+    "source": "clinicaltrials.gov",
+    "filters": {
+      "drug_name": null,
+      "condition": null,
+      "trial_phase": null,
+      "sponsor": null,
+      "country": null,
+      "start_year": null,
+      "end_year": null
+    },
+    "assumptions": [],
+    "time_granularity": null,
+    "units": null,
+    "total_studies_fetched": 30,
+    "interpretation_notes": null
+  }
+}
