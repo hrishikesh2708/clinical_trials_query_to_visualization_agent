@@ -19,8 +19,19 @@ class ResolvedFilters(BaseModel):
     trial_phase: str | None = None
     sponsor: str | None = None
     country: str | None = None
-    start_year: int | None = None
-    end_year: int | None = None
+    start_year: int | None = Field(
+        default=None,
+        description=(
+            "Inclusive lower bound when query says since/from/after YYYY; else null."
+        ),
+    )
+    end_year: int | None = Field(
+        default=None,
+        description=(
+            "Inclusive upper bound when query says before/until YYYY "
+            "or between X and Y; else null."
+        ),
+    )
 
 
 class Intent(BaseModel):

@@ -201,6 +201,7 @@ zip -r clinicaltrials-agent.zip . \
   -x '.venv/*' -x '.env' -x 'response_dumps/*' \
   -x '__pycache__/*' -x '.pytest_cache/*' -x '.ruff_cache/*'
 ```
+time series 
 
 {
   "query": "How has the number of trials for this drug changed over time?",
@@ -225,7 +226,7 @@ zip -r clinicaltrials-agent.zip . \
 }
 
 {
-  "query": "How has the number of trials for Pembrolizumab changed per year between 2015 to 2018",
+  "query": "How has the number of trials for Pembrolizumab changed per year from 2015 to 2018",
   "drug_name": null,
   "condition": null,
   "trial_phase": null,

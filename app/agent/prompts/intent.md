@@ -12,32 +12,32 @@ Choose exactly one:
 - `geographic` — trials by country/location
 - `network` — sponsor–drug–condition relationships
 
-## Allowed visualization types per horizon
+`suggested_viz_type` is an optional hint for Step 4; omit when unsure.
 
-Use these values for `suggested_viz_type` when helpful (Step 4 makes the final choice):
+## Filters (`ResolvedFilters`)
 
-| Horizon | Allowed `suggested_viz_type` values |
-|---------|-------------------------------------|
-| `time_trend` | `time_series` |
-| `distribution` | `bar_chart`, `histogram` |
-| `comparison` | `grouped_bar_chart`, `bar_chart` |
-| `geographic` | `bar_chart` |
-| `network` | `network_graph` |
+The user message includes `structured_filters`. Echo non-null values from `structured_filters` exactly — do not contradict them in `filters`.
 
-## Filter echo rules
+### Date windows — extract when the query names a year
 
-- The user message includes `structured_filters` from the API request.
-- When a structured filter field is non-null in the request, treat it as authoritative — do not contradict it in `filters`.
-- Populate `ResolvedFilters` with resolved `drug_name`, `condition`, `trial_phase`, `sponsor`, `country`, `start_year`, `end_year`.
+Scan the query for explicit calendar bounds. Set integer years on `filters.start_year` / `filters.end_year`.
 
-### What to infer from the natural-language `query`
+| Query phrase | start_year | end_year |
+|--------------|------------|----------|
+| since / from / after / starting in 2015 | 2015 | null |
+| before / until / through 2020 | null | 2020 |
+| between 2015 and 2018 / between 2015 to 2018 | 2015 | 2018 |
 
-**Do infer** when reasonable: `drug_name`, `condition`, `sponsor`, `country`, horizon, `bucket_field` (distribution), `comparison_arm_labels`.
+Rules:
 
-**Do not infer** unless the query or structured filters explicitly mention them:
+- **Explicit year phrase wins** over generic time wording. "per year since 2015" → `start_year=2015` (not null).
+- Only leave both null when **no** year or bound is stated ("over time", "each year" alone).
+- Never invent a year not stated in the query or `structured_filters`.
+- Put date bounds in `filters.start_year` / `filters.end_year` — not only in `assumptions`.
 
-- `start_year` / `end_year` — **must** be set when the query or structured filters name an explicit window ("since 2015", "from 2018", "before 2020", "between 2018 and 2022", "between 2015 to 2018"). Open-ended "over time" / "per year" questions → leave both `null`. Never default to 2015 or any year without explicit mention.
-- `trial_phase` — only when the user names a phase ("phase 3", "Phase III trials", or non-null `trial_phase` in structured filters).
+### Other filters
+
+Infer when stated: `drug_name`, `condition`, `sponsor`, `country`, `trial_phase` (only when a phase is named).
 
 ## Bucket and granularity
 
@@ -47,4 +47,4 @@ Use these values for `suggested_viz_type` when helpful (Step 4 makes the final c
 
 ## Output
 
-Return JSON matching the `Intent` schema only. Include `assumptions` for non-obvious choices (dates, bucket defaults, arm extraction).
+Return JSON matching the `Intent` schema only. Include `assumptions` for non-obvious choices (bucket defaults, arm extraction).
