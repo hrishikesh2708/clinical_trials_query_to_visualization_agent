@@ -193,3 +193,42 @@ def test_iter_search_studies_respects_pagination_cap(httpx_mock) -> None:
 
     assert len(studies) == 5
     assert httpx_mock.get_requests()[1].url.params["pageToken"] == "page-2"
+
+
+def test_fetch_search_studies_returns_studies_and_total_count(httpx_mock) -> None:
+    httpx_mock.add_response(
+        json={
+            "studies": [STUDY_STUB],
+            "totalCount": 99,
+        },
+    )
+
+    studies, total_count = _client().fetch_search_studies(
+        StudiesSearchParams(query_cond="diabetes", count_total=True)
+    )
+
+    assert len(studies) == 1
+    assert total_count == 99
+
+
+def test_fetch_search_studies_paginates_until_cap(httpx_mock) -> None:
+    page_studies = [
+        {
+            **STUDY_STUB,
+            "protocolSection": {"identificationModule": {"nctId": f"NCT{i}"}},
+        }
+        for i in range(2)
+    ]
+    httpx_mock.add_response(
+        json={"studies": page_studies, "nextPageToken": "page-2", "totalCount": 10},
+    )
+    httpx_mock.add_response(
+        json={"studies": page_studies, "nextPageToken": None, "totalCount": 10},
+    )
+
+    studies, total_count = _client(pagination_cap=3).fetch_search_studies(
+        StudiesSearchParams(query_cond="diabetes", page_size=2)
+    )
+
+    assert len(studies) == 3
+    assert total_count == 10

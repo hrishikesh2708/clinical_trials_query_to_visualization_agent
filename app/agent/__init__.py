@@ -1,5 +1,6 @@
 """Visualize agent pipeline and step contracts."""
 
+from app.agent.api_caller import fetch_studies
 from app.agent.exceptions import AgentError
 from app.agent.intent_parser import parse_intent
 from app.agent.pipeline import VisualizePipeline
@@ -16,6 +17,7 @@ from app.agent.types import (
     SearchPreview,
     VizSelection,
 )
+from app.agent.viz_selector import select_viz
 
 __all__ = [
     "AgentError",
@@ -29,7 +31,9 @@ __all__ = [
     "SearchPreview",
     "VizSelection",
     "VisualizePipeline",
+    "fetch_studies",
     "normalize_query_plan",
     "parse_intent",
     "plan_query",
+    "select_viz",
 ]

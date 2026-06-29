@@ -6,10 +6,19 @@ from unittest.mock import AsyncMock, patch
 import pytest
 
 from app.agent.pipeline import VisualizePipeline
-from app.agent.types import APIQueryPlan, Intent, PlannedSearch, ResolvedFilters
+from app.agent.types import (
+    APIQueryPlan,
+    FetchPreview,
+    FetchResult,
+    Intent,
+    PlannedSearch,
+    ResolvedFilters,
+    SearchPreview,
+)
 from app.core.config import Settings
 from app.core.schemas.request import VisualizeRequest
 from app.domain.horizons import Horizon
+from app.domain.visualization import VisualizationType
 from app.infrastructure.ctgov.models import StudiesSearchParams
 
 
@@ -23,7 +32,7 @@ def pipeline(settings: Settings) -> VisualizePipeline:
     return VisualizePipeline(settings)
 
 
-def test_pipeline_run_raises_at_step3_when_steps1_and_2_succeed(
+def test_pipeline_run_raises_at_step5_when_steps1_through_4_succeed(
     pipeline: VisualizePipeline,
 ) -> None:
     request = VisualizeRequest(query="Trials for pembrolizumab since 2015")
@@ -43,6 +52,15 @@ def test_pipeline_run_raises_at_step3_when_steps1_and_2_succeed(
             )
         ],
     )
+    stub_fetched = FetchResult(
+        studies_per_search=[[{"protocolSection": {}}]],
+        preview=FetchPreview(
+            searches=[
+                SearchPreview(label=None, studies_fetched=1, total_count=10),
+            ],
+            allowed_viz_types=[VisualizationType.TIME_SERIES],
+        ),
+    )
 
     with (
         patch(
@@ -55,8 +73,17 @@ def test_pipeline_run_raises_at_step3_when_steps1_and_2_succeed(
             new_callable=AsyncMock,
             return_value=stub_plan,
         ),
+        patch(
+            "app.agent.pipeline.fetch_studies",
+            return_value=stub_fetched,
+        ),
+        patch(
+            "app.agent.pipeline.select_viz",
+            new_callable=AsyncMock,
+            return_value=VisualizationType.TIME_SERIES,
+        ),
     ):
-        with pytest.raises(NotImplementedError, match="Stage 8d"):
+        with pytest.raises(NotImplementedError, match="Stage 8e"):
             asyncio.run(pipeline.run(request))
 
 

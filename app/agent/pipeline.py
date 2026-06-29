@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from openai import AsyncOpenAI
 
+from app.agent.api_caller import fetch_studies
 from app.agent.intent_parser import parse_intent
 from app.agent.query_planner import plan_query
 from app.agent.types import (
@@ -11,6 +12,7 @@ from app.agent.types import (
     FetchResult,
     Intent,
 )
+from app.agent.viz_selector import select_viz
 from app.core.config import Settings
 from app.core.schemas.request import VisualizeRequest
 from app.core.schemas.response import VisualizeResponse
@@ -59,12 +61,17 @@ class VisualizePipeline:
         )
 
     async def _step3_fetch_studies(self, plan: APIQueryPlan) -> FetchResult:
-        raise NotImplementedError("Stage 8d")
+        return fetch_studies(plan, self._ctgov)
 
     async def _step4_select_viz(
         self, intent: Intent, fetched: FetchResult
     ) -> VisualizationType:
-        raise NotImplementedError("Stage 8d")
+        return await select_viz(
+            intent,
+            fetched.preview,
+            client=self._openai,
+            model=self._settings.openai_model,
+        )
 
     async def _step5_transform(
         self,

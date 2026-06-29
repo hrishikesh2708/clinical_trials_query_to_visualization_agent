@@ -94,6 +94,31 @@ class CtgovClient:
                 update={"page_token": result.next_page_token}
             )
 
+    def fetch_search_studies(
+        self, params: StudiesSearchParams
+    ) -> tuple[list[dict[str, Any]], int | None]:
+        collected: list[dict[str, Any]] = []
+        total_count: int | None = None
+        page_params = params.model_copy()
+
+        while len(collected) < self._pagination_cap:
+            result = self.search_studies(page_params)
+            if total_count is None:
+                total_count = result.total_count
+            for study in result.studies:
+                collected.append(study)
+                if len(collected) >= self._pagination_cap:
+                    return collected, total_count
+
+            if not result.next_page_token:
+                break
+
+            page_params = page_params.model_copy(
+                update={"page_token": result.next_page_token}
+            )
+
+        return collected, total_count
+
 
 def ctgov_client_from_settings(settings: Settings) -> CtgovClient:
     return CtgovClient(
