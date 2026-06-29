@@ -1,0 +1,15 @@
+{
+  "type": "time_series",
+  "encoding": {
+    "x": "year",
+    "y": "count",
+    "series": null
+  },
+  "data": [
+    {
+      "year": 2015,
+      "count": 15,
+      "has_citations": true
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "type": "bar_chart",
+  "encoding": {
+    "x": "phase",
+    "y": "count"
+  },
+  "data": [
+    {
+      "phase": "Not Applicable",
+      "count": 7,
+      "has_citations": true
+    },
+    {
+      "phase": "Phase 2",
+      "count": 5,
+      "has_citations": true
+    },
+    {
+      "phase": "Phase 1",
+      "count": 3,
+      "has_citations": true
+    },
+    {
+      "phase": "Unknown",
+      "count": 1,
+      "has_citations": true
+    },
+    {
+      "phase": "Phase 4",
+      "count": 1,
+      "has_citations": true
+    }
+  ]
+}

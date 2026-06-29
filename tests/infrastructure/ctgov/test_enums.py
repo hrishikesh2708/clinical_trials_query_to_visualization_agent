@@ -69,6 +69,12 @@ def test_validate_overall_status_accepts_legacy_value() -> None:
     assert _enums().validate_overall_status("Recruiting") == "RECRUITING"
 
 
+def test_label_for_returns_legacy_display_value() -> None:
+    assert _enums().label_for("Phase", "PHASE3") == "Phase 3"
+    assert _enums().label_for("Phase", "Phase 3") == "Phase 3"
+    assert _enums().label_for("Status", "RECRUITING") == "Recruiting"
+
+
 def test_validate_overall_status_rejects_invalid_value() -> None:
     with pytest.raises(ValueError, match="Invalid Status value"):
         _enums().validate_overall_status("INVALID")

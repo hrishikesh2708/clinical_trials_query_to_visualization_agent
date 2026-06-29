@@ -1,0 +1,14 @@
+{
+  "type": "network_graph",
+  "encoding": {
+    "nodes": "nodes",
+    "edges": "edges"
+  },
+  "node_count": 56,
+  "edge_count": 74,
+  "sample_node_ids": [
+    "steen-andersen",
+    "insulin-pump-therapy-csii-plus-continuous-glucose-monitoring-cgm",
+    "multiple-daily-insulin-injections-mdi"
+  ]
+}

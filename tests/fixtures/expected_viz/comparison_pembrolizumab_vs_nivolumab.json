@@ -1,0 +1,52 @@
+{
+  "type": "grouped_bar_chart",
+  "encoding": {
+    "x": "phase",
+    "y": "count",
+    "series": "series"
+  },
+  "data": [
+    {
+      "phase": "Phase 1",
+      "series": "Nivolumab",
+      "count": 6,
+      "has_citations": true
+    },
+    {
+      "phase": "Phase 1",
+      "series": "Pembrolizumab",
+      "count": 9,
+      "has_citations": true
+    },
+    {
+      "phase": "Phase 2",
+      "series": "Nivolumab",
+      "count": 9,
+      "has_citations": true
+    },
+    {
+      "phase": "Phase 2",
+      "series": "Pembrolizumab",
+      "count": 9,
+      "has_citations": true
+    },
+    {
+      "phase": "Phase 3",
+      "series": "Pembrolizumab",
+      "count": 2,
+      "has_citations": true
+    },
+    {
+      "phase": "Unknown",
+      "series": "Nivolumab",
+      "count": 1,
+      "has_citations": true
+    },
+    {
+      "phase": "Unknown",
+      "series": "Pembrolizumab",
+      "count": 1,
+      "has_citations": true
+    }
+  ]
+}

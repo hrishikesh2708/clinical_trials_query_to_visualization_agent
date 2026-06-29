@@ -51,6 +51,16 @@ class CtgovEnums(BaseModel):
             )
         raise KeyError(f"Unknown enum type: {enum_type}")
 
+    def label_for(self, enum_type: str, raw: str) -> str:
+        code = self.resolve_value(enum_type, raw)
+        for item in self.enums:
+            if item.type != enum_type:
+                continue
+            for entry in item.values:
+                if entry.value == code:
+                    return entry.legacy_value or entry.value
+        return code
+
     def validate_phase(self, phase: str) -> str:
         return self.resolve_value("Phase", phase)
 
@@ -73,3 +83,6 @@ class CtgovEnumsLoader:
 
     def validate_overall_status(self, status: str) -> str:
         return self.load().validate_overall_status(status)
+
+    def label_for(self, enum_type: str, raw: str) -> str:
+        return self.load().label_for(enum_type, raw)

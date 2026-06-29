@@ -1,0 +1,124 @@
+{
+  "type": "bar_chart",
+  "encoding": {
+    "x": "country",
+    "y": "count"
+  },
+  "data": [
+    {
+      "country": "United States",
+      "count": 8,
+      "has_citations": true
+    },
+    {
+      "country": "Italy",
+      "count": 3,
+      "has_citations": true
+    },
+    {
+      "country": "Canada",
+      "count": 2,
+      "has_citations": true
+    },
+    {
+      "country": "China",
+      "count": 2,
+      "has_citations": true
+    },
+    {
+      "country": "Germany",
+      "count": 2,
+      "has_citations": true
+    },
+    {
+      "country": "South Korea",
+      "count": 2,
+      "has_citations": true
+    },
+    {
+      "country": "United Kingdom",
+      "count": 2,
+      "has_citations": true
+    },
+    {
+      "country": "Argentina",
+      "count": 1,
+      "has_citations": true
+    },
+    {
+      "country": "Australia",
+      "count": 1,
+      "has_citations": true
+    },
+    {
+      "country": "Brazil",
+      "count": 1,
+      "has_citations": true
+    },
+    {
+      "country": "Colombia",
+      "count": 1,
+      "has_citations": true
+    },
+    {
+      "country": "France",
+      "count": 1,
+      "has_citations": true
+    },
+    {
+      "country": "Ireland",
+      "count": 1,
+      "has_citations": true
+    },
+    {
+      "country": "Israel",
+      "count": 1,
+      "has_citations": true
+    },
+    {
+      "country": "Japan",
+      "count": 1,
+      "has_citations": true
+    },
+    {
+      "country": "Mexico",
+      "count": 1,
+      "has_citations": true
+    },
+    {
+      "country": "New Zealand",
+      "count": 1,
+      "has_citations": true
+    },
+    {
+      "country": "Poland",
+      "count": 1,
+      "has_citations": true
+    },
+    {
+      "country": "Russia",
+      "count": 1,
+      "has_citations": true
+    },
+    {
+      "country": "Spain",
+      "count": 1,
+      "has_citations": true
+    },
+    {
+      "country": "Taiwan",
+      "count": 1,
+      "has_citations": true
+    },
+    {
+      "country": "Turkey (T\u00fcrkiye)",
+      "count": 1,
+      "has_citations": true
+    },
+    {
+      "country": "Puerto Rico",
+      "count": 1,
+      "has_citations": true
+    }
+  ]
+}
