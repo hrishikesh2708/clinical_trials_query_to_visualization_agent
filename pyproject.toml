@@ -1,0 +1,27 @@
+[project]
+name = "clinicaltrials-agent"
+version = "0.1.0"
+description = "ClinicalTrials.gov query-to-visualization agent backend"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi",
+    "pydantic-settings",
+    "uvicorn[standard]",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]

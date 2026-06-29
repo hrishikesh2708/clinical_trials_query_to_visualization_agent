@@ -1,1 +1,6 @@
-ClinicalTrials_Query_to_Visualization_Agent_Backend.docx
+.env
+.venv
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+response_dumps/
