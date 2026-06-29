@@ -1,6 +1,9 @@
+import re
 from typing import Any, Literal
 
 from pydantic import BaseModel, Field
+
+NCT_ID_PATTERN = re.compile(r"^[Nn][Cc][Tt]0*[1-9]\d{0,7}$")
 
 
 def _join_list(values: list[str]) -> str:
@@ -105,3 +108,18 @@ class StudiesSearchResult(BaseModel):
     studies: list[dict[str, Any]]
     next_page_token: str | None
     total_count: int | None = None
+
+
+class StudyGetParams(BaseModel):
+    format: Literal["json", "csv", "json.zip", "fhir.json", "ris"] = "json"
+    markup_format: Literal["markdown", "legacy"] = "markdown"
+    fields: list[str] | None = None
+
+    def to_query_params(self) -> dict[str, str]:
+        params: dict[str, str] = {
+            "format": self.format,
+            "markupFormat": self.markup_format,
+        }
+        if self.fields:
+            params["fields"] = _join_list(self.fields)
+        return params

@@ -5,7 +5,12 @@ import httpx
 
 from app.core.config import Settings
 from app.infrastructure.ctgov.exceptions import CtgovApiError, CtgovRateLimitError
-from app.infrastructure.ctgov.models import StudiesSearchParams, StudiesSearchResult
+from app.infrastructure.ctgov.models import (
+    NCT_ID_PATTERN,
+    StudiesSearchParams,
+    StudiesSearchResult,
+    StudyGetParams,
+)
 
 
 class CtgovClient:
@@ -19,24 +24,35 @@ class CtgovClient:
         self._timeout = timeout
         self._pagination_cap = pagination_cap
 
-    def search_studies(self, params: StudiesSearchParams) -> StudiesSearchResult:
-        url = f"{self._base_url}/studies"
-        query_params = params.to_query_params()
-
-        with httpx.Client(timeout=self._timeout) as client:
-            response = client.get(url, params=query_params)
-
+    def _get(self, path: str, params: dict[str, str]) -> httpx.Response:
+        url = f"{self._base_url}{path}"
+        with httpx.Client(timeout=self._timeout, follow_redirects=True) as client:
+            response = client.get(url, params=params)
         if response.status_code == 429:
             raise CtgovRateLimitError(response.status_code, response.text)
         if response.status_code >= 400:
             raise CtgovApiError(response.status_code, response.text)
+        return response
 
+    def search_studies(self, params: StudiesSearchParams) -> StudiesSearchResult:
+        response = self._get("/studies", params.to_query_params())
         data = response.json()
         return StudiesSearchResult(
             studies=data.get("studies", []),
             next_page_token=data.get("nextPageToken"),
             total_count=data.get("totalCount"),
         )
+
+    def get_study(
+        self,
+        nct_id: str,
+        params: StudyGetParams | None = None,
+    ) -> dict[str, Any]:
+        if not NCT_ID_PATTERN.match(nct_id):
+            raise ValueError(f"Invalid NCT ID: {nct_id!r}")
+        get_params = params or StudyGetParams()
+        response = self._get(f"/studies/{nct_id}", get_params.to_query_params())
+        return response.json()
 
     def iter_search_studies(
         self, params: StudiesSearchParams

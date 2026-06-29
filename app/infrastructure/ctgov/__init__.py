@@ -1,6 +1,10 @@
 from app.infrastructure.ctgov.client import CtgovClient, ctgov_client_from_settings
 from app.infrastructure.ctgov.exceptions import CtgovApiError, CtgovRateLimitError
-from app.infrastructure.ctgov.models import StudiesSearchParams, StudiesSearchResult
+from app.infrastructure.ctgov.models import (
+    StudiesSearchParams,
+    StudiesSearchResult,
+    StudyGetParams,
+)
 
 __all__ = [
     "CtgovApiError",
@@ -8,5 +12,6 @@ __all__ = [
     "CtgovRateLimitError",
     "StudiesSearchParams",
     "StudiesSearchResult",
+    "StudyGetParams",
     "ctgov_client_from_settings",
 ]
