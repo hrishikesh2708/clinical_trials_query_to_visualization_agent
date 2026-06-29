@@ -45,6 +45,22 @@ uv run uvicorn app.main:app --reload
 - OpenAPI UI: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 - Main endpoint: `POST /api/v1/visualize`
 
+## Optional Streamlit demo
+
+A thin UI for interactive exploration lives in [`ui/`](ui/). It calls the running FastAPI backend over HTTP and renders charts from the response — it does not call OpenAI or ClinicalTrials.gov directly.
+
+```bash
+# Terminal 1 — backend
+uv sync
+uv run uvicorn app.main:app --reload
+
+# Terminal 2 — UI
+uv sync --group ui
+uv run streamlit run ui/app.py
+```
+
+Open [http://localhost:8501](http://localhost:8501). The sidebar includes five sample queries (one per horizon, with geographic and network verification queries listed first). Optional `BACKEND_URL` in `.env` defaults to `http://127.0.0.1:8000`.
+
 ## API usage
 
 Sample request (time trend — see [Example outputs](#example-outputs) for live curl + response):

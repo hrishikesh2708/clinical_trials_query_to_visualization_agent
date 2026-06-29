@@ -18,6 +18,12 @@ dev = [
     "pytest-httpx",
     "ruff",
 ]
+ui = [
+    "streamlit>=1.32",
+    "plotly>=5.18",
+    "pyvis>=0.3",
+    "pandas>=2.0",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
